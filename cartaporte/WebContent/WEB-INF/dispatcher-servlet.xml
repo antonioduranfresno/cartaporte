@@ -16,7 +16,7 @@
         </bean>
         
         <context:component-scan base-package="net.gefco.cartaporte.controladores" />
-        
+                
         <mvc:annotation-driven/>
         
         <mvc:resources location="/resources/" mapping="/res/**" />

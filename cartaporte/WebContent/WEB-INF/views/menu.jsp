@@ -32,18 +32,21 @@
 						<li>
                             <a href="#"><b>MAESTROS</b><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse in">
+                                <li>
+                                    <a href="tiposTransporte"><i class="fa fa-gear fa-fw"></i> Tipos Transporte</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-globe fa-fw"></i> Destinos</a>
+                                </li>
                             	<li>
-                                    <a href="#"><i class="fa fa-gear fa-fw"></i> Compañías Transporte</a>
+                                    <a href="#"><i class="fa fa-university fa-fw"></i> Compañías Transporte</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-tasks fa-fw"></i> Conductores</a>
+                                    <a href="#"><i class="fa fa-group fa-fw"></i> Conductores</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-archive fa-fw"></i> Destinos</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-exchange fa-fw"></i> Tipos Transporte</a>
-                                </li>                                
+                                    <a href="#"><i class="fa fa-truck fa-fw"></i> Camiones</a>
+                                </li>                                                                
                             </ul>                          
                         </li>                        
                                    	                        
