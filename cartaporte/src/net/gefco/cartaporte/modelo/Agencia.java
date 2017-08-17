@@ -19,21 +19,21 @@ public class Agencia implements Serializable{
 	@Id
 	@GeneratedValue
 	@Column(name="id")
-	private Integer 			idAgencia 		= null;
+	private Integer 			id				= null;
 	
 	private String				agen_codigo 	= null;
 	
-	private String  			agen_nombre			= null;
+	private String  			agen_nombre		= null;
 	
 	@ManyToOne
 	@JoinColumn(name="uo")	
 	private UO					uo				= null;
 
-	public Integer getIdAgencia() {
-		return idAgencia;
+	public Integer getId() {
+		return id;
 	}
-	public void setIdAgencia(Integer idAgencia) {
-		this.idAgencia = idAgencia;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getAgen_codigo() {
@@ -61,14 +61,14 @@ public class Agencia implements Serializable{
 		super();
 	}
 
-	public Agencia(Integer idAgencia) {
+	public Agencia(Integer id) {
 		super();
-		this.idAgencia = idAgencia;		
+		this.id = id;		
 	}
 	
-	public Agencia(Integer idAgencia, String agen_codigo, String agen_nombre, UO uo) {
+	public Agencia(Integer id, String agen_codigo, String agen_nombre, UO uo) {
 		super();
-		this.idAgencia = idAgencia;
+		this.id = id;
 		this.agen_codigo = agen_codigo;
 		this.agen_nombre = agen_nombre;
 		this.uo = uo;
@@ -76,7 +76,7 @@ public class Agencia implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Agencia [idAgencia=" + idAgencia + ", agen_codigo=" + agen_codigo
+		return "Agencia [id=" + id+ ", agen_codigo=" + agen_codigo
 				+ ", agen_nombre=" + agen_nombre + ", uo=" + uo + "]";
 	}
 	

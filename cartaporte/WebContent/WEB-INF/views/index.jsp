@@ -101,7 +101,7 @@
 			        	<select class="form-control" id="selAgenciaEmpleado" >
 			        			<option value="0">Selección</option>
 			        		<c:forEach items="${listaAgencias}" var="c" varStatus="index">
-			        			<option value="${c.idAgencia}">${c.toStringCodigo()}</option>			        		
+			        			<option value="${c.id}">${c.toStringCodigo()}</option>			        		
 			        		</c:forEach>
 			        	</select>   		
 			        </div>		        			        	

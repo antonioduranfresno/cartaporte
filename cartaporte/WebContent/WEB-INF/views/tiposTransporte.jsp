@@ -58,9 +58,45 @@
 				</table>
 
 			</div>
+			
+			<a href="#" id="mostrarModalNuevo" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
                         
         </div>
     </div>
+    
+	<div id="modalNuevo" class="modal fade">
+	  <div class="modal-dialog">
+	
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Nuevo Tipo de Transporte</h4>        
+	      </div>
+	      <div class="modal-body" >
+			 <form id="formularioNuevo" autocomplete="off" >
+			 
+			 	<input type="hidden" id="id" name="id" value="0" />
+			 	<input type="hidden" id="agencia.id" name="agencia.id" value="${usuarioSesion.agencia.id}" />
+			 			
+			   	<div class="row">
+		        	<div class="col-lg-12">
+		        		<label>Nombre</label>
+		        		<input class="form-control" type="text" id="titr_nombre" name="titr_nombre" maxlength="45"  />
+		        	</div>
+			    </div>			   	        	
+	          </form>	        
+	      </div>
+	      <div class="modal-footer">
+	      
+	      	<button type="button" id="crearNuevo" class="btn btn-primary" 
+		    	data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Espere...">Aceptar</button>
+	      	
+	      </div>
+	    </div>
+	
+	  </div>
+	</div>    
+    
 
     <script type="text/javascript" src='<c:url value="/res/js/jquery-1.10.2.js" />' ></script>
 	<script type="text/javascript" src='<c:url value="/res/js/bootstrap.min.js" />' ></script>    
@@ -73,7 +109,64 @@
     <script type="text/javascript">
     
 	$(document).ready(function() {
+		
 		cargaDatos();
+		
+		$('#mostrarModalNuevo').click(function(event){
+			
+			event.preventDefault();		
+			$('#modalNuevo').modal({});
+			event.stopImmediatePropagation();
+			
+		});
+		
+		$('#crearNuevo').click(function(e){
+			
+			e.preventDefault();
+			e.stopImmediatePropagation();
+			
+			var valorNombre			= $('#titr_nombre').val();				
+			
+			if(valorNombre.length>0){			
+				
+				var $this = $(this);
+				$this.button('loading');
+			
+				// get the array of all the inputs 
+				var $inputs = $('#formularioNuevo :input');
+
+			    // get an associative array of the values
+				var values = {};
+			    
+				$.each($('#formularioNuevo').serializeArray(), function(i, field) {
+				    values[field.name] = field.value;
+				});
+				
+				if(confirm("¿Desea crear el nuevo tipo de transporte?")){
+					
+					$.ajax({
+						type	 	: "post",
+						url      	: "tiposTransporte/nuevo",
+						data 	 	: values		
+					}).done(function (data) {				
+						alert("Ok");	
+						$(":input","#formularioNuevo").val("");
+        				$("#modalNuevo .close").click();
+        				cargaDatos();
+					}).fail(function (jqXHR, textStatus) {
+					    console.log("Error: "+textStatus);
+					});
+					
+				}	
+						
+										
+			}else{
+				alert("Por favor, introduzca el tipo de transporte.");	
+				$('#titr_nombre').focus();
+			}				
+						
+		});	
+		
 	});
 	
 	function cargaDatos(){
@@ -89,6 +182,9 @@
 	    });		
 			
 	}
+	
+	
+	
     
     </script>
     
