@@ -31,7 +31,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="page-header">Tipos transporte</h2>
+                    <h2 class="page-header">Tipos transporte MODIFICADO POR ANTONIO</h2>
                 </div>                                
            </div> 
                       
