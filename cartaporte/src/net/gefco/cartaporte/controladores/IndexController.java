@@ -19,12 +19,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 @Controller
+@SessionAttributes("usuarioSesion")
 public class IndexController {
 
 	@Autowired
@@ -61,7 +63,7 @@ public class IndexController {
 	//Por eso especifico el nombre al que quiero que vaya, en lugar de manejar el tipoSubmit
 	
 	@RequestMapping("login")  
-	public void login(HttpServletRequest request, HttpServletResponse response){
+	public void login(Model model, HttpServletRequest request, HttpServletResponse response){
 
 		try {
 			
@@ -79,9 +81,12 @@ public class IndexController {
 				
 				if(Encriptacion.encriptar(password).equalsIgnoreCase(usuarioAspirante.getUsua_password())){
 					
+					/*
 					HttpSession sesionOk = request.getSession();
 					sesionOk.setAttribute("usuarioSesion",usuarioAspirante);
-					sesionOk.setMaxInactiveInterval(7200);				
+					sesionOk.setMaxInactiveInterval(7200);*/
+					model.addAttribute("usuarioSesion", usuarioAspirante);
+					//Poner el maxinactiveinterval en XML
 					
 				}else{				
 					jsMensajeLogin = gson.toJsonTree("Error. Password incorrecto.");				

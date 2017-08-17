@@ -34,7 +34,7 @@
                     <h2 class="page-header">Tipos transporte</h2>
                 </div>                                
            </div> 
-           
+                      
            <div id="divVacio"></div>
            
            <div class="table-responsive" id="divDatos">

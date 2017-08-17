@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @SessionAttributes("usuarioSesion")
@@ -28,12 +27,11 @@ public class TiposTransporteController {
 	}
 
 	@RequestMapping("/tiposTransporte/nuevo")
-	public String nuevoDato(Model model, @ModelAttribute("usuarioSesion") Usuario usuarioSesion, 
-							@ModelAttribute("tipoTransporte") TipoTransporte tipoTransporte, RedirectAttributes ra){
+	public String nuevoDato(Model model, @ModelAttribute("usuarioSesion") Usuario usuarioSesion, @ModelAttribute("tipoTransporte") TipoTransporte tipoTransporte){
 		
 		tipoTransporteService.guardar(tipoTransporte);
 		
-		ra.addFlashAttribute("listaTiposTransporte", tipoTransporteService.listarTiposTransporte(usuarioSesion.getAgencia()));
+		model.addAttribute("listaTiposTransporte", tipoTransporteService.listarTiposTransporte(usuarioSesion.getAgencia()));
 		
 		return lista(model, usuarioSesion);
 	}
