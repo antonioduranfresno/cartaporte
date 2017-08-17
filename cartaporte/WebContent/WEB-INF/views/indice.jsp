@@ -31,7 +31,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="page-header">Cartas de porte pendientes MODIFICADO POR MIGUEL 2</h2>
+                    <h2 class="page-header">Cartas de porte pendientes MODIFICADO POR MIGUEL 3</h2>
                 </div>                                
            </div> 
                         
