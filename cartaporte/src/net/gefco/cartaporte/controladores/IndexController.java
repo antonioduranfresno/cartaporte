@@ -81,10 +81,6 @@ public class IndexController {
 				
 				if(Encriptacion.encriptar(password).equalsIgnoreCase(usuarioAspirante.getUsua_password())){
 					
-					/*
-					HttpSession sesionOk = request.getSession();
-					sesionOk.setAttribute("usuarioSesion",usuarioAspirante);
-					sesionOk.setMaxInactiveInterval(7200);*/
 					model.addAttribute("usuarioSesion", usuarioAspirante);
 					//Poner el maxinactiveinterval en XML
 					

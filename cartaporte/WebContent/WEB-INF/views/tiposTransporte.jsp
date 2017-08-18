@@ -29,42 +29,39 @@
 		<jsp:include page="menu.jsp"/>
 
         <div id="page-wrapper">
+        
             <div class="row">
                 <div class="col-lg-12">
                     <h2 class="page-header">Tipos transporte</h2>
                 </div>                                
            </div> 
-                      
-           <div id="divVacio"></div>
            
-           <div class="table-responsive" id="divDatos">
-
-				<table id='tablaTerceros' class='table table-hover table-striped table-condensed table-bordered'>
-				
-					<thead>
-						<tr class="info">
-							<th class="col-md-12">Nombre</th>
-						</tr>
-					</thead>
-				
-					<c:forEach items="${listaTiposTransporte}" var="t" varStatus="index">
-				
-						<tr>
-							<td>${t.titr_nombre}</td>
-						</tr>
-				
-					</c:forEach>
-				
-				</table>
-
-			</div>
+			<table id='tablaTiposTransporte' class='table table-hover table-striped table-condensed table-bordered'>
 			
+				<thead>
+					<tr class="info">
+						<th class="col-sm-12">Nombre</th>
+					</tr>
+				</thead>
+			
+				<c:forEach items="${listaTiposTransporte}" var="t" varStatus="index">
+			
+					<tr>
+						<td>${t.titr_nombre}</td>
+					</tr>
+			
+				</c:forEach>
+			
+			</table>
+			
+			<br>
 			<a href="#" id="mostrarModalNuevo" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
-                        
+			            
         </div>
     </div>
     
 	<div id="modalNuevo" class="modal fade">
+	 <sf:form method="post" modelAttribute="tipoTransporte" action="tiposTransporte/nuevo">
 	  <div class="modal-dialog">
 	
 	    <div class="modal-content">
@@ -73,28 +70,28 @@
 	        <h4 class="modal-title">Nuevo Tipo de Transporte</h4>        
 	      </div>
 	      <div class="modal-body" >
-			 <form id="formularioNuevo" autocomplete="off" >
-			 
-			 	<input type="hidden" id="id" name="id" value="0" />
-			 	<input type="hidden" id="agencia.id" name="agencia.id" value="${usuarioSesion.agencia.id}" />
+	       
+			 	<sf:input type="hidden" path="id" value="0" />
+			 	<sf:input type="hidden" path="agencia.id" value="${usuarioSesion.agencia.id}" />
 			 			
 			   	<div class="row">
 		        	<div class="col-lg-12">
 		        		<label>Nombre</label>
-		        		<input class="form-control" type="text" id="titr_nombre" name="titr_nombre" maxlength="45"  />
+		        		<sf:input class="form-control" path="titr_nombre" maxlength="45"  />
 		        	</div>
-			    </div>			   	        	
-	          </form>	        
+			    </div>	
+			  	          	        
 	      </div>
 	      <div class="modal-footer">
 	      
-	      	<button type="button" id="crearNuevo" class="btn btn-primary" 
+	      	<button type="submit" id="crearNuevo" class="btn btn-primary" 
 		    	data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Espere...">Aceptar</button>
 	      	
 	      </div>
 	    </div>
 	
 	  </div>
+	  </sf:form>
 	</div>    
     
 
@@ -120,6 +117,7 @@
 			
 		});
 		
+		/*
 		$('#crearNuevo').click(function(e){
 			
 			e.preventDefault();
@@ -152,7 +150,7 @@
 						alert("Ok");	
 						$(":input","#formularioNuevo").val("");
         				$("#modalNuevo .close").click();
-        				cargaDatos();
+        				
 					}).fail(function (jqXHR, textStatus) {
 					    console.log("Error: "+textStatus);
 					});
@@ -165,21 +163,23 @@
 				$('#titr_nombre').focus();
 			}				
 						
-		});	
+		});	*/
 		
 	});
+	
 	
 	function cargaDatos(){
 		
 		waitingDialog.show('Un momento, por favor...');
 		
-		$('#tablaTiposTercero').DataTable({ 										
+		$('#tablaTiposTransporte').DataTable({ 										
 	    	"language": {
 	    		"url": "res/json/es.json"
 	        },
 	    	"pageLength": 20,
 	    	"initComplete": waitingDialog.hide()			 		    	
 	    });		
+		
 			
 	}
 	

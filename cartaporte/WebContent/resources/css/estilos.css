@@ -70,8 +70,32 @@ input[type="text"]:focus, textarea:focus {
 	width: 120px;
 }
 
+.validacion .btn-group{	
+	margin-left: 10px;
+}
+
+#solicitud .validacion label{	
+	width: 200px;
+}
+
+.validacion i{
+	margin: 4px;
+}
+
 select#selIdioma option[value="es_ES"]   { background-image: url(../img/bg/ES.png);   }
 select#selIdioma option[value="en_GB"] { background-image: url(../img/bg/GB.png); }
+
+#empleado div label{
+	margin-top: 15px;
+}
+
+#tabs a{
+	font-size: 26px;		
+}
+
+#eliminar{
+	cursor: pointer;
+}
 
 .transparente{
 	width: 98%;
@@ -180,6 +204,30 @@ div.tooltip-inner table tr:nth-child(odd) {
   cursor: inherit;
   display: block;
 }
+
+/*
+Esto debía venir con lo del fichero de importación, pero no quiero que las readonly sean blancas 
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}
+*/
+
+#modalTerceros .modal-dialog{
+	min-width: 92%;
+}
+
+
+#formTercero label, #formTerceros label, #formCertificados label{
+	margin-top: 15px;
+	margin-bottom: -1px;
+}
+
+/*
+#formTercero input, #formTerceros input, #formCertificados input{
+	text-transform: uppercase;
+}
+*/
 
 
 .derecha a{

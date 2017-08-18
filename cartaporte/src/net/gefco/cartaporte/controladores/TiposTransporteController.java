@@ -19,7 +19,8 @@ public class TiposTransporteController {
 	private TipoTransporteService 		tipoTransporteService;
 		
 	@RequestMapping("/tiposTransporte")
-	public String lista(Model model, @ModelAttribute("usuarioSesion") Usuario usuarioSesion){		
+	public String lista(Model model, @ModelAttribute("usuarioSesion") Usuario usuarioSesion, 
+						@ModelAttribute("tipoTransporte") TipoTransporte tipoTransporte){		
 		
 		model.addAttribute("listaTiposTransporte", tipoTransporteService.listarTiposTransporte(usuarioSesion.getAgencia()));
 		
@@ -27,13 +28,14 @@ public class TiposTransporteController {
 	}
 
 	@RequestMapping("/tiposTransporte/nuevo")
-	public String nuevoDato(Model model, @ModelAttribute("usuarioSesion") Usuario usuarioSesion, @ModelAttribute("tipoTransporte") TipoTransporte tipoTransporte){
+	public String nuevoDato(Model model, @ModelAttribute("usuarioSesion") Usuario usuarioSesion, 
+							@ModelAttribute("tipoTransporte") TipoTransporte tipoTransporte){
 		
 		tipoTransporteService.guardar(tipoTransporte);
 		
 		model.addAttribute("listaTiposTransporte", tipoTransporteService.listarTiposTransporte(usuarioSesion.getAgencia()));
 		
-		return lista(model, usuarioSesion);
+		return "redirect:/tiposTransporte";
 	}
 	
 }
