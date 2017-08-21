@@ -5,9 +5,11 @@ import java.util.List;
 import net.gefco.cartaporte.modelo.Agencia;
 import net.gefco.cartaporte.modelo.TipoTransporte;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,5 +49,17 @@ public class TipoTransporteDaoImpl implements TipoTransporteDao{
 		query.setParameter("agencia", agencia);
 		
 		return query.list();
+	}
+	
+	@Override
+	public TipoTransporte buscarTipoTransporte(Agencia agencia, String nombre) {
+
+		Criteria crit = getSession().createCriteria(TipoTransporte.class);
+		
+		crit.add(Restrictions.eq("agencia", agencia));
+		crit.add(Restrictions.eq("titr_nombre", nombre));
+		
+		return (TipoTransporte) crit.uniqueResult();
+		
 	}
 }

@@ -31,4 +31,8 @@ public class TipoTransporteService {
 		return tipoTransporteDao.listarTiposTransporte(agencia);
 	}
 	
+	public TipoTransporte buscarTipoTransporte(Agencia agencia, String nombre){
+		return tipoTransporteDao.buscarTipoTransporte(agencia, nombre);
+	}
+	
 }

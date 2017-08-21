@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="res/css/sb-admin-2.min.css"/>      
     <link rel="stylesheet" href="res/css/metisMenu.min.css"/>
     <link rel="stylesheet" href="res/css/estilos.css"/>
+    <link rel="stylesheet" href="res/css/dataTables.bootstrap.min.css"/>
 
   </head>
 
@@ -43,7 +44,7 @@
 						<th class="col-sm-12">Nombre</th>
 					</tr>
 				</thead>
-			
+							
 				<c:forEach items="${listaTiposTransporte}" var="t" varStatus="index">
 			
 					<tr>
@@ -78,22 +79,21 @@
 		        	<div class="col-lg-12">
 		        		<label>Nombre</label>
 		        		<sf:input class="form-control" path="titr_nombre" maxlength="45"  />
+		        		<sf:errors path="titr_nombre" cssStyle="color: red"></sf:errors>
 		        	</div>
 			    </div>	
 			  	          	        
 	      </div>
 	      <div class="modal-footer">
 	      
-	      	<button type="submit" id="crearNuevo" class="btn btn-primary" 
-		    	data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Espere...">Aceptar</button>
+	      	<input type="submit" class="btn btn-primary" name="guardar" value="Aceptar" />
 	      	
 	      </div>
 	    </div>
 	
-	  </div>
+	   </div>
 	  </sf:form>
 	</div>    
-    
 
     <script type="text/javascript" src='<c:url value="/res/js/jquery-1.10.2.js" />' ></script>
 	<script type="text/javascript" src='<c:url value="/res/js/bootstrap.min.js" />' ></script>    
@@ -107,6 +107,8 @@
     
 	$(document).ready(function() {
 		
+		//$('#modalNuevo').modal({});
+		
 		cargaDatos();
 		
 		$('#mostrarModalNuevo').click(function(event){
@@ -117,56 +119,7 @@
 			
 		});
 		
-		/*
-		$('#crearNuevo').click(function(e){
-			
-			e.preventDefault();
-			e.stopImmediatePropagation();
-			
-			var valorNombre			= $('#titr_nombre').val();				
-			
-			if(valorNombre.length>0){			
-				
-				var $this = $(this);
-				$this.button('loading');
-			
-				// get the array of all the inputs 
-				var $inputs = $('#formularioNuevo :input');
-
-			    // get an associative array of the values
-				var values = {};
-			    
-				$.each($('#formularioNuevo').serializeArray(), function(i, field) {
-				    values[field.name] = field.value;
-				});
-				
-				if(confirm("¿Desea crear el nuevo tipo de transporte?")){
-					
-					$.ajax({
-						type	 	: "post",
-						url      	: "tiposTransporte/nuevo",
-						data 	 	: values		
-					}).done(function (data) {				
-						alert("Ok");	
-						$(":input","#formularioNuevo").val("");
-        				$("#modalNuevo .close").click();
-        				
-					}).fail(function (jqXHR, textStatus) {
-					    console.log("Error: "+textStatus);
-					});
-					
-				}	
-						
-										
-			}else{
-				alert("Por favor, introduzca el tipo de transporte.");	
-				$('#titr_nombre').focus();
-			}				
-						
-		});	*/
-		
-	});
-	
+	});	
 	
 	function cargaDatos(){
 		
@@ -179,13 +132,13 @@
 	    	"pageLength": 20,
 	    	"initComplete": waitingDialog.hide()			 		    	
 	    });		
-		
 			
 	}
 	
+	//Boton que llama a funcion javascript
+	//Esta funcion controla la información que el usuario rellena en el formulario
+	//La función realiza submit con AJAX y verificamos la vuelta de datos
 	
-	
-    
     </script>
     
 </body>

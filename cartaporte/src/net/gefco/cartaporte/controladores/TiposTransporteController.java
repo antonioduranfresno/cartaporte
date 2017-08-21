@@ -1,5 +1,7 @@
 package net.gefco.cartaporte.controladores;
 
+import javax.validation.Valid;
+
 import net.gefco.cartaporte.modelo.TipoTransporte;
 import net.gefco.cartaporte.modelo.Usuario;
 import net.gefco.cartaporte.negocio.TipoTransporteService;
@@ -7,6 +9,7 @@ import net.gefco.cartaporte.negocio.TipoTransporteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -28,14 +31,26 @@ public class TiposTransporteController {
 	}
 
 	@RequestMapping("/tiposTransporte/nuevo")
-	public String nuevoDato(Model model, @ModelAttribute("usuarioSesion") Usuario usuarioSesion, 
-							@ModelAttribute("tipoTransporte") TipoTransporte tipoTransporte){
+	public String nuevoDato(@ModelAttribute("usuarioSesion") Usuario usuarioSesion, 
+							@ModelAttribute("tipoTransporte") @Valid TipoTransporte tipoTransporte, BindingResult result, Model model){
 		
-		tipoTransporteService.guardar(tipoTransporte);
+		if(result.hasErrors()) {
 		
-		model.addAttribute("listaTiposTransporte", tipoTransporteService.listarTiposTransporte(usuarioSesion.getAgencia()));
+			return "redirect:/tiposTransporte";
+			
+		}else{
+
+			/*if(tipoTransporteService.buscarTipoTransporte(tipoTransporte.getAgencia(), tipoTransporte.getTitr_nombre())==null){
+				tipoTransporteService.guardar(tipoTransporte);
+				return "redirect:/tiposTransporte?success=true";
+			}else{
+				return "redirect:/tiposTransporte?success=false";
+			}*/
 		
-		return "redirect:/tiposTransporte";
+			return "redirect:/tiposTransporte";
+			
+		}
+		
 	}
 	
 }
