@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
@@ -21,34 +22,34 @@ public class TiposTransporteController {
 	@Autowired
 	private TipoTransporteService 		tipoTransporteService;
 		
-	@RequestMapping("/tiposTransporte")
+	@RequestMapping(value = "/tiposTransporte", method = RequestMethod.GET)
 	public String lista(Model model, @ModelAttribute("usuarioSesion") Usuario usuarioSesion, 
 						@ModelAttribute("tipoTransporte") TipoTransporte tipoTransporte){		
 		
 		model.addAttribute("listaTiposTransporte", tipoTransporteService.listarTiposTransporte(usuarioSesion.getAgencia()));
-		
+				
 		return "tiposTransporte";
 	}
-
-	@RequestMapping("/tiposTransporte/nuevo")
-	public String nuevoDato(@ModelAttribute("usuarioSesion") Usuario usuarioSesion, 
-							@ModelAttribute("tipoTransporte") @Valid TipoTransporte tipoTransporte, BindingResult result, Model model){
+	
+	@RequestMapping(value = "/tiposTransporte", method = RequestMethod.POST)
+	public String nuevoDato(Model model, @ModelAttribute("usuarioSesion") Usuario usuarioSesion, 
+							@ModelAttribute("tipoTransporte") @Valid TipoTransporte tipoTransporte, BindingResult result){
 		
-		if(result.hasErrors()) {
-		
-			return "redirect:/tiposTransporte";
+		if(!result.hasErrors()){
 			
-		}else{
-
-			/*if(tipoTransporteService.buscarTipoTransporte(tipoTransporte.getAgencia(), tipoTransporte.getTitr_nombre())==null){
+			if(tipoTransporteService.buscarTipoTransporte(tipoTransporte.getAgencia(), tipoTransporte.getTitr_nombre())==null){
 				tipoTransporteService.guardar(tipoTransporte);
-				return "redirect:/tiposTransporte?success=true";
+				return "redirect:/tiposTransporte?success=true";	
 			}else{
 				return "redirect:/tiposTransporte?success=false";
-			}*/
-		
-			return "redirect:/tiposTransporte";
+			}
 			
+		}else{
+			
+			model.addAttribute("listaTiposTransporte", tipoTransporteService.listarTiposTransporte(usuarioSesion.getAgencia()));
+			model.addAttribute("error","error");
+			
+		    return "tiposTransporte";
 		}
 		
 	}

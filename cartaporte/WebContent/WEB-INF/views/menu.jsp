@@ -39,7 +39,7 @@
                                     <a href="#"><i class="fa fa-globe fa-fw"></i> Destinos</a>
                                 </li>
                             	<li>
-                                    <a href="#"><i class="fa fa-university fa-fw"></i> Compañías Transporte</a>
+                                    <a href="#"><i class="fa fa-cubes fa-fw"></i> Compañías </a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-group fa-fw"></i> Conductores</a>

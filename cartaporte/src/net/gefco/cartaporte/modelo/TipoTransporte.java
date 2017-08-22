@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -29,7 +28,7 @@ public class TipoTransporte implements Serializable{
 	@JoinColumn(name="agencia")	
 	private Agencia agencia 		= null;
 	
-	@NotEmpty @Size(min=5, max=30, message="Ponle entre 5 y 30 caracteres") 
+	@NotEmpty
 	private String  titr_nombre 	= null;
 
 	public Integer getId() {

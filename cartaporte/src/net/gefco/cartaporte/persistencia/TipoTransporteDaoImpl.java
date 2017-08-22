@@ -62,4 +62,5 @@ public class TipoTransporteDaoImpl implements TipoTransporteDao{
 		return (TipoTransporte) crit.uniqueResult();
 		
 	}
+
 }

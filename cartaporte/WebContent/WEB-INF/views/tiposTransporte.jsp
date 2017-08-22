@@ -41,14 +41,27 @@
 			
 				<thead>
 					<tr class="info">
-						<th class="col-sm-12">Nombre</th>
+						<th class="col-sm-10">Nombre</th>
+						<th class="col-sm-1">Editar</th>
+						<th class="col-sm-1">Eliminar</th>
 					</tr>
 				</thead>
+
+				<c:choose>
+				    <c:when test="${param.success eq true}">
+				        <div class="alert alert-success">Se añadió correctamente.</div>
+				    </c:when>
+				    <c:when test="${param.success eq false}">
+				        <div class="alert alert-danger">El registro ya existe.</div>
+				    </c:when>
+				</c:choose>	
 							
 				<c:forEach items="${listaTiposTransporte}" var="t" varStatus="index">
 			
 					<tr>
 						<td>${t.titr_nombre}</td>
+						<td style="text-align: center;"><a href="#" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>
+						<td style="text-align: center;"><a href="#" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a></td>
 					</tr>
 			
 				</c:forEach>
@@ -62,7 +75,7 @@
     </div>
     
 	<div id="modalNuevo" class="modal fade">
-	 <sf:form method="post" modelAttribute="tipoTransporte" action="tiposTransporte/nuevo">
+	 <sf:form method="post" id="formModal" modelAttribute="tipoTransporte" action="tiposTransporte">
 	  <div class="modal-dialog">
 	
 	    <div class="modal-content">
@@ -76,21 +89,23 @@
 			 	<sf:input type="hidden" path="agencia.id" value="${usuarioSesion.agencia.id}" />
 			 			
 			   	<div class="row">
-		        	<div class="col-lg-12">
+		        	<div class="col-sm-12">
 		        		<label>Nombre</label>
-		        		<sf:input class="form-control" path="titr_nombre" maxlength="45"  />
-		        		<sf:errors path="titr_nombre" cssStyle="color: red"></sf:errors>
+		        		<sf:input class="form-control" path="titr_nombre"  id="titr_nombre" maxlength="45"  />
+		        		<sf:errors path="titr_nombre" class="label label-danger"></sf:errors>
 		        	</div>
 			    </div>	
 			  	          	        
 	      </div>
 	      <div class="modal-footer">
 	      
-	      	<input type="submit" class="btn btn-primary" name="guardar" value="Aceptar" />
+	      	<input type="submit" id="crearNuevo" class="btn btn-primary" name="guardar" value="Aceptar" />
 	      	
 	      </div>
 	    </div>
 	
+		<input type="hidden" id="error" value="${error}" />
+		
 	   </div>
 	  </sf:form>
 	</div>    
@@ -107,9 +122,11 @@
     
 	$(document).ready(function() {
 		
-		//$('#modalNuevo').modal({});
-		
 		cargaDatos();
+		
+		if($("#error").val()!=""){
+			$('#modalNuevo').modal({});
+		}
 		
 		$('#mostrarModalNuevo').click(function(event){
 			
@@ -134,10 +151,6 @@
 	    });		
 			
 	}
-	
-	//Boton que llama a funcion javascript
-	//Esta funcion controla la información que el usuario rellena en el formulario
-	//La función realiza submit con AJAX y verificamos la vuelta de datos
 	
     </script>
     
