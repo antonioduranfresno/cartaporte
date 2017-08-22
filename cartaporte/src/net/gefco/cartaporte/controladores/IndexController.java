@@ -59,9 +59,6 @@ public class IndexController {
 	    return "salir";
 	}
 	
-	//@RequestMapping(value="/",method=RequestMethod.POST) Esto es como si fuera el post entero
-	//Por eso especifico el nombre al que quiero que vaya, en lugar de manejar el tipoSubmit
-	
 	@RequestMapping("login")  
 	public void login(Model model, HttpServletRequest request, HttpServletResponse response){
 
