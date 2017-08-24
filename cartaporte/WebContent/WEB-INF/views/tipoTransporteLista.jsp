@@ -33,7 +33,7 @@
         
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="page-header">Tipos transporte</h2>
+                    <h2 class="page-header">Tipos Transporte</h2>
                 </div>                                
            </div> 
            
@@ -49,10 +49,7 @@
 
 				<c:choose>
 				    <c:when test="${param.success eq true}">
-				        <div class="alert alert-success">Se añadió correctamente.</div>
-				    </c:when>
-				    <c:when test="${param.success eq false}">
-				        <div class="alert alert-danger">El registro ya existe.</div>
+				        <div class="alert alert-success">Cambios realizados correctamente.</div>
 				    </c:when>
 				</c:choose>	
 							
@@ -60,8 +57,8 @@
 			
 					<tr>
 						<td>${t.titr_nombre}</td>
-						<td style="text-align: center;"><a href="#" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>
-						<td style="text-align: center;"><a href="#" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a></td>
+						<td style="text-align: center;"><a href="tipoTransporteForm?idTipo=${t.id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>
+						<td style="text-align: center;"><a href="#" onclick="eliminar(${t.id});" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a></td>
 					</tr>
 			
 				</c:forEach>
@@ -69,46 +66,11 @@
 			</table>
 			
 			<br>
-			<a href="#" id="mostrarModalNuevo" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
+			
+			<a href="tipoTransporteForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
 			            
         </div>
     </div>
-    
-	<div id="modalNuevo" class="modal fade">
-	 <sf:form method="post" id="formModal" modelAttribute="tipoTransporte" action="tiposTransporte">
-	  <div class="modal-dialog">
-	
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h4 class="modal-title">Nuevo Tipo de Transporte</h4>        
-	      </div>
-	      <div class="modal-body" >
-	       
-			 	<sf:input type="hidden" path="id" value="0" />
-			 	<sf:input type="hidden" path="agencia.id" value="${usuarioSesion.agencia.id}" />
-			 			
-			   	<div class="row">
-		        	<div class="col-sm-12">
-		        		<label>Nombre</label>
-		        		<sf:input class="form-control" path="titr_nombre"  id="titr_nombre" maxlength="45"  />
-		        		<sf:errors path="titr_nombre" class="label label-danger"></sf:errors>
-		        	</div>
-			    </div>	
-			  	          	        
-	      </div>
-	      <div class="modal-footer">
-	      
-	      	<input type="submit" id="crearNuevo" class="btn btn-primary" name="guardar" value="Aceptar" />
-	      	
-	      </div>
-	    </div>
-	
-		<input type="hidden" id="error" value="${error}" />
-		
-	   </div>
-	  </sf:form>
-	</div>    
 
     <script type="text/javascript" src='<c:url value="/res/js/jquery-1.10.2.js" />' ></script>
 	<script type="text/javascript" src='<c:url value="/res/js/bootstrap.min.js" />' ></script>    
@@ -117,24 +79,13 @@
     <script type="text/javascript" src='<c:url value="/res/js/jquery.dataTables.js" />'></script>
 	<script type="text/javascript" src='<c:url value="/res/js/dataTables.bootstrap.js" />'></script>
     <script type="text/javascript" src='<c:url value="/res/js/loading.js" />'></script>
+    <script type="text/javascript" src='<c:url value="/res/js/tipoTransporte.js" />'></script>
     
     <script type="text/javascript">
     
 	$(document).ready(function() {
 		
 		cargaDatos();
-		
-		if($("#error").val()!=""){
-			$('#modalNuevo').modal({});
-		}
-		
-		$('#mostrarModalNuevo').click(function(event){
-			
-			event.preventDefault();		
-			$('#modalNuevo').modal({});
-			event.stopImmediatePropagation();
-			
-		});
 		
 	});	
 	

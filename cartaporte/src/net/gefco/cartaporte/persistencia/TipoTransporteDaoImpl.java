@@ -63,4 +63,14 @@ public class TipoTransporteDaoImpl implements TipoTransporteDao{
 		
 	}
 
+	@Override
+	public TipoTransporte buscarTipoTransporteId(Integer id) {
+		
+		Criteria crit = getSession().createCriteria(TipoTransporte.class);
+		
+		crit.add(Restrictions.eq("id", id));
+		
+		return (TipoTransporte) crit.uniqueResult();
+	}
+
 }

@@ -63,7 +63,7 @@ public class Agencia implements Serializable{
 
 	public Agencia(Integer id) {
 		super();
-		this.id = id;		
+		this.id= id;		
 	}
 	
 	public Agencia(Integer id, String agen_codigo, String agen_nombre, UO uo) {

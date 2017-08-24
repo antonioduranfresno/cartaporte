@@ -16,5 +16,7 @@ public interface TipoTransporteDao {
 	public List<TipoTransporte> listarTiposTransporte(Agencia agencia);
 
 	public TipoTransporte buscarTipoTransporte(Agencia agencia, String nombre);
+	
+	public TipoTransporte buscarTipoTransporteId(Integer id);
 
 }

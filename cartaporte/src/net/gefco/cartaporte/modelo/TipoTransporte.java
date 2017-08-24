@@ -22,14 +22,14 @@ public class TipoTransporte implements Serializable{
 	@Id
 	@GeneratedValue
 	@Column(name="id")
-	private Integer id 				= null;
+	private Integer id					= null;
 		
 	@ManyToOne
 	@JoinColumn(name="agencia")	
-	private Agencia agencia 		= null;
+	private Agencia agencia 			= null;
 	
 	@NotEmpty
-	private String  titr_nombre 	= null;
+	private String  titr_nombre 		= null;
 
 	public Integer getId() {
 		return id;
@@ -65,7 +65,7 @@ public class TipoTransporte implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "TipoTransporte [id=" + id + ", agencia=" + agencia
+		return "TipoTransporte [id=" + id+ ", agencia=" + agencia
 				+ ", titr_nombre=" + titr_nombre + "]";
 	}
 	

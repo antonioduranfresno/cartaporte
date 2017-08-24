@@ -15,7 +15,7 @@ public class TipoTransporteService {
 	@Autowired
 	private TipoTransporteDao tipoTransporteDao;
 
-	public void guardar(TipoTransporte tipoTransporte) {		
+	public void guardar(TipoTransporte tipoTransporte){		
 		tipoTransporteDao.guardar(tipoTransporte);
 	}
 	
@@ -33,6 +33,10 @@ public class TipoTransporteService {
 	
 	public TipoTransporte buscarTipoTransporte(Agencia agencia, String nombre){
 		return tipoTransporteDao.buscarTipoTransporte(agencia, nombre);
+	}
+	
+	public TipoTransporte buscarTipoTransporteId(Integer id){
+		return tipoTransporteDao.buscarTipoTransporteId(id);
 	}
 	
 }

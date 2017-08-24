@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">CARTAS DE PORTE</a>
+                <a class="navbar-brand" href='${pageContext.request.contextPath}/indice'>CARTAS DE PORTE</a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right" >            		
@@ -33,7 +33,7 @@
                             <a href="#"><b>MAESTROS</b><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse in">
                                 <li>
-                                    <a href="tiposTransporte"><i class="fa fa-gear fa-fw"></i> Tipos Transporte</a>
+                                    <a href="tipoTransporteLista"><i class="fa fa-gear fa-fw"></i> Tipos Transporte</a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-globe fa-fw"></i> Destinos</a>

@@ -19,15 +19,15 @@ public class Usuario implements Serializable{
 	@Id
 	@GeneratedValue
 	@Column(name="id")
-	private Integer id = null;
+	private Integer id				= null;
 	
-	private String usua_matricula = null;
+	private String usua_matricula 	= null;
 	
-	private String usua_nombre = null;
+	private String usua_nombre 		= null;
 	
-	private String usua_password = null;
+	private String usua_password 	= null;
 	
-	private String usua_correo = null;
+	private String usua_correo 		= null;
 	
 	@ManyToOne
 	@JoinColumn(name="agencia")
@@ -92,7 +92,7 @@ public class Usuario implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", usua_matricula=" + usua_matricula + ", usua_nombre="
+		return "Usuario [id=" + id+ ", usua_matricula=" + usua_matricula + ", usua_nombre="
 				+ usua_nombre + ", usua_password=" + usua_password + ", usua_correo=" + usua_correo
 				+ ", agencia=" + agencia + "]";
 	}
