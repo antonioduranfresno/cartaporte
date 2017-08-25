@@ -36,16 +36,16 @@
                                     <a href="tipoTransporteLista"><i class="fa fa-gear fa-fw"></i> Tipos Transporte</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-globe fa-fw"></i> Destinos</a>
+                                    <a href="destinoLista"><i class="fa fa-globe fa-fw"></i> Destinos</a>
                                 </li>
                             	<li>
-                                    <a href="#"><i class="fa fa-cubes fa-fw"></i> Compañías </a>
+                                    <a href="companiaTransporteLista"><i class="fa fa-cubes fa-fw"></i> Compañías </a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-group fa-fw"></i> Conductores</a>
+                                    <a href="conductorLista"><i class="fa fa-group fa-fw"></i> Conductores</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-truck fa-fw"></i> Camiones</a>
+                                    <a href="camionLista"><i class="fa fa-truck fa-fw"></i> Camiones</a>
                                 </li>                                                                
                             </ul>                          
                         </li>                        

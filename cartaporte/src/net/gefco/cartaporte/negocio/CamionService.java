@@ -2,6 +2,7 @@ package net.gefco.cartaporte.negocio;
 
 import java.util.List;
 
+import net.gefco.cartaporte.modelo.Agencia;
 import net.gefco.cartaporte.modelo.Camion;
 import net.gefco.cartaporte.modelo.CompaniaTransporte;
 import net.gefco.cartaporte.persistencia.CamionDao;
@@ -29,6 +30,14 @@ public class CamionService {
 	
 	public List<Camion> listarCamiones(CompaniaTransporte companiaTransporte){
 		return camionDao.listarCamiones(companiaTransporte);
+	}
+	
+	public List<Camion> listarCamionesAgencia(Agencia agencia){
+		return camionDao.listarCamionesAgencia(agencia);
+	}
+	
+	public Camion buscarCamion(Integer id){
+		return camionDao.buscarCamion(id);
 	}
 	
 }

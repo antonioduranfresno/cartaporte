@@ -57,51 +57,46 @@ public class TipoTransporteController {
 		
 		Usuario usuarioSesion = (Usuario) model.asMap().get("usuarioSesion");
 		
-		if(!result.hasErrors()){
-
-			try{
-				
-				//Creación
-				if(tipoTransporte.getId()==null || tipoTransporte.getId()==0){
-				
-					tipoTransporte.setId(0);
-					tipoTransporte.setAgencia(usuarioSesion.getAgencia());
-					
-					tipoTransporteService.guardar(tipoTransporte);
-					
-                    tipoTransporte = new TipoTransporte();
-                    
-				//Actualización	
-				}else{				
-					tipoTransporteService.actualizar(tipoTransporte);				
-				}
-                
-    			return "redirect:/tipoTransporteLista?success=true";
-                
-	         } catch (Exception e) {
-	        	 
-	                FieldError error;
-	                
-	                if (e.getClass().equals(DataIntegrityViolationException.class)){
-	                       error = new FieldError("tipoTransporte", "titr_nombre", "tipo de transporte duplicado para su agencia");
-	                } else {
-	                       error = new FieldError("tipoTransporte", "titr_nombre", "error no controlado: " + e.getMessage());
-	                }
-	                
-	                result.addError(error);
-	        
-	                return "tipoTransporteForm";
-	                
-	         } 
-			
-		}else{
-			
+		if(result.hasErrors()){
 			return "tipoTransporteForm";
 		}
+
+		try{
+			
+			//Creación
+			if(tipoTransporte.getId()==null || tipoTransporte.getId()==0){
+			
+				tipoTransporte.setId(0);
+				tipoTransporte.setAgencia(usuarioSesion.getAgencia());
+				
+				tipoTransporteService.guardar(tipoTransporte);				
+                tipoTransporte = new TipoTransporte();
+                
+			//Actualización	
+			}else{				
+				tipoTransporteService.actualizar(tipoTransporte);				
+			}
+            
+			return "redirect:/tipoTransporteLista?success=true";
+            
+         } catch (Exception e) {
+        	 
+                FieldError error;
+                
+                if (e.getClass().equals(DataIntegrityViolationException.class)){
+                       error = new FieldError("tipoTransporte", "titr_nombre", "tipo de transporte duplicado para su agencia");
+                } else {
+                       error = new FieldError("tipoTransporte", "titr_nombre", "error no controlado: " + e.getMessage());
+                }
+                
+                result.addError(error);
+        
+                return "tipoTransporteForm";                
+         } 
 		
 	}
 	
-	@RequestMapping(value = "/tipoTransporteLista&idTipo={idTipo}/eliminar", method = RequestMethod.POST)
+	@RequestMapping(value = "/tipoTransporteLista&id={idTipo}/eliminar", method = RequestMethod.POST)
 	public String eliminarDeLista(@PathVariable("idTipo") Integer idTipo){
 		
 		TipoTransporte tipoTransporte = tipoTransporteService.buscarTipoTransporteId(idTipo);

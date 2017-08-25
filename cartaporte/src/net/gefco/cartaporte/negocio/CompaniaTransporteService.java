@@ -31,4 +31,8 @@ public class CompaniaTransporteService {
 		return companiaTransporteDao.listarCompaniasTransporte(agencia);
 	}
 	
+	public CompaniaTransporte buscarCompaniaTransporte(Integer id){
+		return companiaTransporteDao.buscarCompaniaTransporte(id);
+	}
+	
 }

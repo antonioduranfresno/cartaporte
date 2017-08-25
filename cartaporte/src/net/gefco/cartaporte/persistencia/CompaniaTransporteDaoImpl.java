@@ -5,9 +5,11 @@ import java.util.List;
 import net.gefco.cartaporte.modelo.Agencia;
 import net.gefco.cartaporte.modelo.CompaniaTransporte;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,5 +49,15 @@ public class CompaniaTransporteDaoImpl implements CompaniaTransporteDao{
 		query.setParameter("agencia", agencia);
 		
 		return query.list();
+	}
+	
+	@Override
+	public CompaniaTransporte buscarCompaniaTransporte(Integer id) {
+		
+		Criteria crit = getSession().createCriteria(CompaniaTransporte.class);
+		
+		crit.add(Restrictions.eq("id", id));
+		
+		return (CompaniaTransporte) crit.uniqueResult();
 	}
 }
