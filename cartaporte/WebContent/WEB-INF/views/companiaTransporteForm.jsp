@@ -32,29 +32,44 @@
         
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="page-header">Tipo Transporte</h2>
+                    <h2 class="page-header">Compañia Transporte</h2>
                 </div>                                
            </div> 
            
-           <sf:form method="post" modelAttribute="tipoTransporte" >
+           <sf:form method="post" modelAttribute="companiaTransporte" >
 					
-				<sf:input type="hidden" path="id" value="${tipoTransporte.id}" />
-				<sf:input type="hidden" path="agencia.id" value="${tipoTransporte.agencia.id}" />
+				<sf:input type="hidden" path="id" value="${companiaTransporte.id}" />
+				<sf:input type="hidden" path="agencia.id" value="${companiaTransporte.agencia.id}" />
 			
 			   	<div class="row">
-		        	<div class="col-lg-12">
-		        		<label>Nombre</label>
-		        		<sf:errors path="titr_nombre" class="label label-danger"></sf:errors>
-		        		<sf:input class="form-control" path="titr_nombre" value="${tipoTransporte.titr_nombre}" maxlength="45" />		        		
+		        	<div class="col-lg-4">
+		        		<label>Código</label>
+		        		<sf:errors path="cotr_codigo" class="label label-danger"></sf:errors>
+		        		<sf:input class="form-control" path="cotr_codigo" value="${companiaTransporte.cotr_codigo}" maxlength="6" />		        		
+		        	</div>			   	
+		        	<div class="col-lg-8">
+		        		<label>Razón social</label>
+		        		<sf:errors path="cotr_razon_social" class="label label-danger"></sf:errors>
+		        		<sf:input class="form-control" path="cotr_razon_social" value="${companiaTransporte.cotr_razon_social}" maxlength="255" />		        		
 		        	</div>
 				</div>
+				
+				<br>
+				
+			   	<div class="row">
+		        	<div class="col-lg-12">
+		        		<label>Domicilio</label>
+		        		<sf:errors path="cotr_domicilio" class="label label-danger"></sf:errors>
+		        		<sf:input class="form-control" path="cotr_domicilio" value="${companiaTransporte.cotr_domicilio}" maxlength="255" />		        		
+		        	</div>
+				</div>				
 				
 				<br>
 				
 				<div class="footer">      
 				
 					<div class="col-sm-10 derecha">			      		
-			    		<input type="button" class="btn btn-danger" value="Eliminar" onclick='eliminar($("#id").val(),"tipoTransporte");'>
+			    		<input type="button" class="btn btn-danger" value="Eliminar" onclick='eliminar($("#id").val(),"companiaTransporte");'>
 			      	</div>      	
 				 	<div class="col-sm-2 derecha">			      		
 			      		<input type="submit" class="btn btn-primary" name="action" value="Aceptar" >

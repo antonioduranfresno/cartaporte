@@ -15,5 +15,7 @@ public interface CompaniaTransporteDao {
 
 	public List<CompaniaTransporte> listarCompaniasTransporte(Agencia agencia);
 
+	public CompaniaTransporte buscarCompaniaTransporte(Integer id);
+
 
 }

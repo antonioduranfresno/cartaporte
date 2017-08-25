@@ -31,15 +31,17 @@
         
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="page-header">Tipos Transporte</h2>
+                    <h2 class="page-header">Camiones</h2>
                 </div>                                
            </div> 
            
-			<table id='tablaTiposTransporte' class='table table-hover table-striped table-condensed table-bordered'>
+			<table id='tablaCamiones' class='table table-hover table-striped table-condensed table-bordered'>
 			
 				<thead>
 					<tr class="info">
-						<th class="col-sm-10">Nombre</th>
+						<th class="col-sm-6">Compañía</th>
+						<th class="col-sm-2">Matrícula</th>
+						<th class="col-sm-2">Es tractora</th>
 						<th class="col-sm-1">Editar</th>
 						<th class="col-sm-1">Eliminar</th>
 					</tr>
@@ -51,12 +53,14 @@
 				    </c:when>
 				</c:choose>	
 							
-				<c:forEach items="${listaTiposTransporte}" var="t" varStatus="index">
+				<c:forEach items="${listaCamiones}" var="c" varStatus="index">
 			
 					<tr>
-						<td>${t.titr_nombre}</td>
-						<td style="text-align: center;"><a href="tipoTransporteForm?idTipo=${t.id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>
-						<td style="text-align: center;"><a href="#" onclick="eliminar(${t.id},'tipoTransporte');" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a></td>
+						<td>${c.companiaTransporte.toStringCodigoNombre()}</td>
+						<td>${c.cami_matricula}</td>
+						<td>${c.cami_tractora == true ? 'Sí' : 'No'}</td>
+						<td style="text-align: center;"><a href="camionForm?idCamion=${c.id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>
+						<td style="text-align: center;"><a href="#" onclick="eliminar(${c.id},'camion');" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a></td>
 					</tr>
 			
 				</c:forEach>
@@ -65,7 +69,7 @@
 			
 			<br>
 			
-			<a href="tipoTransporteForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
+			<a href="camionForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
 			            
         </div>
     </div>
@@ -91,7 +95,7 @@
 		
 		waitingDialog.show('Un momento, por favor...');
 		
-		$('#tablaTiposTransporte').DataTable({ 										
+		$('#tablaCamiones').DataTable({ 										
 	    	"language": {
 	    		"url": "res/json/es.json"
 	        },

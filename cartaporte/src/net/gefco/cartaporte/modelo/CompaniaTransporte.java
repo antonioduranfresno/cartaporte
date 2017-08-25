@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name="compania_transporte")
 public class CompaniaTransporte implements Serializable{
@@ -18,13 +20,16 @@ public class CompaniaTransporte implements Serializable{
 
 	@Id
 	@GeneratedValue
-	@Column(name="id")
+	@Column(name="id")	
 	private Integer id = null;
 	
+	@NotEmpty
 	private String cotr_codigo = null;
 	
+	@NotEmpty
 	private String cotr_razon_social = null;
 	
+	@NotEmpty
 	private String cotr_domicilio = null;
 	
 	@ManyToOne
@@ -89,7 +94,7 @@ public class CompaniaTransporte implements Serializable{
 	}
 	
 	public String toStringCodigoNombre() {
-		return cotr_codigo + " - " +  cotr_razon_social;
+		return cotr_codigo + " - " + cotr_razon_social;
 	}
 	
 }

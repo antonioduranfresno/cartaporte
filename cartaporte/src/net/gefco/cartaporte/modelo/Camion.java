@@ -3,11 +3,17 @@ package net.gefco.cartaporte.modelo;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+@Entity
+@Table(name="camion")
 public class Camion implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -21,6 +27,7 @@ public class Camion implements Serializable{
 	@JoinColumn(name="compania_transporte")
 	private CompaniaTransporte companiaTransporte 	= null;
 	
+	@NotEmpty
 	private String 	cami_matricula					= null;
 	
 	private Boolean cami_tractora					= null;

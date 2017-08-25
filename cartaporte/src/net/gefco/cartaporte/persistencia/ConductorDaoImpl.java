@@ -5,7 +5,6 @@ import java.util.List;
 import net.gefco.cartaporte.modelo.Agencia;
 import net.gefco.cartaporte.modelo.CompaniaTransporte;
 import net.gefco.cartaporte.modelo.Conductor;
-import net.gefco.cartaporte.modelo.TipoTransporte;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
