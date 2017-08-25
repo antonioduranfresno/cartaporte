@@ -15,5 +15,5 @@ public interface DestinoDao {
 
 	public List<Destino> listarDestinos(Agencia agencia);
 
-
+	public Destino buscarDestino(Integer id);
 }

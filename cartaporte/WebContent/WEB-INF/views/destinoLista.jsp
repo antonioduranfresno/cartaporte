@@ -31,15 +31,17 @@
         
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="page-header">Tipos Transporte</h2>
+                    <h2 class="page-header">Destinos</h2>
                 </div>                                
            </div> 
            
-			<table id='tablaTiposTransporte' class='table table-hover table-striped table-condensed table-bordered'>
+			<table id='tablaDestinos' class='table table-hover table-striped table-condensed table-bordered'>
 			
 				<thead>
 					<tr class="info">
-						<th class="col-sm-10">Nombre</th>
+						<th class="col-sm-3">Destinatario</th>
+						<th class="col-sm-3">Dirección</th>
+						<th class="col-sm-3">Provincia</th>
 						<th class="col-sm-1">Editar</th>
 						<th class="col-sm-1">Eliminar</th>
 					</tr>
@@ -51,12 +53,14 @@
 				    </c:when>
 				</c:choose>	
 							
-				<c:forEach items="${listaTiposTransporte}" var="t" varStatus="index">
+				<c:forEach items="${listaDestinos}" var="t" varStatus="index">
 			
 					<tr>
-						<td>${t.titr_nombre}</td>
-						<td style="text-align: center;"><a href="tipoTransporteForm?idTipo=${t.id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>
-						<td style="text-align: center;"><a href="#" onclick="eliminar(${t.id},'tipoTransporte');" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a></td>
+						<td>${t.dest_destinatario}</td>
+						<td>${t.dest_direccion}</td>
+						<td>${t.dest_provincia}</td>
+						<td style="text-align: center;"><a href="destinoForm?id=${t.id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>
+						<td style="text-align: center;"><a href="#" onclick="eliminar(${t.id},'destino');" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a></td>
 					</tr>
 			
 				</c:forEach>
@@ -65,7 +69,7 @@
 			
 			<br>
 			
-			<a href="tipoTransporteForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
+			<a href="destinoForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
 			            
         </div>
     </div>
@@ -91,7 +95,7 @@
 		
 		waitingDialog.show('Un momento, por favor...');
 		
-		$('#tablaTiposTransporte').DataTable({ 										
+		$('#tablaDestinos').DataTable({ 										
 	    	"language": {
 	    		"url": "res/json/es.json"
 	        },

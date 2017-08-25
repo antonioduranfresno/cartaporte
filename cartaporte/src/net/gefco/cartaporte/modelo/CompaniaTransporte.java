@@ -93,9 +93,7 @@ public class CompaniaTransporte implements Serializable{
 				+ "]";
 	}
 	
-	
 	public String toStringCodigoNombre() {
 		return cotr_codigo + " - " + cotr_razon_social;
 	}
-	
 }

@@ -30,5 +30,8 @@ public class DestinoService {
 	public List<Destino> listarDestinos(Agencia agencia){
 		return destinoDao.listarDestinos(agencia);
 	}
-	
+		
+	public Destino buscarDestino(Integer id){
+		return destinoDao.buscarDestino(id);
+	}
 }

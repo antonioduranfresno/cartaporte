@@ -8,8 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
-import net.gefco.cartaporte.modelo.CompaniaTransporte;
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
@@ -25,12 +26,16 @@ public class Conductor implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="compania_transporte")
+	@NotNull
 	private CompaniaTransporte companiaTransporte 	= null;
 	
+	@NotEmpty
 	private String cond_nombre 						= null;
 	
+	@NotEmpty
 	private String cond_dni							= null;
 	
+	@NotEmpty
 	private String cond_telefono					= null;
 
 	public Integer getId() {
