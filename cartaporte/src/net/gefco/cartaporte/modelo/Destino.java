@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 @Entity
 @Table(name="destino")
@@ -26,10 +28,13 @@ public class Destino implements Serializable{
 	@JoinColumn(name="agencia")	
 	private Agencia agencia 			= null;
 	
+	@NotEmpty
 	private String  dest_destinatario 	= null;
 	
+	@NotEmpty
 	private String  dest_direccion		= null;
 	
+	@NotEmpty
 	private String  dest_provincia		= null;
 
 	public Integer getId() {
