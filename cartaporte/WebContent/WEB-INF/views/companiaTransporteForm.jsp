@@ -8,8 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <meta name="facturas" content="">
-    <meta name="Antonio Durán" content="">
     <link rel="icon" href="res/img/ico/favicon.ico" type="image/x-icon" />
     
     <title>CARTAS DE PORTE - Gefco España S.A.</title>

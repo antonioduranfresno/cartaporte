@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import net.gefco.cartaporte.modelo.Agencia;
 import net.gefco.cartaporte.modelo.Usuario;
@@ -49,16 +48,7 @@ public class IndexController {
 	public String showMenu() throws ParseException{
 		return "indice";
 	}
-	
-	@RequestMapping(value="/salir")
-	public String logout(HttpServletRequest request) {
-		
-		HttpSession session = request.getSession();  
-	    session.invalidate();
-	    
-	    return "salir";
-	}
-	
+
 	@RequestMapping("login")  
 	public void login(Model model, HttpServletRequest request, HttpServletResponse response){
 
@@ -77,7 +67,7 @@ public class IndexController {
 				Usuario usuarioAspirante = usuarioService.buscarMatricula(login.toUpperCase());
 				
 				if(Encriptacion.encriptar(password).equalsIgnoreCase(usuarioAspirante.getUsua_password())){
-					
+				
 					model.addAttribute("usuarioSesion", usuarioAspirante);
 					//Poner el maxinactiveinterval en XML
 					

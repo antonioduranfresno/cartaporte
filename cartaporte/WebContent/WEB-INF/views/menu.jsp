@@ -8,11 +8,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href='${pageContext.request.contextPath}/indice'>CARTAS DE PORTE</a>
+                <a class="navbar-brand" href="indice">CARTAS DE PORTE</a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right" >            		
-				<li><a href='${pageContext.request.contextPath}/salir' ><i class="fa fa-sign-out fa-lg"></i> SALIR</a></li>				
+				<li><a href="salir" ><i class="fa fa-sign-out fa-lg"></i> SALIR</a></li>				
             </ul>
 
             <div class="navbar-default sidebar">

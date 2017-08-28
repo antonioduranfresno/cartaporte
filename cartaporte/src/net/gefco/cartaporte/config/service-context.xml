@@ -10,8 +10,10 @@
 		http://www.springframework.org/schema/jee 
 		http://www.springframework.org/schema/jee/spring-jee-4.0.xsd">
         
+        <!--  
         <jee:jndi-lookup jndi-name="jdbc/cartaporte" id="dataSource" expected-type="javax.sql.DataSource">        
         </jee:jndi-lookup>
+        -->
         
         <context:annotation-config></context:annotation-config>
         <context:component-scan base-package="net.gefco.cartaporte.negocio" />

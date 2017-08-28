@@ -11,21 +11,36 @@
 		http://www.springframework.org/schema/jee 
 		http://www.springframework.org/schema/jee/spring-jee-4.0.xsd">
 
-	<jee:jndi-lookup jndi-name="jdbc/cartaporte" id="dataSource"
-		expected-type="javax.sql.DataSource">
-	</jee:jndi-lookup>
-
 	<context:component-scan base-package="net.gefco.cartaporte.persistencia" />
 	
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"></property>
-		<property name="packagesToScan" value="net.gefco.cartaporte.modelo"></property>
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-				<prop key="hibernate.show_sql">false</prop>
+	
+		<property name="packagesToScan" value="net.gefco.cartaporte.modelo"/>
+		
+		<property name="hibernateProperties">	
+			<props>	
+				
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+			    <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
+			    <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/cartaporte</prop>
+			    <prop key="hibernate.connection.username">root</prop>
+			    <prop key="hibernate.connection.password">root</prop>
+			    <prop key="hibernate.show_sql">false</prop>
+			
+			    <prop key="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</prop>
+			
+			    <!-- configuration pool via c3p0-->
+			    <prop key="hibernate.c3p0.min_size">5</prop>
+			    <prop key="hibernate.c3p0.max_size">20</prop>
+			    <prop key="hibernate.c3p0.timeout">1800</prop>
+			    <prop key="hibernate.c3p0.max_statements">50</prop>
+				<prop key="hibernate.c3p0.preferredTestQuery">select true</prop>
+				
+			    <prop key="hibernate.c3p0.privilegeSpawnedThreads">true</prop> 
+			    <prop key="hibernate.c3p0.contextClassLoaderSource">library</prop> 
 			</props>
 		</property>
+					
 	</bean>
 
 	<bean id="exceptionTranslator"
