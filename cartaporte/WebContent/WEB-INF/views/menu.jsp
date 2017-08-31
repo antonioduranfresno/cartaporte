@@ -30,6 +30,10 @@
                         </li>                    
                         
 						<li>
+                            <a href="rutaLista" ><i class="fa fa-map-signs fa-fw"></i> RUTAS</a>
+                        </li>                          
+                        
+						<li>
                             <a href="#"><b>MAESTROS</b><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse in">
                                 <li>
@@ -48,7 +52,9 @@
                                     <a href="camionLista"><i class="fa fa-truck fa-fw"></i> Camiones</a>
                                 </li>                                                                
                             </ul>                          
-                        </li>                        
+                        </li>    
+                        
+						                                             
                                    	                        
                     </ul>
                 </div>

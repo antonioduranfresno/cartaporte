@@ -27,7 +27,7 @@ public class CompaniaTransporteService {
 		companiaTransporteDao.eliminar(companiaTransporte);
 	}
 	
-	public List<CompaniaTransporte> listarCompaniaTransporte(Agencia agencia){
+	public List<CompaniaTransporte> listarCompaniasTransporte(Agencia agencia){
 		return companiaTransporteDao.listarCompaniasTransporte(agencia);
 	}
 	

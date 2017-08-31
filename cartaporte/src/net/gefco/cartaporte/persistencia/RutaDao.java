@@ -15,5 +15,6 @@ public interface RutaDao {
 
 	public List<Ruta> listarRutas(Agencia agencia);
 
+	public Ruta buscarRuta(Integer id);
 
 }

@@ -42,7 +42,7 @@ public class EntregaDaoImpl implements EntregaDao{
 	@SuppressWarnings("unchecked")
 	public List<Entrega> listarEntregas(Ruta ruta) {		
 		
-		Query query = getSession().createQuery("from Entrega where ruta = :ruta");
+		Query query = getSession().createQuery("from Entrega where ruta = :ruta order by entr_horaLlegada");
 		
 		query.setParameter("ruta", ruta);
 		

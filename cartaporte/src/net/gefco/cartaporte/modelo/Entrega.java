@@ -10,7 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="entrega")
@@ -29,11 +31,13 @@ public class Entrega implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="destino")	
-	private Ruta destino				= null;
+	private Destino destino				= null;
 	
+	@NotNull
 	private Double entr_importe			= null;
 	
-	private Date entr_hora_llegada		= null;
+	@DateTimeFormat(pattern = "HH:mm")
+	private Date entr_horaLlegada		= null;
 
 	public Integer getId() {
 		return id;
@@ -49,10 +53,10 @@ public class Entrega implements Serializable{
 		this.ruta = ruta;
 	}
 
-	public Ruta getDestino() {
+	public Destino getDestino() {
 		return destino;
 	}
-	public void setDestino(Ruta destino) {
+	public void setDestino(Destino destino) {
 		this.destino = destino;
 	}
 
@@ -63,34 +67,37 @@ public class Entrega implements Serializable{
 		this.entr_importe = entr_importe;
 	}
 
-	public Date getEntr_hora_llegada() {
-		return entr_hora_llegada;
+	public Date getEntr_horaLlegada() {
+		return entr_horaLlegada;
 	}
-	public void setEntr_hora_llegada(Date entr_hora_llegada) {
-		this.entr_hora_llegada = entr_hora_llegada;
+	public void setEntr_horaLlegada(Date entr_horaLlegada) {
+		this.entr_horaLlegada = entr_horaLlegada;
 	}
 
+	//Formateo horas
+	public String getEntr_horaLlegadaFormateada() {
+		return entr_horaLlegada.toString().substring(11, 16);
+	}
+	
 	public Entrega() {
 		super();		
 	}
 
-	public Entrega(Integer id, Ruta ruta, Ruta destino, Double entr_importe,
-			Date entr_hora_llegada) {
+	public Entrega(Integer id, Ruta ruta, Destino destino, Double entr_importe,
+			Date entr_horaLlegada) {
 		super();
 		this.id = id;
 		this.ruta = ruta;
 		this.destino = destino;
 		this.entr_importe = entr_importe;
-		this.entr_hora_llegada = entr_hora_llegada;
+		this.entr_horaLlegada = entr_horaLlegada;
 	}
 
 	@Override
 	public String toString() {
 		return "Entrega [id=" + id + ", ruta=" + ruta + ", destino=" + destino
-				+ ", entr_importe=" + entr_importe + ", entr_hora_llegada="
-				+ entr_hora_llegada + "]";
+				+ ", entr_importe=" + entr_importe + ", entr_horaLlegada="
+				+ entr_horaLlegada + "]";
 	}
-	
-	
 	
 }

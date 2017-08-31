@@ -32,7 +32,7 @@ public class CompaniaTransporteController {
 		
 		Usuario usuarioSesion = (Usuario) model.asMap().get("usuarioSesion");
 		
-		model.addAttribute("listaCompaniasTransporte", companiaTransporteService.listarCompaniaTransporte(usuarioSesion.getAgencia()));
+		model.addAttribute("listaCompaniasTransporte", companiaTransporteService.listarCompaniasTransporte(usuarioSesion.getAgencia()));
 				
 		return "companiaTransporteLista";
 	}

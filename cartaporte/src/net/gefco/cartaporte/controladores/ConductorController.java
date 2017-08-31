@@ -47,7 +47,7 @@ public class ConductorController {
 		Conductor conductor = conductorService.buscarConductor(id);
 		
 		Usuario usuarioSesion = (Usuario) model.asMap().get("usuarioSesion");
-		model.addAttribute("listaCompaniasTransporte", companiaTransporteService.listarCompaniaTransporte(usuarioSesion.getAgencia()));
+		model.addAttribute("listaCompaniasTransporte", companiaTransporteService.listarCompaniasTransporte(usuarioSesion.getAgencia()));
 		
 		if(id!=null){
 			model.addAttribute("conductor", conductor);	
@@ -73,7 +73,7 @@ public class ConductorController {
         }
         
 		if(result.hasErrors()){
-			model.addAttribute("listaCompaniasTransporte", companiaTransporteService.listarCompaniaTransporte(usuarioSesion.getAgencia()));
+			model.addAttribute("listaCompaniasTransporte", companiaTransporteService.listarCompaniasTransporte(usuarioSesion.getAgencia()));
 			return "conductorForm";
 		} 
 		
@@ -105,7 +105,7 @@ public class ConductorController {
                 
                 result.addError(error);
                 
-    			model.addAttribute("listaCompaniasTransporte", companiaTransporteService.listarCompaniaTransporte(usuarioSesion.getAgencia()));
+    			model.addAttribute("listaCompaniasTransporte", companiaTransporteService.listarCompaniasTransporte(usuarioSesion.getAgencia()));
                 return "conductorForm";
          }       
 	         

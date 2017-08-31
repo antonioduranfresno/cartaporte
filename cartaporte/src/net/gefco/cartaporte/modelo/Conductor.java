@@ -25,7 +25,7 @@ public class Conductor implements Serializable{
 	private Integer id 								= null;
 	
 	@ManyToOne
-	@JoinColumn(name="compania_transporte")
+	@JoinColumn(name="companiaTransporte")
 	@NotNull
 	private CompaniaTransporte companiaTransporte 	= null;
 	
