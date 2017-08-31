@@ -54,7 +54,7 @@ public class CamionController {
 			model.addAttribute("camion", new Camion());
 		}
 		
-		model.addAttribute("listaCompaniasTransporte", companiaTransporteService.listarCompaniaTransporte(usuarioSesion.getAgencia()));
+		model.addAttribute("listaCompaniasTransporte", companiaTransporteService.listarCompaniasTransporte(usuarioSesion.getAgencia()));
 		
 		return "camionForm";
 	}
@@ -71,7 +71,7 @@ public class CamionController {
 		}
 		
 		if(result.hasErrors()){			
-			model.addAttribute("listaCompaniasTransporte", companiaTransporteService.listarCompaniaTransporte(usuarioSesion.getAgencia()));			
+			model.addAttribute("listaCompaniasTransporte", companiaTransporteService.listarCompaniasTransporte(usuarioSesion.getAgencia()));			
 			return "camionForm";			
 		}
 
@@ -102,7 +102,7 @@ public class CamionController {
                 }
                 
                 result.addError(error);                
-                model.addAttribute("listaCompaniasTransporte", companiaTransporteService.listarCompaniaTransporte(usuarioSesion.getAgencia()));        
+                model.addAttribute("listaCompaniasTransporte", companiaTransporteService.listarCompaniasTransporte(usuarioSesion.getAgencia()));        
                 return "camionForm";                
          } 
 			

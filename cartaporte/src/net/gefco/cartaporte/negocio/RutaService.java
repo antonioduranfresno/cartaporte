@@ -31,4 +31,8 @@ public class RutaService {
 		return rutaDao.listarRutas(agencia);
 	}
 	
+	public Ruta buscarRuta(Integer id){
+		return rutaDao.buscarRuta(id);
+	}
+	
 }

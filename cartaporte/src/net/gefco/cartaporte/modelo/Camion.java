@@ -24,7 +24,7 @@ public class Camion implements Serializable{
 	private Integer id 								= null;
 	
 	@ManyToOne
-	@JoinColumn(name="compania_transporte")
+	@JoinColumn(name="companiaTransporte")
 	private CompaniaTransporte companiaTransporte 	= null;
 	
 	@NotEmpty

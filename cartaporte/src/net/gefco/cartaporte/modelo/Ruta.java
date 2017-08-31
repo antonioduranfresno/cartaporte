@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="ruta")
 public class Ruta implements Serializable{
@@ -27,16 +29,18 @@ public class Ruta implements Serializable{
 	private Agencia agencia 							= null;
 	
 	@ManyToOne
-	@JoinColumn(name="compania_transporte")	
-	private CompaniaTransporte compania_transporte		= null;
+	@JoinColumn(name="companiaTransporte")	
+	private CompaniaTransporte companiaTransporte		= null;
 	
 	@ManyToOne
-	@JoinColumn(name="tipo_transporte")	
-	private TipoTransporte tipo_transporte				= null;
+	@JoinColumn(name="tipoTransporte")	
+	private TipoTransporte tipoTransporte				= null;
 	
-	private Date ruta_hora_documentacion				= null;
+	@DateTimeFormat(pattern = "HH:mm")	
+	private Date ruta_horaDocumentacion					= null;
 	
-	private Date ruta_hora_salida						= null;
+	@DateTimeFormat(pattern = "HH:mm")	
+	private Date ruta_horaSalida						= null;
 
 	public Integer getId() {
 		return id;
@@ -52,32 +56,40 @@ public class Ruta implements Serializable{
 		this.agencia = agencia;
 	}
 
-	public CompaniaTransporte getCompania_transporte() {
-		return compania_transporte;
+	public CompaniaTransporte getCompaniaTransporte() {
+		return companiaTransporte;
 	}
-	public void setCompania_transporte(CompaniaTransporte compania_transporte) {
-		this.compania_transporte = compania_transporte;
-	}
-
-	public TipoTransporte getTipo_transporte() {
-		return tipo_transporte;
-	}
-	public void setTipo_transporte(TipoTransporte tipo_transporte) {
-		this.tipo_transporte = tipo_transporte;
+	public void setCompaniaTransporte(CompaniaTransporte companiaTransporte) {
+		this.companiaTransporte = companiaTransporte;
 	}
 
-	public Date getRuta_hora_documentacion() {
-		return ruta_hora_documentacion;
+	public TipoTransporte getTipoTransporte() {
+		return tipoTransporte;
 	}
-	public void setRuta_hora_documentacion(Date ruta_hora_documentacion) {
-		this.ruta_hora_documentacion = ruta_hora_documentacion;
+	public void setTipoTransporte(TipoTransporte tipoTransporte) {
+		this.tipoTransporte = tipoTransporte;
 	}
 
-	public Date getRuta_hora_salida() {
-		return ruta_hora_salida;
+	public Date getRuta_horaDocumentacion() {
+		return ruta_horaDocumentacion;
 	}
-	public void setRuta_hora_salida(Date ruta_hora_salida) {
-		this.ruta_hora_salida = ruta_hora_salida;
+	public void setRuta_horaDocumentacion(Date ruta_horaDocumentacion) {
+		this.ruta_horaDocumentacion = ruta_horaDocumentacion;
+	}
+
+	public Date getRuta_horaSalida() {
+		return ruta_horaSalida;
+	}
+	public void setRuta_horaSalida(Date ruta_horaSalida) {
+		this.ruta_horaSalida = ruta_horaSalida;
+	}
+	
+	//Formateo horas
+	public String getRuta_horaDocumentacionFormateada() {
+		return ruta_horaDocumentacion.toString().substring(11, 16);
+	}
+	public String getRuta_horaSalidaFormateada() {
+		return ruta_horaSalida.toString().substring(11, 16);
 	}
 	
 	public Ruta() {
@@ -85,25 +97,25 @@ public class Ruta implements Serializable{
 	}
 	
 	public Ruta(Integer id, Agencia agencia,
-			CompaniaTransporte compania_transporte,
-			TipoTransporte tipo_transporte, Date ruta_hora_documentacion,
-			Date ruta_hora_salida) {
+			CompaniaTransporte companiaTransporte,
+			TipoTransporte tipoTransporte, Date ruta_horaDocumentacion,
+			Date ruta_horaSalida) {
 		super();
 		this.id = id;
 		this.agencia = agencia;
-		this.compania_transporte = compania_transporte;
-		this.tipo_transporte = tipo_transporte;
-		this.ruta_hora_documentacion = ruta_hora_documentacion;
-		this.ruta_hora_salida = ruta_hora_salida;
+		this.companiaTransporte = companiaTransporte;
+		this.tipoTransporte = tipoTransporte;
+		this.ruta_horaDocumentacion = ruta_horaDocumentacion;
+		this.ruta_horaSalida = ruta_horaSalida;
 	}
 	
 	@Override
 	public String toString() {
 		return "Ruta [id=" + id + ", agencia=" + agencia
-				+ ", compania_transporte=" + compania_transporte
-				+ ", tipo_transporte=" + tipo_transporte
-				+ ", ruta_hora_documentacion=" + ruta_hora_documentacion
-				+ ", ruta_hora_salida=" + ruta_hora_salida + "]";
+				+ ", companiaTransporte=" + companiaTransporte
+				+ ", tipoTransporte=" + tipoTransporte
+				+ ", ruta_horaDocumentacion=" + ruta_horaDocumentacion
+				+ ", ruta_horaSalida=" + ruta_horaSalida + "]";
 	}
 	
 }
