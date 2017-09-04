@@ -174,8 +174,8 @@
 						<tr>
 							<td>${c.getEntr_horaLlegadaFormateada()}</td>
 							<td>${c.destino.dest_destinatario}</td>
-							<td>${c.entr_importe}</td>						
-							<td style="text-align: center;"><a href="#" onclick="eliminar(${c.id},'entrega');" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a></td>
+							<td class="text-right">${c.entr_importe}</td>						
+							<td class="text-center"><a href="#" onclick="eliminarEntrega(${c.id});" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a></td>
 						</tr>
 				
 					</c:forEach>
@@ -196,54 +196,8 @@
     <script type="text/javascript" src='<c:url value="/res/js/locales/bootstrap-datetimepicker.es.js" />'></script>    
     <script type="text/javascript" src='<c:url value="/res/js/loading.js" />'></script>
     <script type="text/javascript" src='<c:url value="/res/js/maestro.js" />'></script>
+    <script type="text/javascript" src='<c:url value="/res/js/ruta.js" />'></script>
      
 </body>
-
-<script type="text/javascript">
-
-$(document).ready(function() {
-	
-	$("#ruta_horaDocumentacion").val($("#ruta_horaDocumentacion").val().substring(11,16));
-	$("#ruta_horaSalida").val($("#ruta_horaSalida").val().substring(11,16));	
-	$("#entr_horaLlegada").val($("#entr_horaLlegada").val().substring(11,16));
-	
-	if($("#id").val()!=""){
-		$("#btnAceptar").attr("disabled", true);
-		$("#formEntrega").show();
-		
-		$('#divHoraLlegada').datetimepicker({
-			language: 'ES',
-			format: "hh:ii",
-	        autoclose: true,
-	        maxView: 2,
-	        startView: 1
-		});	
-		
-	}else{
-
-		$("#btnAceptar").attr("disabled", false);
-		$("#formEntrega").css("display","none");
-		
-		$('#divHoraDocumentacion').datetimepicker({
-			language: 'ES',
-			format: "hh:ii",
-	        autoclose: true,
-	        maxView: 2,
-	        startView: 1
-		});	
-
-		$('#divHoraSalida').datetimepicker({
-			language: 'ES',
-			format: "hh:ii",
-	        autoclose: true,
-	        maxView: 2,
-	        startView: 1
-		});	
-		
-	}
-
-});
-
-</script>
 
 </html>

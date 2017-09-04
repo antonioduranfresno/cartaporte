@@ -57,7 +57,7 @@
 				<c:forEach items="${listaConductoresAgencia}" var="t" varStatus="index">
 			
 					<tr>
-						<td>${t.companiaTransporte.cotr_razon_social}</td>
+						<td>${t.companiaTransporte.cotr_razonSocial}</td>
 						<td>${t.cond_dni}</td>
 						<td>${t.cond_nombre}</td>
 						<td>${t.cond_telefono}</td>

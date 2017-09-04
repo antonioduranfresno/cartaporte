@@ -2,6 +2,7 @@ package net.gefco.cartaporte.negocio;
 
 import java.util.List;
 
+import net.gefco.cartaporte.modelo.Agencia;
 import net.gefco.cartaporte.modelo.Entrega;
 import net.gefco.cartaporte.modelo.Ruta;
 import net.gefco.cartaporte.persistencia.EntregaDao;
@@ -29,6 +30,14 @@ public class EntregaService {
 	
 	public List<Entrega> listarEntregas(Ruta ruta){
 		return entregaDao.listarEntregas(ruta);
+	}
+	
+	public Entrega buscarEntrega(Integer idEntrega){
+		return entregaDao.buscarEntrega(idEntrega);
+	}
+	
+	public List<Entrega> listarEntregasAgencia(Agencia agencia){
+		return entregaDao.listarEntregasAgencia(agencia);
 	}
 	
 }

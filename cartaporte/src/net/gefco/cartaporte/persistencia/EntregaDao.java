@@ -2,6 +2,7 @@ package net.gefco.cartaporte.persistencia;
 
 import java.util.List;
 
+import net.gefco.cartaporte.modelo.Agencia;
 import net.gefco.cartaporte.modelo.Entrega;
 import net.gefco.cartaporte.modelo.Ruta;
 
@@ -15,5 +16,7 @@ public interface EntregaDao {
 
 	public List<Entrega> listarEntregas(Ruta ruta);
 
+	public Entrega buscarEntrega(Integer idEntrega);
 
+	public List<Entrega> listarEntregasAgencia(Agencia agencia);
 }

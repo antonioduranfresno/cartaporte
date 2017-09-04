@@ -2,7 +2,10 @@ package net.gefco.cartaporte.controladores;
 
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Map.Entry;
 
 import javax.validation.Valid;
 
@@ -14,6 +17,7 @@ import net.gefco.cartaporte.negocio.DestinoService;
 import net.gefco.cartaporte.negocio.EntregaService;
 import net.gefco.cartaporte.negocio.RutaService;
 import net.gefco.cartaporte.negocio.TipoTransporteService;
+import net.gefco.cartaporte.util.Form;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -28,6 +32,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
@@ -60,8 +65,19 @@ public class RutaController {
 	public String lista(Model model, @ModelAttribute("ruta") Ruta ruta){		
 		
 		Usuario usuarioSesion = (Usuario) model.asMap().get("usuarioSesion");
-		
-		model.addAttribute("listaRutas", rutaService.listarRutas(usuarioSesion.getAgencia()));
+
+		List<Ruta> listaRutas = new ArrayList<Ruta>();
+        listaRutas = rutaService.listarRutas(usuarioSesion.getAgencia());
+
+        Form f = new Form();
+        
+        for (Ruta r :  listaRutas) {
+               f.getMapa().put(r.getId(), false);
+        }
+        
+        model.addAttribute("form", f);
+        model.addAttribute("listaRutas", listaRutas);		
+		model.addAttribute("listaEntregas", entregaService.listarEntregasAgencia(usuarioSesion.getAgencia()));
 				
 		return "rutaLista";
 	}
@@ -167,6 +183,26 @@ public class RutaController {
 		return "rutaLista";
 	}
 	
+	@RequestMapping(value = "/rutaLista", method = RequestMethod.POST, params="GenerarCartasPortePendientes")
+	public String generarCartasPortePendientes(Model model, @ModelAttribute("form") Form form){
+	
+		Usuario usuarioSesion = (Usuario) model.asMap().get("usuarioSesion");
+		
+		//Sustituir los valores nulos por falses
+		for (Entry<Integer, Boolean> e: form.getMapa().entrySet()) {
+			if (e.getValue() == null) {
+				e.setValue(false);
+			}
+		}
+		
+		model.addAttribute("form", form);		
+		model.addAttribute("listaRutas", rutaService.listarRutas(usuarioSesion.getAgencia()));
+		model.addAttribute("listaEntregas", entregaService.listarEntregasAgencia(usuarioSesion.getAgencia()));
+		
+		return "rutaLista";
+	}
+
+	
 	//Parte entrega
 	@RequestMapping(value = "/rutaForm", method = RequestMethod.POST, params="entrega=Aceptar")
 	public String aceptarEntrega(Model model, @ModelAttribute("entrega") @Valid Entrega entrega, BindingResult result){
@@ -187,25 +223,31 @@ public class RutaController {
 		
 		if(!result.hasErrors()){
 
-			//Creación
-			if(entrega.getId()==null || entrega.getId()==0){
-			
-				entrega.setId(0);							
-				entregaService.guardar(entrega);				
-				
-			}
-			
+			entrega.setId(0);							
+			entregaService.guardar(entrega);				
+			entrega = new Entrega(); //Para que se vacíen los valores de formulario Entrega
 		}
 		
-		model.addAttribute("entrega", entrega);		
+		model.addAttribute("entrega", entrega);
 		model.addAttribute("ruta", ruta);	
-		model.addAttribute("listaEntregas", entregaService.listarEntregas(entrega.getRuta()));
+		model.addAttribute("listaEntregas", entregaService.listarEntregas(ruta));
 		model.addAttribute("listaDestinos", destinoService.listarDestinos(usuarioSesion.getAgencia()));
 		model.addAttribute("listaTiposTransporte", tipoTransporteService.listarTiposTransporte(usuarioSesion.getAgencia()));
         model.addAttribute("listaCompaniasTransporte", companiaTransporteService.listarCompaniasTransporte(usuarioSesion.getAgencia()));
-        
-		return "rutaForm";		
-				
+
+        return "rutaForm";				
+	}
+	
+	@RequestMapping(value = "/rutaForm&id={idEntrega}/eliminar", method = RequestMethod.POST)
+	@ResponseBody //Devuelve el string literal (que usamos en JS), no redirige a la página
+	public String eliminarEntrega(@PathVariable("idEntrega") Integer idEntrega){
+		
+		Entrega entrega = entregaService.buscarEntrega(idEntrega);
+		
+		entregaService.eliminar(entrega);
+		
+		return "rutaForm?idRuta="+entrega.getRuta().getId();
+		
 	}
 	
 }
