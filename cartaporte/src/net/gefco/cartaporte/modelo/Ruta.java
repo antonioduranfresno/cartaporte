@@ -41,7 +41,7 @@ public class Ruta implements Serializable{
 	
 	@DateTimeFormat(pattern = "HH:mm")	
 	private Date ruta_horaSalida						= null;
-
+	
 	public Integer getId() {
 		return id;
 	}

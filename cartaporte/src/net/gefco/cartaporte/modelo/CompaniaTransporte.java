@@ -27,7 +27,7 @@ public class CompaniaTransporte implements Serializable{
 	private String cotr_codigo = null;
 	
 	@NotEmpty
-	private String cotr_razon_social = null;
+	private String cotr_razonSocial = null;
 	
 	@NotEmpty
 	private String cotr_domicilio = null;
@@ -50,11 +50,11 @@ public class CompaniaTransporte implements Serializable{
 		this.cotr_codigo = cotr_codigo;
 	}
 
-	public String getCotr_razon_social() {
-		return cotr_razon_social;
+	public String getCotr_razonSocial() {
+		return cotr_razonSocial;
 	}
-	public void setCotr_razon_social(String cotr_razon_social) {
-		this.cotr_razon_social = cotr_razon_social;
+	public void setCotr_razonSocial(String cotr_razonSocial) {
+		this.cotr_razonSocial = cotr_razonSocial;
 	}
 
 	public String getCotr_domicilio() {
@@ -76,11 +76,11 @@ public class CompaniaTransporte implements Serializable{
 	}
 	
 	public CompaniaTransporte(Integer id, String cotr_codigo,
-			String cotr_razon_social, String cotr_domicilio, Agencia agencia) {
+			String cotr_razonSocial, String cotr_domicilio, Agencia agencia) {
 		super();
 		this.id = id;
 		this.cotr_codigo = cotr_codigo;
-		this.cotr_razon_social = cotr_razon_social;
+		this.cotr_razonSocial = cotr_razonSocial;
 		this.cotr_domicilio = cotr_domicilio;
 		this.agencia = agencia;
 	}
@@ -88,14 +88,14 @@ public class CompaniaTransporte implements Serializable{
 	@Override
 	public String toString() {
 		return "CompaniaTransporte [id=" + id + ", cotr_codigo=" + cotr_codigo
-				+ ", cotr_razon_social=" + cotr_razon_social
+				+ ", cotr_razonSocial=" + cotr_razonSocial
 				+ ", cotr_domicilio=" + cotr_domicilio + ", agencia=" + agencia
 				+ "]";
 	}
 	
 	public String toStringCodigoNombre() {
 
-		return cotr_codigo + " - " +  cotr_razon_social;
+		return cotr_codigo + " - " +  cotr_razonSocial;
 	}
 
 }

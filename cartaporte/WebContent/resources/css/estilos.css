@@ -245,3 +245,10 @@ input[readonly] {
    cursor: default;
 }
 
+#tablaRutas a{
+	cursor: pointer;
+}
+
+#tablaRutas td{
+	vertical-align: top;
+}

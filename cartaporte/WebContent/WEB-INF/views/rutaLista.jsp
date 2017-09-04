@@ -35,18 +35,9 @@
                 </div>                                
            </div> 
            
+           <sf:form method="post" modelAttribute="form">
+           
 			<table id='tablaRutas' class='table table-hover table-striped table-condensed table-bordered'>
-			
-				<thead>
-					<tr class="info">
-						<th class="col-sm-4">Compañía</th>
-						<th class="col-sm-2">Tipo transporte</th>
-						<th class="col-sm-2">Hora Doc.</th>
-						<th class="col-sm-2">Hora Salida</th>
-						<th class="col-sm-1">Editar</th>
-						<th class="col-sm-1">Eliminar</th>
-					</tr>
-				</thead>
 
 				<c:choose>
 				    <c:when test="${param.success eq true}">
@@ -54,25 +45,78 @@
 				    </c:when>
 				</c:choose>	
 							
+				<thead>
+					<tr class="info">	
+						<th class="col-sm-1">Check</th>					
+						<th class="col-sm-4">Compañía / Entregas</th>
+						<th class="col-sm-1">Tipo transporte</th>
+						<th class="col-sm-1">Docum.</th>
+						<th class="col-sm-1">Salida</th>
+						<th class="col-sm-1">Editar</th>
+						<th class="col-sm-1">Eliminar</th>
+					</tr>
+				</thead>
+
 				<c:forEach items="${listaRutas}" var="c" varStatus="index">
 			
 					<tr>
-						<td>${c.companiaTransporte.toStringCodigoNombre()}</td>
+						
+						<td><sf:checkbox path="mapa[${c.id}]"  value="mapa[${c.id}]"/></td>
+						<td><a class="accordion-toggle" data-toggle="collapse" data-target='#${c.id}'>${c.companiaTransporte.toStringCodigoNombre()}</a>
+						
+							<div class="accordion-body collapse" id="${c.id}">
+							
+								<br>
+								
+								<table class='table table-striped table-condensed table-bordered' style="width: 98%; margin: 1%; ">
+						
+									<tr>
+										<th class="col-sm-3 success">Llegada</th>
+										<th class="col-sm-6 success">Destino</th>
+										<th class="col-sm-3 success">Importe</th>													
+									</tr>
+									
+									<c:forEach items="${listaEntregas}" var="e" varStatus="index">
+										
+										<c:if test="${e.ruta.id eq c.id}">
+											
+											<tr>
+												<td>${e.getEntr_horaLlegadaFormateada()}</td>
+												<td>${e.destino.dest_destinatario}</td>
+												<td class="text-right">${e.entr_importe}</td>							
+											</tr>
+											
+										</c:if>
+									
+									</c:forEach>
+								
+								</table>
+		
+							</div>						
+						
+						</td>	
+						
 						<td>${c.tipoTransporte.titr_nombre}</td>
 						<td>${c.getRuta_horaDocumentacionFormateada()}</td>
 						<td>${c.getRuta_horaSalidaFormateada()}</td>
-						<td style="text-align: center;"><a href="rutaForm?idRuta=${c.id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>
-						<td style="text-align: center;"><a href="#" onclick="eliminar(${c.id},'ruta');" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a></td>
+						<td class="text-center"><a href="rutaForm?idRuta=${c.id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>
+						<td class="text-center"><a href="#" onclick="eliminar(${c.id},'ruta');" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a></td>
+								
 					</tr>
-			
+							
 				</c:forEach>
 			
 			</table>
 			
+			
 			<br>
 			
 			<a href="rutaForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
+			
+			<input type="submit" class="btn btn-primary" id="btnGenerarCartasPortePendientes" name="GenerarCartasPortePendientes" value="Generar cartas porte pendientes">
 			            
+			</sf:form>
+			
         </div>
     </div>
 
@@ -97,12 +141,12 @@
 		
 		waitingDialog.show('Un momento, por favor...');
 		
-		$('#tablaRutas').DataTable({ 										
+		$('#tablaRutas').DataTable({
 	    	"language": {
 	    		"url": "res/json/es.json"
 	        },
 	    	"pageLength": 20,
-	    	"initComplete": waitingDialog.hide()			 		    	
+	    	"initComplete": waitingDialog.hide()
 	    });		
 			
 	}

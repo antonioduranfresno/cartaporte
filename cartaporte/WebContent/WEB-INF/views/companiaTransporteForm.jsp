@@ -47,8 +47,8 @@
 		        	</div>			   	
 		        	<div class="col-lg-8">
 		        		<label>Razón social</label>
-		        		<sf:errors path="cotr_razon_social" class="label label-danger"></sf:errors>
-		        		<sf:input class="form-control" path="cotr_razon_social" value="${companiaTransporte.cotr_razon_social}" maxlength="255" />		        		
+		        		<sf:errors path="cotr_razonSocial" class="label label-danger"></sf:errors>
+		        		<sf:input class="form-control" path="cotr_razonSocial" value="${companiaTransporte.cotr_razonSocial}" maxlength="255" />		        		
 		        	</div>
 				</div>
 				

@@ -59,7 +59,7 @@
 			
 					<tr>
 						<td>${c.cotr_codigo}</td>
-						<td>${c.cotr_razon_social}</td>
+						<td>${c.cotr_razonSocial}</td>
 						<td>${c.cotr_domicilio}</td>
 						<td style="text-align: center;"><a href="companiaTransporteForm?idCompania=${c.id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>
 						<td style="text-align: center;"><a href="#" onclick="eliminar(${c.id},'companiaTransporte');" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a></td>
