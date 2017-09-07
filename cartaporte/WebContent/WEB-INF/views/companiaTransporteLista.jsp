@@ -42,8 +42,9 @@
 				<thead>
 					<tr class="info">
 						<th class="col-sm-1">Código</th>
+						<th class="col-sm-1">CIF</th>
 						<th class="col-sm-3">Razón Social</th>
-						<th class="col-sm-6">Domicilio</th>
+						<th class="col-sm-5">Domicilio</th>
 						<th class="col-sm-1">Editar</th>
 						<th class="col-sm-1">Eliminar</th>
 					</tr>
@@ -59,6 +60,7 @@
 			
 					<tr>
 						<td>${c.cotr_codigo}</td>
+						<td>${c.cotr_cif}</td>
 						<td>${c.cotr_razonSocial}</td>
 						<td>${c.cotr_domicilio}</td>
 						<td style="text-align: center;"><a href="companiaTransporteForm?idCompania=${c.id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>

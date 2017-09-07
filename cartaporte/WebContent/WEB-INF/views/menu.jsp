@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="indice">CARTAS DE PORTE</a>
+                <a class="navbar-brand" href="cartaPortePendienteLista">CARTAS DE PORTE</a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right" >            		
@@ -31,11 +31,26 @@
                         
 						<li>
                             <a href="rutaLista" ><i class="fa fa-map-signs fa-fw"></i> RUTAS</a>
-                        </li>                          
+                        </li>   
+                        
+						<li>
+                            <a href="#"><b>CARTAS DE PORTE</b><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse in">
+                                <li>
+                                    <a href="cartaPortePendienteLista"><i class="fa fa-square-o fa-fw"></i> Pendientes</a>
+                                </li>
+                                <li>
+                                    <a href="cartaPorteEmitidaLista"><i class="fa fa-check-square-o fa-fw"></i> Emitidas</a>
+                                </li>                                                                
+                            </ul>                          
+                        </li>                                                   
                         
 						<li>
                             <a href="#"><b>MAESTROS</b><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse in">
+                                <li>
+                                    <a href="agenciaLista"><i class="fa fa-truck fa-fw"></i> Agencias</a>
+                                </li>                                                                                                
                                 <li>
                                     <a href="tipoTransporteLista"><i class="fa fa-gear fa-fw"></i> Tipos Transporte</a>
                                 </li>
@@ -50,7 +65,7 @@
                                 </li>
                                 <li>
                                     <a href="camionLista"><i class="fa fa-truck fa-fw"></i> Camiones</a>
-                                </li>                                                                
+                                </li>
                             </ul>                          
                         </li>    
                         

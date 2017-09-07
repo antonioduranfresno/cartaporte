@@ -40,4 +40,12 @@ public class CamionService {
 		return camionDao.buscarCamion(id);
 	}
 	
+	public List<Camion> listarCamionesTractores(CompaniaTransporte companiaTransporte){
+		return camionDao.listarCamionesTractores(companiaTransporte);
+	}
+	
+	public List<Camion> listarCamionesNoTractores(CompaniaTransporte companiaTransporte){
+		return camionDao.listarCamionesNoTractores(companiaTransporte);
+	}
+	
 }

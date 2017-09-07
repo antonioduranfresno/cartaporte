@@ -4,9 +4,11 @@ import java.util.List;
 
 import net.gefco.cartaporte.modelo.Agencia;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,6 +46,16 @@ public class AgenciaDaoImpl implements AgenciaDao{
 		Query query = getSession().createQuery("from Agencia");
 		
 		return query.list();
+	}
+	
+	@Override
+	public Agencia buscarAgencia(Integer id) {
+		
+		Criteria crit = getSession().createCriteria(Agencia.class);
+		
+		crit.add(Restrictions.eq("id", id));
+		
+		return (Agencia) crit.uniqueResult();
 	}
 
 }

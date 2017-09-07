@@ -40,9 +40,10 @@
 				<thead>
 					<tr class="info">
 						<th class="col-sm-3">Compañía Transporte</th>
-						<th class="col-sm-2">Dni</th>
-						<th class="col-sm-3">Nombre</th>
-						<th class="col-sm-2">Teléfono</th>
+						<th class="col-sm-2">Carné</th>
+						<th class="col-sm-2">F. Exp.</th>
+						<th class="col-sm-2">Nombre</th>
+						<th class="col-sm-1">Teléfono</th>
 						<th class="col-sm-1">Editar</th>
 						<th class="col-sm-1">Eliminar</th>
 					</tr>
@@ -58,7 +59,8 @@
 			
 					<tr>
 						<td>${t.companiaTransporte.cotr_razonSocial}</td>
-						<td>${t.cond_dni}</td>
+						<td>${t.cond_carne}</td>
+						<td>${t.getCond_fechaExpedicionFormateada()}</td>
 						<td>${t.cond_nombre}</td>
 						<td>${t.cond_telefono}</td>
 						<td style="text-align: center;"><a href="conductorForm?id=${t.id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>
