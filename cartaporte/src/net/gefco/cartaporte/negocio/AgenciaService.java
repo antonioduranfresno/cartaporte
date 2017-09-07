@@ -18,12 +18,20 @@ public class AgenciaService {
 		agenciaDao.guardar(agencia);
 	}
 
+	public void actualizar(Agencia agencia) {		
+		agenciaDao.actualizar(agencia);
+	}	
+	
 	public void eliminar(Agencia agencia) {		
 		agenciaDao.eliminar(agencia);
 	}
 	
 	public List<Agencia> listarAgencias(){
 		return agenciaDao.listarAgencias();
+	}
+	
+	public Agencia buscarAgencia(Integer id){
+		return agenciaDao.buscarAgencia(id);
 	}
 	
 }

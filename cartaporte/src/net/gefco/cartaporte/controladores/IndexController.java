@@ -4,15 +4,19 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.gefco.cartaporte.modelo.Agencia;
+import net.gefco.cartaporte.modelo.CartaPorte;
 import net.gefco.cartaporte.modelo.Usuario;
 import net.gefco.cartaporte.negocio.AgenciaService;
+import net.gefco.cartaporte.negocio.CartaPorteService;
 import net.gefco.cartaporte.negocio.UsuarioService;
 import net.gefco.cartaporte.util.Encriptacion;
+import net.gefco.cartaporte.util.Form;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,6 +38,9 @@ public class IndexController {
 	@Autowired
 	private AgenciaService agenciaService;
 	
+	@Autowired
+	private CartaPorteService 			cartaPorteService;
+	
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
 	@RequestMapping("/")
@@ -44,9 +51,23 @@ public class IndexController {
 		return "index";
 	}
 
-	@RequestMapping("/indice")
-	public String showMenu() throws ParseException{
-		return "indice";
+	@RequestMapping("/cartaPortePendienteLista")
+	public String showMenu(Model model) throws ParseException{
+		
+		Usuario usuarioSesion = (Usuario) model.asMap().get("usuarioSesion");
+		
+        Form f = new Form();
+        
+        List<CartaPorte> listaCartasPendientes = cartaPorteService.listarCartasPendientes(usuarioSesion.getAgencia());
+        
+        for (CartaPorte carta : listaCartasPendientes) {
+               f.getMapa().put(carta.getId(), false);
+        }
+        
+        model.addAttribute("form", f);		
+		model.addAttribute("listaCartasPendientes", listaCartasPendientes);
+		
+		return "cartaPortePendienteLista";
 	}
 
 	@RequestMapping("login")  

@@ -40,12 +40,17 @@
 				<sf:input type="hidden" path="agencia.id" value="${companiaTransporte.agencia.id}" />
 			
 			   	<div class="row">
-		        	<div class="col-lg-4">
+		        	<div class="col-lg-2">
 		        		<label>Código</label>
 		        		<sf:errors path="cotr_codigo" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" path="cotr_codigo" value="${companiaTransporte.cotr_codigo}" maxlength="6" />		        		
-		        	</div>			   	
-		        	<div class="col-lg-8">
+		        	</div>
+		        	<div class="col-lg-3">
+		        		<label>CIF</label>
+		        		<sf:errors path="cotr_cif" class="label label-danger"></sf:errors>
+		        		<sf:input class="form-control" path="cotr_cif" value="${companiaTransporte.cotr_cif}" maxlength="15" />		        		
+		        	</div>			        				   	
+		        	<div class="col-lg-7">
 		        		<label>Razón social</label>
 		        		<sf:errors path="cotr_razonSocial" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" path="cotr_razonSocial" value="${companiaTransporte.cotr_razonSocial}" maxlength="255" />		        		

@@ -39,7 +39,7 @@
 				<sf:input type="hidden" path="id" value="${camion.id}" />
 							
 				<div class="row">
-					<div class="col-lg-12">
+					<div class="col-lg-8">
 						<label>Compañía Transporte</label>
 						<sf:errors path="companiaTransporte.id" class="label label-danger"></sf:errors>
 						<sf:select class="form-control" id="selCompania" path="companiaTransporte.id" value="${camion.companiaTransporte.id}">
@@ -54,12 +54,12 @@
 				<br>
 			
 			   	<div class="row">
-		        	<div class="col-lg-8">
+		        	<div class="col-lg-6">
 		        		<label>Matrícula</label>
 		        		<sf:errors path="cami_matricula" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" path="cami_matricula" value="${camion.cami_matricula}" maxlength="45" />		        		
 		        	</div>
-					<div class="col-lg-4">
+					<div class="col-lg-2">
 		        		<label>Es tractora</label>		        		
 		        		<sf:select class="form-control" path="cami_tractora" value="${camion.cami_tractora}">
 		        			<sf:option value="false">No</sf:option>		        		

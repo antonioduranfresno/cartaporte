@@ -54,6 +54,28 @@ public class CamionDaoImpl implements CamionDao{
 	
 	@Override
 	@SuppressWarnings("unchecked")
+	public List<Camion> listarCamionesTractores(CompaniaTransporte companiaTransporte) {		
+		
+		Query query = getSession().createQuery("from Camion where companiaTransporte = :companiaTransporte and cami_tractora = true");
+		
+		query.setParameter("companiaTransporte", companiaTransporte);
+		
+		return query.list();
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Camion> listarCamionesNoTractores(CompaniaTransporte companiaTransporte) {		
+		
+		Query query = getSession().createQuery("from Camion where companiaTransporte = :companiaTransporte and cami_tractora = false");
+		
+		query.setParameter("companiaTransporte", companiaTransporte);
+		
+		return query.list();
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
 	public List<Camion> listarCamionesAgencia(Agencia agencia) {		
 		
 		Query query = getSession().createQuery("from Camion where companiaTransporte.agencia = :agencia");

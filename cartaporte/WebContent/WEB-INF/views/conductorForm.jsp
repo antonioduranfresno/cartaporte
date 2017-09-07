@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="res/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="res/css/sb-admin-2.min.css"/>      
     <link rel="stylesheet" href="res/css/metisMenu.min.css"/>
+    <link rel="stylesheet" href="res/css/bootstrap-datetimepicker.min.css"/>
     <link rel="stylesheet" href="res/css/estilos.css"/>
 
   </head>
@@ -37,7 +38,6 @@
            <sf:form method="post" modelAttribute="conductor" >
 					
 				<sf:input type="hidden" path="id" value="${conductor.id}" />
-<%-- 				<sf:input type="hidden" path="agencia.id" value="${conductor.agencia.id}" /> --%>
 			
 				<div class="row">
 		      		<div class="col-lg-8">
@@ -51,30 +51,43 @@
                    		</sf:select>
 		        	</div>                     
 		      	</div>
+		      	
+		      	<br>
 
 				<div class="row">
-		        	<div class="col-lg-12">
-		        		<label>Dni</label>
-		        		<sf:errors path="cond_dni" class="label label-danger"></sf:errors>
-		        		<sf:input  path="cond_dni" class="form-control" value="${conductor.cond_dni}" maxlength="45" />		        		
+		        	<div class="col-lg-5">
+		        		<label>Carnet de conducir</label>
+		        		<sf:errors path="cond_carne" class="label label-danger"></sf:errors>
+		        		<sf:input  path="cond_carne" class="form-control" value="${conductor.cond_carne}" maxlength="15" />		        		
 		        	</div>
+		        	<div class="col-lg-3 date">
+			        	<label>Fecha Expedición</label>
+						<sf:errors path="cond_fechaExpedicion" class="label label-danger"></sf:errors>
+						<div class='input-group date' id='divFechaExpedicion'>							
+		                    <sf:input class="form-control" id="cond_fechaExpedicion" path="cond_fechaExpedicion" value="${conductor.getCond_fechaExpedicionFormateada()}" />
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-calendar"></span>									      
+							</span>									
+	            		</div>	            		
+			    	</div>
 				</div>
 				
+				<br>
+				
 				<div class="row">
-		        	<div class="col-lg-12">
+		        	<div class="col-lg-5">
 		        		<label>Nombre</label>
 		        		<sf:errors path="cond_nombre" class="label label-danger"></sf:errors>
 		        		<sf:input  path="cond_nombre" class="form-control" value="${conductor.cond_nombre}" maxlength="45" />		        		
-		        	</div>
-				</div>
-			
-				<div class="row">
-		        	<div class="col-lg-12">
+		        	</div>			
+		        	<div class="col-lg-3">
 		        		<label>Teléfono</label>
 		        		<sf:errors path="cond_telefono" class="label label-danger"></sf:errors>
 		        		<sf:input  path="cond_telefono" class="form-control" value="${conductor.cond_telefono}" maxlength="45" />		        		
 		        	</div>
 				</div>
+				
+				<br>
 				
 				<div class="footer">      
 				
@@ -96,8 +109,30 @@
 	<script type="text/javascript" src='<c:url value="/res/js/bootstrap.min.js" />' ></script>    
 	<script type="text/javascript" src='<c:url value="/res/js/sb-admin-2.js" />'></script>
     <script type="text/javascript" src='<c:url value="/res/js/metisMenu.min.js" />'></script>    
+    <script type="text/javascript" src='<c:url value="/res/js/bootstrap-datetimepicker.min.js" />'></script>
+    <script type="text/javascript" src='<c:url value="/res/js/locales/bootstrap-datetimepicker.es.js" />'></script>
     <script type="text/javascript" src='<c:url value="/res/js/loading.js" />'></script>
     <script type="text/javascript" src='<c:url value="/res/js/maestro.js" />'></script>
+    
+    <script type="text/javascript">
+    
+    $(document).ready(function() {
+    	
+		$('#divFechaExpedicion').datetimepicker({
+		 	language: 'es',
+		 	format: "dd/mm/yyyy",
+	        weekStart: 1,
+	        todayBtn:  1,
+			autoclose: 1,
+			todayHighlight: 1,
+			startView: 2,
+			minView: 2,
+			forceParse: 0	
+		});	
+
+    });
+    
+    </script>
      
 </body>
 

@@ -72,6 +72,11 @@ public class ConductorController {
                result.addError(error);
         }
         
+		if(conductor.getCond_fechaExpedicion()==null){
+				error = new FieldError("conductor", "cond_fechaExpedicion", "!");			
+				result.addError(error);			
+		}
+        
 		if(result.hasErrors()){
 			model.addAttribute("listaCompaniasTransporte", companiaTransporteService.listarCompaniasTransporte(usuarioSesion.getAgencia()));
 			return "conductorForm";

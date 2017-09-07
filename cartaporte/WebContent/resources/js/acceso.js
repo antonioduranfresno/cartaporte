@@ -113,7 +113,7 @@
     						$this.button('reset');
     						$("#login").focus();
     					}else{        						
-    						$(location).attr('href','indice');    						
+    						$(location).attr('href','cartaPortePendienteLista');    						
     					}
     					
     		}

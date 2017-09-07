@@ -79,6 +79,14 @@ public class Entrega implements Serializable{
 		return entr_horaLlegada.toString().substring(11, 16);
 	}
 	
+	public Integer getEntr_soloHoraLlegadaFormateada() {
+		return new Integer(entr_horaLlegada.toString().substring(11, 13));
+	}
+	
+	public Integer getEntr_soloMinutosLlegadaFormateada() {
+		return new Integer(entr_horaLlegada.toString().substring(14, 16));
+	}
+	
 	public Entrega() {
 		super();		
 	}

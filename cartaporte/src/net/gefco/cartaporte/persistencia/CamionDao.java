@@ -19,4 +19,8 @@ public interface CamionDao {
 	public List<Camion> listarCamionesAgencia(Agencia agencia);
 
 	public Camion buscarCamion(Integer id);
+
+	public List<Camion> listarCamionesTractores(CompaniaTransporte companiaTransporte);
+	
+	public List<Camion> listarCamionesNoTractores(CompaniaTransporte companiaTransporte);
 }

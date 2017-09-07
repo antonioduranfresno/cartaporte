@@ -91,6 +91,22 @@ public class Ruta implements Serializable{
 	public String getRuta_horaSalidaFormateada() {
 		return ruta_horaSalida.toString().substring(11, 16);
 	}
+
+	public Integer getRuta_soloHoraDocumentacionFormateada() {
+		return new Integer(ruta_horaDocumentacion.toString().substring(11, 13));
+	}
+	
+	public Integer getRuta_soloMinutosDocumentacionFormateada() {
+		return new Integer(ruta_horaDocumentacion.toString().substring(14, 16));
+	}
+	
+	public Integer getRuta_soloHoraSalidaFormateada() {
+		return new Integer(ruta_horaSalida.toString().substring(11, 13));
+	}
+	
+	public Integer getRuta_soloMinutosSalidaFormateada() {
+		return new Integer(ruta_horaSalida.toString().substring(14, 16));
+	}
 	
 	public Ruta() {
 		super();	

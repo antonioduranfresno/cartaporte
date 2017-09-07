@@ -41,7 +41,7 @@ public class UODaoImpl implements UODao{
 	@SuppressWarnings("unchecked")
 	public List<UO> listarUnidadesOperacionales() {		
 		
-		Query query = getSession().createQuery("from uo");
+		Query query = getSession().createQuery("from UO");
 		
 		return query.list();
 	}

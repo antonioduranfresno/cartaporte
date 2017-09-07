@@ -13,5 +13,7 @@ public interface AgenciaDao {
 	public void eliminar(Agencia agencia);
 
 	public List<Agencia> listarAgencias();
+	
+	public Agencia buscarAgencia(Integer idAgencia);
 
 }

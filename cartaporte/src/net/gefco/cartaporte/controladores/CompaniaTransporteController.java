@@ -107,17 +107,4 @@ public class CompaniaTransporteController {
 		return "companiaTransporteLista";
 	}
 	
-	
-	/*Ya no se usa
-	@RequestMapping(value = "/tipoTransporte", method = RequestMethod.POST, params="action=Eliminar")
-	public String eliminar(Model model, @ModelAttribute("tipoTransporte") TipoTransporte tipoTransporte ){
-		
-		//Faltaría ver en qué casos no se podría eliminar (relaciones)
-		tipoTransporteService.eliminar(tipoTransporte);
-		
-		return "redirect:/tiposTransporte?success=true";
-		
-	}
-	*/	
-	
 }

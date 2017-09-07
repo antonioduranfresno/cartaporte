@@ -60,5 +60,9 @@ public class UO implements Serializable{
 		return "UO [id=" + id + ", uo_codigo=" + uo_codigo + ", uo_nombre=" + uo_nombre
 				+ "]";
 	}
+	
+	public String toStringCodigoNombre(){		
+		return uo_codigo+" - "+uo_nombre;
+	}
 
 }

@@ -2,16 +2,18 @@ package net.gefco.cartaporte.controladores;
 
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map.Entry;
 
 import javax.validation.Valid;
 
+import net.gefco.cartaporte.modelo.CartaPorte;
 import net.gefco.cartaporte.modelo.Entrega;
 import net.gefco.cartaporte.modelo.Ruta;
 import net.gefco.cartaporte.modelo.Usuario;
+import net.gefco.cartaporte.negocio.CartaPorteService;
 import net.gefco.cartaporte.negocio.CompaniaTransporteService;
 import net.gefco.cartaporte.negocio.DestinoService;
 import net.gefco.cartaporte.negocio.EntregaService;
@@ -54,6 +56,9 @@ public class RutaController {
 	@Autowired
 	private EntregaService 				entregaService;
 	
+	@Autowired
+	private CartaPorteService 			cartaPorteService;
+	
 	@InitBinder
     public void initBinder(WebDataBinder binder) {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
@@ -66,8 +71,7 @@ public class RutaController {
 		
 		Usuario usuarioSesion = (Usuario) model.asMap().get("usuarioSesion");
 
-		List<Ruta> listaRutas = new ArrayList<Ruta>();
-        listaRutas = rutaService.listarRutas(usuarioSesion.getAgencia());
+		List<Ruta> listaRutas = rutaService.listarRutas(usuarioSesion.getAgencia());
 
         Form f = new Form();
         
@@ -192,14 +196,55 @@ public class RutaController {
 		for (Entry<Integer, Boolean> e: form.getMapa().entrySet()) {
 			if (e.getValue() == null) {
 				e.setValue(false);
+			}else{
+			
+				//Inserción de valores en tabla Cartas de Porte
+				Ruta ruta = rutaService.buscarRuta(e.getKey());
+				
+				Calendar calendarioFechaDocumentacion 	= Calendar.getInstance();
+				Calendar calendarioFechaSalida 			= Calendar.getInstance();
+				Calendar calendarioFechaLlegada 		= Calendar.getInstance();
+		        
+				String   secuenciaRuta					= calculaSecuenciaRuta(ruta.getId());
+				
+				for(Entrega entrega : entregaService.listarEntregas(ruta)){
+
+					calendarioFechaDocumentacion.set(Calendar.HOUR_OF_DAY, entrega.getRuta().getRuta_soloHoraDocumentacionFormateada());
+					calendarioFechaDocumentacion.set(Calendar.MINUTE, entrega.getRuta().getRuta_soloMinutosDocumentacionFormateada());
+					
+					Date fechaDocumentacion =  calendarioFechaDocumentacion.getTime();
+					
+					calendarioFechaSalida.set(Calendar.HOUR_OF_DAY, entrega.getRuta().getRuta_soloHoraSalidaFormateada());
+					calendarioFechaSalida.set(Calendar.MINUTE, entrega.getRuta().getRuta_soloMinutosSalidaFormateada());
+					
+					Date fechaSalida 	=  calendarioFechaSalida.getTime();
+					
+					calendarioFechaLlegada.set(Calendar.HOUR_OF_DAY, entrega.getEntr_soloHoraLlegadaFormateada());
+					calendarioFechaLlegada.set(Calendar.MINUTE, entrega.getEntr_soloMinutosLlegadaFormateada());
+					
+					Date fechaLlegada 	=  calendarioFechaLlegada.getTime();
+					
+					//Generamos una carta de porte por cada entrega de cada ruta
+					CartaPorte cartaPorte = new CartaPorte(0, usuarioSesion.getAgencia(), null, null, fechaDocumentacion,
+							entrega.getRuta().getCompaniaTransporte(), null, 
+							entrega.getRuta().getCompaniaTransporte().getCotr_razonSocial(), entrega.getRuta().getCompaniaTransporte().getCotr_domicilio(),
+							entrega.getRuta().getCompaniaTransporte().getCotr_cif(), null, 
+							entrega.getRuta().getCompaniaTransporte().getCotr_razonSocial(), entrega.getRuta().getCompaniaTransporte().getCotr_domicilio(),
+							entrega.getRuta().getCompaniaTransporte().getCotr_cif(), fechaSalida, 
+							entrega.getDestino().getDest_destinatario(), entrega.getDestino().getDest_direccion(), 
+							entrega.getDestino().getDest_provincia(), entrega.getRuta().getTipoTransporte(),
+							entrega.getEntr_importe(), fechaLlegada, usuarioSesion.getAgencia().getAgen_contacto(), 
+							usuarioSesion.getAgencia().getAgen_telefonoContacto(), null, null, null, null, null, null, false, secuenciaRuta);
+					
+					cartaPorteService.guardar(cartaPorte);
+					
+				}
+				
 			}
+						
 		}
 		
-		model.addAttribute("form", form);		
-		model.addAttribute("listaRutas", rutaService.listarRutas(usuarioSesion.getAgencia()));
-		model.addAttribute("listaEntregas", entregaService.listarEntregasAgencia(usuarioSesion.getAgencia()));
-		
-		return "rutaLista";
+		return "redirect:/cartaPortePendienteLista";
 	}
 
 	
@@ -248,6 +293,16 @@ public class RutaController {
 		
 		return "rutaForm?idRuta="+entrega.getRuta().getId();
 		
+	}
+	
+	private String calculaSecuenciaRuta(Integer idRuta){
+		
+		String secuencia = "";
+		
+		Date fechaActual = new Date();
+		secuencia = fechaActual.getTime() + "_" + idRuta; 
+		
+		return secuencia;
 	}
 	
 }
