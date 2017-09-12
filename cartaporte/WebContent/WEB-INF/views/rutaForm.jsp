@@ -38,7 +38,7 @@
         <div id="page-wrapper">
         
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-sm-12">
                     <h2 class="page-header">Ruta</h2>
                 </div>                                
            </div> 
@@ -49,7 +49,7 @@
 				<sf:input type="hidden" path="agencia.id" value="${ruta.agencia.id}" />
 							
 				<div class="row">
-					<div class="col-lg-12">
+					<div class="col-sm-12">
 						<label>Compañía Transporte</label>
 						<sf:errors path="companiaTransporte.id" class="label label-danger"></sf:errors>
 						<sf:select class="form-control" id="selCompania" path="companiaTransporte.id" value="${ruta.companiaTransporte.id}">
@@ -64,7 +64,7 @@
 				<br>
 			
 				<div class="row">
-					<div class="col-lg-6">
+					<div class="col-sm-6">
 						<label>Tipo Transporte</label>
 						<sf:errors path="tipoTransporte.id" class="label label-danger"></sf:errors>
 						<sf:select class="form-control" id="selTipoTransporte" path="tipoTransporte.id" value="${ruta.tipoTransporte.id}">
@@ -74,7 +74,7 @@
 			        		</c:forEach>
 						</sf:select>
 					</div>
-					<div class="col-lg-3 date">
+					<div class="col-sm-3 date">
 			        	<label>Hora Documentación</label>
 						<sf:errors path="ruta_horaDocumentacion" class="label label-danger"></sf:errors>
 						<div class='input-group date' id='divHoraDocumentacion'>
@@ -84,7 +84,7 @@
 							</span>									
 	            		</div>	            		
 			    	</div>	        	
-					<div class="col-lg-3 date">
+					<div class="col-sm-3 date">
 			        	<label>Hora Salida</label>
 						<sf:errors path="ruta_horaSalida" class="label label-danger"></sf:errors>
 						<div class='input-group date' id='divHoraSalida'>							
@@ -114,7 +114,7 @@
 		   <sf:form id="formEntrega" method="post" modelAttribute="entrega" >
 		   
 			   <div class="row">
-	                <div class="col-lg-12">
+	                <div class="col-sm-12">
 	                    <h2 class="page-header">Entregas</h2>
 	                </div>                                
 	           </div>
@@ -123,7 +123,7 @@
 				<sf:input type="hidden" path="ruta.id" value="${ruta.id}" />
 		   
 				<div class="row">
-					<div class="col-lg-6">
+					<div class="col-sm-6">
 						<label>Destino</label>
 						<sf:errors path="destino.id" class="label label-danger"></sf:errors>
 						<sf:select class="form-control" id="selDestino" path="destino.id" value="${entrega.destino.id}">
@@ -133,7 +133,7 @@
 			        		</c:forEach>
 						</sf:select>
 					</div>
-					<div class="col-lg-3 date">
+					<div class="col-sm-3 date">
 			        	<label>Hora Llegada</label>
 						<sf:errors path="entr_horaLlegada" class="label label-danger"></sf:errors>
 						<div class='input-group date' id='divHoraLlegada'>							
@@ -143,7 +143,7 @@
 							</span>									
 	            		</div>	            		
 			    	</div>
-		        	<div class="col-lg-3">
+		        	<div class="col-sm-3">
 		        		<label>Importe</label>
 		        		<sf:errors path="entr_importe" class="label label-danger"></sf:errors>
 		        		<sf:input  path="entr_importe" class="form-control text-right" value="${entrega.entr_importe}" />		        		

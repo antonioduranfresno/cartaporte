@@ -29,7 +29,7 @@
         <div id="page-wrapper">
         
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-sm-12">
                     <h2 class="page-header">Agencia</h2>
                 </div>                                
            </div> 
@@ -39,17 +39,17 @@
 				<sf:input type="hidden" path="id" value="${agencia.id}" />
 				
 			   	<div class="row">
-		        	<div class="col-lg-3">
+		        	<div class="col-sm-3">
 		        		<label>Código</label>
 		        		<sf:errors path="agen_codigo" class="label label-danger"></sf:errors>
 		        		<sf:input  path="agen_codigo" class="form-control" value="${agencia.agen_codigo}" maxlength="3" />		        		
 		        	</div>
-		        	<div class="col-lg-5">
+		        	<div class="col-sm-6">
 		        		<label>Nombre</label>
 		        		<sf:errors path="agen_nombre" class="label label-danger"></sf:errors>
 		        		<sf:input  path="agen_nombre" class="form-control" value="${agencia.agen_nombre}" maxlength="255" />		        		
 		        	</div>
-		        	<div class="col-lg-4">
+		        	<div class="col-sm-3">
                   		<label>UO</label>
                   		<sf:errors path="uo.id" class="label label-danger"></sf:errors>
                   		<sf:select class="form-control" id="selUo" path="uo.id" value="${agencia.uo.id}">
@@ -61,42 +61,46 @@
 		        	</div>
 				</div>
 				
+				<br>
+				
 				<div class="row">
-		        	<div class="col-lg-4">
+		        	<div class="col-sm-9">
 		        		<label>Contacto</label>
 		        		<sf:errors path="agen_contacto" class="label label-danger"></sf:errors>
 		        		<sf:input  path="agen_contacto" class="form-control" value="${agencia.agen_contacto}" maxlength="255" />		        		
 		        	</div>
-		        	<div class="col-lg-4">
+		        	<div class="col-sm-3">
 		        		<label>Teléfono</label>
 		        		<sf:errors path="agen_telefonoContacto" class="label label-danger"></sf:errors>
 		        		<sf:input  path="agen_telefonoContacto" class="form-control" value="${agencia.agen_telefonoContacto}" maxlength="15" />		        		
 		        	</div>
 				</div>
 				
+				<br>
+				
 				<div class="row">
-		        	<div class="col-lg-3">
+		        	<div class="col-sm-3">
 		        		<label>Copia Origen</label>		        		
 		        		<sf:select class="form-control" path="agen_copiaOrigen" value="${agencia.agen_copiaOrigen}">
 		        			<sf:option value="false">No</sf:option>		        		
 		        			<sf:option value="true">Sí</sf:option>
 		        		</sf:select>
 		        	</div>	
-		        	<div class="col-lg-3">
+		        	<div class="col-sm-3">
 		        		<label>Copia Destino</label>		        		
 		        		<sf:select class="form-control" path="agen_copiaDestino" value="${agencia.agen_copiaDestino}">
 		        			<sf:option value="false">No</sf:option>		        		
 		        			<sf:option value="true">Sí</sf:option>
 		        		</sf:select>
 		        	</div>
-		        	<div class="col-lg-3">
+		        	<div class="col-sm-3">
 		        		<label>Copia Transportista</label>		        		
 		        		<sf:select class="form-control" path="agen_copiaTransportista" value="${agencia.agen_copiaTransportista}">
 		        			<sf:option value="false">No</sf:option>		        		
 		        			<sf:option value="true">Sí</sf:option>
 		        		</sf:select>
 		        	</div>	
-		        	<div class="col-lg-3">
+		        	<div class="col-sm-3">
 		        		<label>Copia Factura</label>		        		
 		        		<sf:select class="form-control" path="agen_copiaFactura" value="${agencia.agen_copiaFactura}">
 		        			<sf:option value="false">No</sf:option>		        		
@@ -104,6 +108,8 @@
 		        		</sf:select>
 		        	</div>
 				</div>
+				
+				<br>
 				
 				<div class="footer">      
 				

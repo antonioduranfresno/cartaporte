@@ -2,7 +2,6 @@ package net.gefco.cartaporte.controladores;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -22,6 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.google.gson.Gson;
@@ -50,21 +51,42 @@ public class IndexController {
 		
 		return "index";
 	}
+	
+	@RequestMapping(value = "/cartaPortePendienteLista", method = RequestMethod.GET)
+	public String mostrarSeleccionCartasPendientes(Model model, @RequestParam(value="secRuta",required=false) String secuenciaRuta){
 
-	@RequestMapping("/cartaPortePendienteLista")
-	public String showMenu(Model model) throws ParseException{
-		
 		Usuario usuarioSesion = (Usuario) model.asMap().get("usuarioSesion");
 		
-        Form f = new Form();
+        List<CartaPorte> listaCartasPendientes = null;
         
-        List<CartaPorte> listaCartasPendientes = cartaPorteService.listarCartasPendientes(usuarioSesion.getAgencia());
+        String secuencia = "";
         
+        //Seleccionada del desplegable
+		if(secuenciaRuta!=null){
+			
+			secuencia = secuenciaRuta;
+			
+		//Inicial	
+		}else{
+			
+	        if(cartaPorteService.listarRutasPendientes(usuarioSesion.getAgencia()).size()>0){
+	        	secuencia = cartaPorteService.listarRutasPendientes(usuarioSesion.getAgencia()).get(0).getSecuenciaRuta();
+	        }
+	        
+		}
+		
+        model.addAttribute("secuenciaRuta", secuencia);	        
+        listaCartasPendientes = cartaPorteService.listarCartasPendientesRuta(secuencia);
+		
+		Form f = new Form();
+    	
+        model.addAttribute("listaRutasPendientes", cartaPorteService.listarRutasPendientes(usuarioSesion.getAgencia()));
+		
         for (CartaPorte carta : listaCartasPendientes) {
                f.getMapa().put(carta.getId(), false);
         }
         
-        model.addAttribute("form", f);		
+        model.addAttribute("form", f);        
 		model.addAttribute("listaCartasPendientes", listaCartasPendientes);
 		
 		return "cartaPortePendienteLista";

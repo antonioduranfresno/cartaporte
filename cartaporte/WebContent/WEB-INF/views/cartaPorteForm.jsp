@@ -30,7 +30,7 @@
         <div id="page-wrapper">
         
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-sm-12">
                     <h2 class="page-header">Carta de Porte</h2>
                 </div>                                
            </div> 
@@ -42,16 +42,16 @@
 				<sf:input type="hidden" path="tipoTransporte.id" value="${cartaPorte.tipoTransporte.id}" />
 
 			   	<div class="row">
-		        	<div class="col-lg-4">
+		        	<div class="col-sm-4">
 		        		<label>Precinto</label>
 		        		<sf:errors path="capo_precinto" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" path="capo_precinto" value="${cartaPorte.capo_precinto}" maxlength="45" />		        		
 		        	</div>
-					<div class="col-lg-4">
+					<div class="col-sm-4">
 		        		<label>Nº Carta</label>		        		
 		        		<sf:input class="form-control" id="capo_numeroCarta" path="capo_numeroCarta" value="${cartaPorte.capo_numeroCarta}" />
 		        	</div>	
-		        	<div class="col-lg-4 date">
+		        	<div class="col-sm-4 date">
 			        	<label>Fecha Documentación</label>
 						<sf:errors path="capo_fechaDocumentacion" class="label label-danger"></sf:errors>
 						<div class='input-group date' id='divFechaDocumentacion'>							
@@ -66,12 +66,12 @@
 				<br>
 				
 				<div class="row">
-		        	<div class="col-lg-4">
+		        	<div class="col-sm-4">
 		        		<label>Companía de transportes</label>
 		        		<sf:errors path="capo_razonSocialCompania" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" id="capo_razonSocialCompania" path="capo_razonSocialCompania" value="${cartaPorte.capo_razonSocialCompania}" />		        		
 		        	</div>
-					<div class="col-lg-8">
+					<div class="col-sm-8">
 		        		<label>Domicilio social</label>		        		
 		        		<sf:errors path="capo_domicilioCompania" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" id="capo_domicilioCompania" path="capo_domicilioCompania" value="${cartaPorte.capo_domicilioCompania}" />
@@ -81,7 +81,7 @@
 				</div>
 				
 				<div class="row">
-		        	<div class="col-lg-4">
+		        	<div class="col-sm-4">
 		        		<label>Transportista efectivo</label>
 		        		<sf:errors path="companiaTransporte.id" class="label label-danger"></sf:errors>
 						<sf:select class="form-control" id="selCompaniaTransporte" path="companiaTransporte.id" value="${cartaPorte.companiaTransporte.id}">
@@ -91,7 +91,7 @@
 			        		</c:forEach>
 						</sf:select>		        		
 		        	</div>
-					<div class="col-lg-8">
+					<div class="col-sm-8">
 		        		<label>Domicilio social</label>		        		
 		        		<sf:errors path="capo_domicilioCompaniaEfectiva" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" path="capo_domicilioCompaniaEfectiva" value="${cartaPorte.capo_domicilioCompaniaEfectiva}" maxlength="255" />
@@ -103,7 +103,7 @@
 				<br>	
 				
 				<div class="row">
-					<div class="col-lg-3">
+					<div class="col-sm-3">
 						<label>Conductor</label>
 						<sf:errors path="conductor.id" class="label label-danger"></sf:errors>
 						<sf:select class="form-control" id="selConductor" path="conductor.id" value="${cartaPorte.conductor.id}">
@@ -113,15 +113,15 @@
 			        		</c:forEach>
 						</sf:select>
 					</div>
-					<div class="col-lg-3">
+					<div class="col-sm-3">
 		        		<label>Carnet de conducir</label>
 		        		<sf:input class="form-control" id="carneConducir" path="conductor.cond_carne" value="${cartaPorte.conductor.cond_carne}" />		        		
 		        	</div>
-		        	<div class="col-lg-3">
+		        	<div class="col-sm-3">
 		        		<label>Expedido</label>		        		
 		        		<sf:input class="form-control" id="fechaExpedicion" path="conductor.cond_fechaExpedicion" value="${cartaPorte.conductor.getCond_fechaExpedicionFormateada()}" />
 		        	</div>
-		          	<div class="col-lg-3">
+		          	<div class="col-sm-3">
 		        		<label>Teléfono vehículo</label>
 		        		<sf:errors path="capo_telefonoConductor" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" id="telefonoConductor" path="capo_telefonoConductor" value="${cartaPorte.capo_telefonoConductor}" maxlength="15" />
@@ -131,7 +131,7 @@
 				<br>
 								
 				<div class="row">
-					<div class="col-lg-3">
+					<div class="col-sm-3">
 						<label>Matrícula tractora</label>
 						<sf:errors path="capo_matriculaTractora" class="label label-danger"></sf:errors>
 						<sf:select class="form-control" id="selCamionTractor" path="capo_matriculaTractora" value="${cartaPorte.capo_matriculaTractora}">
@@ -141,7 +141,7 @@
 			        		</c:forEach>
 						</sf:select>
 					</div>
-					<div class="col-lg-3">
+					<div class="col-sm-3">
 						<label>Remolque/Semiremolque</label>
 						<sf:errors path="capo_matriculaRemolque" class="label label-danger"></sf:errors>
 						<sf:select class="form-control" id="selCamionNoTractor" path="capo_matriculaRemolque" value="${cartaPorte.capo_matriculaRemolque}">
@@ -151,11 +151,11 @@
 			        		</c:forEach>
 						</sf:select>
 					</div>				
-					<div class="col-lg-3">
+					<div class="col-sm-3">
 		        		<label>Origen</label>
 		        		<sf:input class="form-control" id="origen" path="agencia.agen_nombre" value="${cartaPorte.agencia.agen_nombre}" />
 		        	</div>
-		      		<div class="col-lg-3">
+		      		<div class="col-sm-3">
 		        		<label>Destino</label>
 		        		<sf:errors path="capo_provincia" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" path="capo_provincia" value="${cartaPorte.capo_provincia}" maxlength="255" />
@@ -165,12 +165,12 @@
 				<br>
 				
 				<div class="row">
-					<div class="col-lg-4">
+					<div class="col-sm-4">
 		        		<label>Destinatario</label>
 		        		<sf:errors path="capo_destinatario" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" path="capo_destinatario" value="${cartaPorte.capo_destinatario}" maxlength="255" />		        		
 		        	</div>
-		      		<div class="col-lg-8">
+		      		<div class="col-sm-8">
 		        		<label>Domicilio social</label>
 		        		<sf:errors path="capo_direccion" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" path="capo_direccion" value="${cartaPorte.capo_direccion}" maxlength="255" />
@@ -180,17 +180,17 @@
 				<br>	
 				
 				<div class="row">
-					<div class="col-lg-2">
+					<div class="col-sm-2">
 		        		<label>Peso mercancía</label>
 						<sf:errors path="capo_pesoMercancia" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control text-right" path="capo_pesoMercancia" value="${cartaPorte.capo_pesoMercancia}" />
 		        	</div>
-		      		<div class="col-lg-2">
+		      		<div class="col-sm-2">
 		        		<label>Nº albarán</label>
 		        		<sf:errors path="capo_numeroAlbaran" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" path="capo_numeroAlbaran" value="${cartaPorte.capo_numeroAlbaran}" />
 		        	</div>
-		        	<div class="col-lg-3 date">
+		        	<div class="col-sm-3 date">
 			        	<label>Fecha Salida</label>
 						<sf:errors path="capo_fechaSalida" class="label label-danger"></sf:errors>
 						<div class='input-group date' id='divFechaSalida'>							
@@ -200,7 +200,7 @@
 							</span>									
 	            		</div>	            		
 			    	</div>
-			    	<div class="col-lg-3 date">
+			    	<div class="col-sm-3 date">
 			        	<label>Fecha Llegada</label>
 						<sf:errors path="capo_fechaLlegada" class="label label-danger"></sf:errors>
 						<div class='input-group date' id='divFechaLlegada'>							
@@ -210,7 +210,7 @@
 							</span>									
 	            		</div>	            		
 			    	</div>
-			    	<div class="col-lg-2">
+			    	<div class="col-sm-2">
 		        		<label>Arrastre</label>
 						<sf:errors path="capo_importe" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control text-right" path="capo_importe" value="${cartaPorte.capo_importe}" />
@@ -220,29 +220,27 @@
 				<br>
 				
 				<div class="row">
-					<div class="col-lg-8">
+					<div class="col-sm-8">
 		        		<label>Contacto</label>
 		        		<sf:errors path="capo_contactoAgencia" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" path="capo_contactoAgencia" value="${cartaPorte.capo_contactoAgencia}" maxlength="255" />		        		
 		        	</div>
-		      		<div class="col-lg-4">
+		      		<div class="col-sm-4">
 		        		<label>Teléfono</label>
 		        		<sf:errors path="capo_telefonoContacto" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" path="capo_telefonoContacto" value="${cartaPorte.capo_telefonoContacto}" maxlength="15" />
 		        	</div>
 				</div>
 				
+				<br>
+				
 				<sf:input type="hidden" path="capo_secuenciaRuta" value="${cartaPorte.capo_secuenciaRuta}" />
 				
 				<br>	
 				
 				<div class="footer">      
-				  	      		
-					<div class="col-sm-8 derecha">		
-			    		<input type="submit" class="btn btn-primary" name="informe" value="Informe" >
-			      	</div>
-			    
-					<div class="col-sm-2 derecha">			      		
+				
+					<div class="col-sm-10 derecha">			      		
 			    		<input type="button" class="btn btn-danger" value="Eliminar" onclick='eliminar($("#id").val(),"cartaPortePendiente");'>
 			      	</div>      	
 				 	<div class="col-sm-2 derecha">			      		
@@ -251,8 +249,15 @@
 			      	
 			    </div>				
 					
+				<div class="row">
+					<div class="col-sm-12">							
+						<input type="checkbox" name="reutilizar" />		
+						Utilizar mismo conductor y matrículas para el resto de entregas					
+					</div>
+				</div>
+				
 			</sf:form>
-			            
+
         </div>
     </div>
 

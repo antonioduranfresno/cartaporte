@@ -49,7 +49,7 @@
                             <a href="#"><b>MAESTROS</b><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse in">
                                 <li>
-                                    <a href="agenciaLista"><i class="fa fa-truck fa-fw"></i> Agencias</a>
+                                    <a href="agenciaLista"><i class="fa fa-building-o fa-fw"></i> Agencias</a>
                                 </li>                                                                                                
                                 <li>
                                     <a href="tipoTransporteLista"><i class="fa fa-gear fa-fw"></i> Tipos Transporte</a>

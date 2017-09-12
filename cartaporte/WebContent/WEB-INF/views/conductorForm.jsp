@@ -30,7 +30,7 @@
         <div id="page-wrapper">
         
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-sm-12">
                     <h2 class="page-header">Conductor</h2>
                 </div>                                
            </div> 
@@ -40,7 +40,7 @@
 				<sf:input type="hidden" path="id" value="${conductor.id}" />
 			
 				<div class="row">
-		      		<div class="col-lg-8">
+		      		<div class="col-sm-8">
                   		<label>Compañía Transporte</label>
                   		<sf:errors path="companiaTransporte.id" class="label label-danger"></sf:errors>
                   		<sf:select class="form-control" id="selCompania" path="companiaTransporte.id" value="${conductor.companiaTransporte.id}">
@@ -55,12 +55,12 @@
 		      	<br>
 
 				<div class="row">
-		        	<div class="col-lg-5">
+		        	<div class="col-sm-5">
 		        		<label>Carnet de conducir</label>
 		        		<sf:errors path="cond_carne" class="label label-danger"></sf:errors>
 		        		<sf:input  path="cond_carne" class="form-control" value="${conductor.cond_carne}" maxlength="15" />		        		
 		        	</div>
-		        	<div class="col-lg-3 date">
+		        	<div class="col-sm-3 date">
 			        	<label>Fecha Expedición</label>
 						<sf:errors path="cond_fechaExpedicion" class="label label-danger"></sf:errors>
 						<div class='input-group date' id='divFechaExpedicion'>							
@@ -75,12 +75,12 @@
 				<br>
 				
 				<div class="row">
-		        	<div class="col-lg-5">
+		        	<div class="col-sm-5">
 		        		<label>Nombre</label>
 		        		<sf:errors path="cond_nombre" class="label label-danger"></sf:errors>
 		        		<sf:input  path="cond_nombre" class="form-control" value="${conductor.cond_nombre}" maxlength="45" />		        		
 		        	</div>			
-		        	<div class="col-lg-3">
+		        	<div class="col-sm-3">
 		        		<label>Teléfono</label>
 		        		<sf:errors path="cond_telefono" class="label label-danger"></sf:errors>
 		        		<sf:input  path="cond_telefono" class="form-control" value="${conductor.cond_telefono}" maxlength="45" />		        		

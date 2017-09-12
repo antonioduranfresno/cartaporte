@@ -30,7 +30,7 @@
         <div id="page-wrapper">
         
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-sm-12">
                     <h2 class="page-header">Conductores</h2>
                 </div>                                
            </div> 

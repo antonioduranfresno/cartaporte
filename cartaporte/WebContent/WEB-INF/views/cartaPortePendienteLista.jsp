@@ -29,8 +29,16 @@
 
         <div id="page-wrapper">
             <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="page-header">Cartas de porte pendientes</h2>
+                <div class="col-sm-12">
+                    <h2 class="page-header derecha">
+						Cartas de porte pendientes
+						<sf:select class="form-control" id="selRuta" path="secuenciaRuta" value="${secuenciaRuta}" onchange="location = this.value;">												
+							<c:forEach items="${listaRutasPendientes}" var="c" varStatus="index">
+			        			<option value="cartaPortePendienteLista?secRuta=${c.secuenciaRuta}" ${c.secuenciaRuta == secuenciaRuta ? 'selected' : '' }>${c.toStringInfo()}</option>
+			        		</c:forEach>
+						</sf:select>				
+						<label>Ruta: </label>				
+					</h2>
                 </div>                                
            </div> 
            
@@ -41,6 +49,9 @@
 				<c:choose>
 				    <c:when test="${param.success eq true}">
 				        <div class="alert alert-success">Cambios realizados correctamente.</div>
+				    </c:when>
+				     <c:when test="${param.success eq false}">
+				        <div class="alert alert-danger">No se puede emitir la carta de porte. No ha completado la información.</div>
 				    </c:when>
 				</c:choose>	
 							
