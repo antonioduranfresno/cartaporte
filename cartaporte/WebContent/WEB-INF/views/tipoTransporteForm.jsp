@@ -29,7 +29,7 @@
         <div id="page-wrapper">
         
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-sm-12">
                     <h2 class="page-header">Tipo Transporte</h2>
                 </div>                                
            </div> 
@@ -40,7 +40,7 @@
 				<sf:input type="hidden" path="agencia.id" value="${tipoTransporte.agencia.id}" />
 			
 			   	<div class="row">
-		        	<div class="col-lg-12">
+		        	<div class="col-sm-9">
 		        		<label>Nombre</label>
 		        		<sf:errors path="titr_nombre" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" path="titr_nombre" value="${tipoTransporte.titr_nombre}" maxlength="45" />		        		

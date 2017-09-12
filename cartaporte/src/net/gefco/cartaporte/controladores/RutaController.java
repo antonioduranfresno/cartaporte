@@ -190,7 +190,9 @@ public class RutaController {
 	@RequestMapping(value = "/rutaLista", method = RequestMethod.POST, params="GenerarCartasPortePendientes")
 	public String generarCartasPortePendientes(Model model, @ModelAttribute("form") Form form){
 	
-		Usuario usuarioSesion = (Usuario) model.asMap().get("usuarioSesion");
+		Usuario usuarioSesion  = (Usuario) model.asMap().get("usuarioSesion");
+		
+		String   secuenciaRuta = "";
 		
 		//Sustituir los valores nulos por falses
 		for (Entry<Integer, Boolean> e: form.getMapa().entrySet()) {
@@ -205,7 +207,7 @@ public class RutaController {
 				Calendar calendarioFechaSalida 			= Calendar.getInstance();
 				Calendar calendarioFechaLlegada 		= Calendar.getInstance();
 		        
-				String   secuenciaRuta					= calculaSecuenciaRuta(ruta.getId());
+				secuenciaRuta							= calculaSecuenciaRuta(ruta.getId());
 				
 				for(Entrega entrega : entregaService.listarEntregas(ruta)){
 
@@ -244,7 +246,7 @@ public class RutaController {
 						
 		}
 		
-		return "redirect:/cartaPortePendienteLista";
+		return "redirect:/cartaPortePendienteLista?secRuta="+secuenciaRuta;
 	}
 
 	

@@ -29,7 +29,7 @@
         <div id="page-wrapper">
         
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-sm-12">
                     <h2 class="page-header">Destino</h2>
                 </div>                                
            </div> 
@@ -40,28 +40,34 @@
 				<sf:input type="hidden" path="agencia.id" value="${destino.agencia.id}" />
 			
 			   	<div class="row">
-		        	<div class="col-lg-12">
+		        	<div class="col-sm-9">
 		        		<label>Destinatario</label>
 		        		<sf:errors path="dest_destinatario" class="label label-danger"></sf:errors>
 		        		<sf:input  path="dest_destinatario" class="form-control" value="${destino.dest_destinatario}" maxlength="255" />		        		
 		        	</div>
 				</div>
 				
+				<br>
+				
 				<div class="row">
-		        	<div class="col-lg-12">
+		        	<div class="col-sm-9">
 		        		<label>Dirección</label>
 		        		<sf:errors path="dest_direccion" class="label label-danger"></sf:errors>
 		        		<sf:input  path="dest_direccion" class="form-control" value="${destino.dest_direccion}" maxlength="255" />		        		
 		        	</div>
 				</div>
 				
+				<br>
+				
 				<div class="row">
-		        	<div class="col-lg-12">
+		        	<div class="col-sm-9">
 		        		<label>Provincia</label>
 		        		<sf:errors path="dest_provincia" class="label label-danger"></sf:errors>
 		        		<sf:input  path="dest_provincia" class="form-control" value="${destino.dest_provincia}" maxlength="255" />		        		
 		        	</div>
 				</div>
+				
+				<br>
 				
 				<div class="footer">      
 				

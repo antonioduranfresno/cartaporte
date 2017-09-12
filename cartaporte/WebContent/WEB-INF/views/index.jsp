@@ -30,7 +30,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">CARTAS DE PORTE</a>
+          <a class="navbar-brand" href="#">CARTAS DE PORTE <small>v17.09.12</small></a>
           
         </div>
         
@@ -92,11 +92,11 @@
 	      <div class="modal-body" >
 			 <form id="formularioRegistro" autocomplete="off" >			
 			   	<div class="row">
-		        	<div class="col-lg-4">
+		        	<div class="col-sm-4">
 		        		<label>Matrícula GEFCO</label>
 		        		<input class="form-control" type="text" id="reg_matricula" name="reg_matricula" maxlength="7"  />
 		        	</div>
-		        	<div class="col-lg-8">
+		        	<div class="col-sm-8">
 			        	<label>Código Centro</label>			        	     
 			        	<select class="form-control" id="selAgenciaEmpleado" >
 			        			<option value="0">Selección</option>
@@ -109,28 +109,28 @@
 			    </div>
 			    <br/>
 	        	<div class="row">
-		        	<div class="col-lg-12">
+		        	<div class="col-sm-12">
 	        			<label>Correo electrónico</label>
 	        			<input class="form-control" type="email" id="reg_email" name="reg_email" maxlength="45"  />
 			        </div>
 				</div>			    
 			    <br/>
 	        	<div class="row">
-					<div class="col-lg-12">
+					<div class="col-sm-12">
 	        			<label>Nombre y apellidos</label>
 	        			<input class="form-control" type="text" id="reg_nombre" name="reg_nombre" maxlength="85"  />
 	        		</div>
 				</div>
 			    <br/>
 			    <div class="row">
-	        		<div class="col-lg-12">   		
+	        		<div class="col-sm-12">   		
 		        		<label>Contraseña</label>
 		        		<input class="form-control" type="password" id="reg_password" name="reg_password"  />
 	        		</div>
 	        	</div>
 	        	<br/>
 			    <div class="row">
-	        		<div class="col-lg-12">   		
+	        		<div class="col-sm-12">   		
 		        		<label>Confirmar Contraseña</label>
 		        		<input class="form-control" type="password" id="reg_password2" name="reg_password2"  />
 	        		</div>

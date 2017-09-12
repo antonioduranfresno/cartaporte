@@ -30,7 +30,7 @@
         <div id="page-wrapper">
         
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-sm-12">
                     <h2 class="page-header">Agencias</h2>
                 </div>                                
            </div> 
@@ -39,17 +39,14 @@
 			
 				<thead>
 					<tr class="info">
-						<th class="col-sm-1">Código</th>
-						<th class="col-sm-2">Nombre</th>
-						<th class="col-sm-1">UO</th>
-						<th class="col-sm-1">Contacto</th>
-						<th class="col-sm-1">Teléfono</th>
-						<th class="col-sm-1">Copia Origen</th>
-						<th class="col-sm-1">Copia Destino</th>
-						<th class="col-sm-1">Copia Transportista</th>
-						<th class="col-sm-1">Copia Factura</th>
-						<th class="col-sm-1">Editar</th>
-						<th class="col-sm-1">Eliminar</th>
+						<th width="8%">Código</th>
+						<th width="17%">Nombre</th>						
+						<th width="16%">Copia Origen</th>
+						<th width="16%">Copia Destino</th>
+						<th width="17%">Copia Transportista</th>
+						<th width="16%">Copia Factura</th>
+						<th width="7%">Editar</th>
+						<th width="7%">Borrar</th>
 					</tr>
 				</thead>
 
@@ -63,10 +60,7 @@
 			
 					<tr>
 						<td>${t.agen_codigo}</td>
-						<td>${t.agen_nombre}</td>
-						<td>${t.uo.uo_nombre}</td>
-						<td>${t.agen_contacto}</td>
-						<td>${t.agen_telefonoContacto}</td>
+						<td>${t.agen_nombre}</td>						
 						<td>${t.agen_copiaOrigen ? 'Sí' : 'No'}</td>
 						<td>${t.agen_copiaDestino ? 'Sí' : 'No'}</td>
 						<td>${t.agen_copiaTransportista ? 'Sí' : 'No'}</td>

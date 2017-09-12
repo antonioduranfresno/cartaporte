@@ -29,7 +29,7 @@
         <div id="page-wrapper">
         
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-sm-12">
                     <h2 class="page-header">Compañia Transporte</h2>
                 </div>                                
            </div> 
@@ -40,17 +40,22 @@
 				<sf:input type="hidden" path="agencia.id" value="${companiaTransporte.agencia.id}" />
 			
 			   	<div class="row">
-		        	<div class="col-lg-2">
+		        	<div class="col-sm-3">
 		        		<label>Código</label>
 		        		<sf:errors path="cotr_codigo" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" path="cotr_codigo" value="${companiaTransporte.cotr_codigo}" maxlength="6" />		        		
 		        	</div>
-		        	<div class="col-lg-3">
+		        	<div class="col-sm-6">
 		        		<label>CIF</label>
 		        		<sf:errors path="cotr_cif" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" path="cotr_cif" value="${companiaTransporte.cotr_cif}" maxlength="15" />		        		
-		        	</div>			        				   	
-		        	<div class="col-lg-7">
+		        	</div>
+				</div>
+				
+				<br>
+				
+				<div class="row">							        				   	
+		        	<div class="col-sm-9">
 		        		<label>Razón social</label>
 		        		<sf:errors path="cotr_razonSocial" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" path="cotr_razonSocial" value="${companiaTransporte.cotr_razonSocial}" maxlength="255" />		        		
@@ -60,7 +65,7 @@
 				<br>
 				
 			   	<div class="row">
-		        	<div class="col-lg-12">
+		        	<div class="col-sm-9">
 		        		<label>Domicilio</label>
 		        		<sf:errors path="cotr_domicilio" class="label label-danger"></sf:errors>
 		        		<sf:input class="form-control" path="cotr_domicilio" value="${companiaTransporte.cotr_domicilio}" maxlength="255" />		        		

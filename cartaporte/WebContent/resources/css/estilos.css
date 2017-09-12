@@ -217,21 +217,20 @@ input[readonly] {
 	min-width: 92%;
 }
 
-
 #formTercero label, #formTerceros label, #formCertificados label{
 	margin-top: 15px;
 	margin-bottom: -1px;
 }
 
-.derecha a{
-	float: right;
-	margin-left: 5px;
-	width: 40px;
-}
-
 .derecha select{
 	float: right;
-	width: 180px;
+	width: 280px;
+}
+
+.derecha label{
+	float: right;
+	margin: 4px 10px 2px 0;
+	font-size: 24px;
 }
 
 .derecha input[type="submit"], .derecha input[type="button"]{

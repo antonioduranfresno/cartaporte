@@ -5,11 +5,15 @@ import java.io.OutputStream;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -25,6 +29,7 @@ import net.gefco.cartaporte.negocio.CartaPorteService;
 import net.gefco.cartaporte.negocio.CompaniaTransporteService;
 import net.gefco.cartaporte.negocio.ConductorService;
 import net.gefco.cartaporte.util.CfgUtil;
+import net.gefco.cartaporte.util.Form;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRPrintPage;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -45,6 +50,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -73,7 +79,6 @@ public class CartaPorteController {
 	@Autowired
 	private AgenciaService agenciaService;
 	
-		
 	@RequestMapping(value = "/cartaPorteForm", method = RequestMethod.GET)
 	public String mostrarFormulario(Model model, @RequestParam(value="idCartaPorte") Integer idCartaPorte){
 		
@@ -161,8 +166,9 @@ public class CartaPorteController {
 	}
 	
 	@RequestMapping(value = "/cartaPorteForm", method = RequestMethod.POST, params="action=Aceptar")
-	public String aceptar(Model model, @ModelAttribute("cartaPorte") @Valid CartaPorte cartaPorte, BindingResult result){
-				
+	public String aceptar(Model model, @ModelAttribute("cartaPorte") @Valid CartaPorte cartaPorte, @ModelAttribute("reutilizar") String reutilizar,
+			BindingResult result){
+		
 		if(cartaPorte.getCompaniaTransporte().getId()==0){			
 			FieldError error = new FieldError("cartaPorte", "companiaTransporte.id", "!");			
 			result.addError(error);			
@@ -187,10 +193,22 @@ public class CartaPorteController {
 			
 			try{
 				
-				cartaPorte.setCapo_emitida(false);								
-				cartaPorteService.actualizar(cartaPorte);	
+				if(reutilizar.equals("on")){
+					
+					for(CartaPorte carta : cartaPorteService.listarCartasPendientesRuta(cartaPorte.getCapo_secuenciaRuta())){
+						
+						carta.setCapo_numeroCarta(""); 
+						carta.setConductor(cartaPorte.getConductor());
+						carta.setCapo_telefonoConductor(cartaPorte.getCapo_telefonoConductor());
+						carta.setCapo_matriculaTractora(cartaPorte.getCapo_matriculaTractora());
+						carta.setCapo_matriculaRemolque(cartaPorte.getCapo_matriculaRemolque());
+						
+						cartaPorteService.actualizar(carta);
+					}
+					
+				}
 				
-				return "redirect:/cartaPortePendienteLista?success=true";
+				return "redirect:/cartaPortePendienteLista?secRuta="+cartaPorte.getCapo_secuenciaRuta()+"&success=true";
 				
 			} catch (Exception e) {
 				
@@ -210,6 +228,8 @@ public class CartaPorteController {
 		return "cartaPorteForm";
 	}
 	
+	//CONTROLAR EL ARGUMENTO DE VUELTA
+	
 	@RequestMapping(value = "/cartaPortePendienteLista&id={idCartaPorte}/eliminar", method = RequestMethod.POST)
 	public String eliminarDeLista(@PathVariable("idCartaPorte") Integer idCartaPorte){
 		
@@ -219,11 +239,32 @@ public class CartaPorteController {
 		
 		return "cartaPortePendienteLista";
 	}
+
+	//CONTROLAR EL ARGUMENTO DE VUELTA
+	
+    @RequestMapping("/cartaPorteEmitidaLista")
+    public String mostrarSeleccionCartasEmitidas(Model model, @ModelAttribute("listaIds") ArrayList<Integer> listaIds){
+          
+    	Usuario usuarioSesion = (Usuario) model.asMap().get("usuarioSesion");
+      
+    	List<CartaPorte> listaCartasEmitidas = cartaPorteService.listarCartasEmitidas(usuarioSesion.getAgencia());
+ 
+    	model.addAttribute("listaCartasEmitidas", listaCartasEmitidas);
+  
+    	if(listaIds!=null){
+    		model.addAttribute("listaIds", listaIds.toString().replace("[", "").replace("]",""));
+    	}
+    	
+    	return "cartaPorteEmitidaLista";
+    
+    }
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/cartaPorteForm", method = RequestMethod.POST, params="informe")
-	public void descargarCartaPorte(Model model, @ModelAttribute("cartaPorte") CartaPorte cartaPorte, HttpServletResponse response) throws ServletException{
+	@RequestMapping(value = "/cartaPorteForm&id={idCartaPorte}/informe", method = RequestMethod.GET)
+	public void descargarCartaPorte(Model model, @PathVariable("idCartaPorte") Integer idCartaPorte, HttpServletResponse response) throws ServletException{
 
+		CartaPorte cartaPorte = cartaPorteService.buscarCartaPorte(idCartaPorte);
+		
 		Agencia agencia = agenciaService.buscarAgencia(cartaPorte.getAgencia().getId());
 		
         try {
@@ -234,7 +275,6 @@ public class CartaPorteController {
         	parametros.put("rutaImagenes", servletContext.getRealPath("/resources/reports/imagenes/"));
 			parametros.put("IdCartaPorte", cartaPorte.getId());
 		    
-			
 			String ruta 	= servletContext.getRealPath("/resources/reports/CartaPorte.jasper");
 			
 			JasperReport reporte = (JasperReport) JRLoader.loadObjectFromFile(ruta);
@@ -246,56 +286,42 @@ public class CartaPorteController {
 				
 				parametros.put("destinatario", "EJEMPLAR PARA CENTRO ORIGEN");
 				jasperBase = JasperFillManager.fillReport(reporte,parametros, DriverManager.getConnection(CfgUtil.URL_BBDD,CfgUtil.USR_BBDD,CfgUtil.PW_BBDD));
-				
 			}
 			
 			if (agencia.getAgen_copiaDestino()){
-
+				
 				parametros.put("destinatario", "EJEMPLAR PARA AGENCIA DESTINATARIA");				
 				
-				if(jasperBase==null){
-				
-					jasperBase = JasperFillManager.fillReport(reporte,parametros, DriverManager.getConnection(CfgUtil.URL_BBDD,CfgUtil.USR_BBDD,CfgUtil.PW_BBDD));
-					
-				}else{
-					
+				if(jasperBase==null){				
+					jasperBase = JasperFillManager.fillReport(reporte,parametros, DriverManager.getConnection(CfgUtil.URL_BBDD,CfgUtil.USR_BBDD,CfgUtil.PW_BBDD));					
+				}else{					
 					jasperAux = JasperFillManager.fillReport(reporte,parametros, DriverManager.getConnection(CfgUtil.URL_BBDD,CfgUtil.USR_BBDD,CfgUtil.PW_BBDD));
 					jasperBase.addPage(jasperBase.getPages().size(), (JRPrintPage) jasperAux.getPages().get(0));	
-				}
-				
-				
+				}				
 			}
 			
-			if (agencia.getAgen_copiaTransportista()){
+			if (agencia.getAgen_copiaTransportista()){	
 				
 				parametros.put("destinatario", "EJEMPLAR PARA COMPAÑÍA DE TRANSPORTES");
 				
-				if(jasperBase==null){
-					
-					jasperBase = JasperFillManager.fillReport(reporte,parametros, DriverManager.getConnection(CfgUtil.URL_BBDD,CfgUtil.USR_BBDD,CfgUtil.PW_BBDD));
-					
-				}else{
-					
+				if(jasperBase==null){					
+					jasperBase = JasperFillManager.fillReport(reporte,parametros, DriverManager.getConnection(CfgUtil.URL_BBDD,CfgUtil.USR_BBDD,CfgUtil.PW_BBDD));					
+				}else{					
 					jasperAux = JasperFillManager.fillReport(reporte,parametros, DriverManager.getConnection(CfgUtil.URL_BBDD,CfgUtil.USR_BBDD,CfgUtil.PW_BBDD));
 					jasperBase.addPage(jasperBase.getPages().size(), (JRPrintPage) jasperAux.getPages().get(0));	
-				}
-				
+				}				
 			}
 			
-			if (agencia.getAgen_copiaFactura()){
+			if (agencia.getAgen_copiaFactura()){		
 				
 				parametros.put("destinatario", "EJEMPLAR PARA DEVOLVER CON FACTURA");				
 
-				if(jasperBase==null){
-					
+				if(jasperBase==null){					
 					jasperBase = JasperFillManager.fillReport(reporte,parametros, DriverManager.getConnection(CfgUtil.URL_BBDD,CfgUtil.USR_BBDD,CfgUtil.PW_BBDD));
-					
-				}else{
-					
+				}else{					
 					jasperAux = JasperFillManager.fillReport(reporte,parametros, DriverManager.getConnection(CfgUtil.URL_BBDD,CfgUtil.USR_BBDD,CfgUtil.PW_BBDD));
 					jasperBase.addPage(jasperBase.getPages().size(), (JRPrintPage) jasperAux.getPages().get(0));	
-				}
-				
+				}				
 			}
 			
 			OutputStream os = response.getOutputStream();
@@ -319,7 +345,66 @@ public class CartaPorteController {
 			e.printStackTrace();
 		}
 
-   }
+    }
+		
+	@RequestMapping(value = "/cartaPortePendienteLista", method = RequestMethod.POST, params="GenerarCartasPorte")
+	public String generarCartasPorte(Model model, @ModelAttribute("form") Form form, HttpServletRequest request, 
+			HttpServletResponse response, RedirectAttributes ra){
 
+		List<CartaPorte> listaActualizar = new ArrayList<CartaPorte>();
+		
+		for (Entry<Integer, Boolean> e: form.getMapa().entrySet()) {
+			
+			CartaPorte carta = cartaPorteService.buscarCartaPorte(e.getKey());
+			
+			if (e.getValue() == null) {
+				e.setValue(false);
+			}else{
+				
+				//1) VERIFICACIÓN: Si hemos pasado por la edición de la carta de porte, el numeroCarta es "";
+				if(carta.getCapo_numeroCarta()!=null){ 
+			
+					listaActualizar.add(carta);
+					
+				}else{
+					listaActualizar.clear();
+					return "redirect:/cartaPortePendienteLista?secRuta="+carta.getCapo_secuenciaRuta()+"&success=false";
+				}
+				
+			}
+			
+		}
+		
+		if(listaActualizar.size()>0){
+			
+			List<Integer> listaIds = new ArrayList<Integer>();
+			
+			for(CartaPorte carta : listaActualizar){
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+				
+				String anyo = sdf.format(carta.getCapo_fechaDocumentacion());
+				
+				carta.setCapo_emitida(true);
+				carta.setCapo_numeroCarta(cartaPorteService.calculaNumeroCarta(carta.getAgencia(), new Integer(anyo)));
+				cartaPorteService.actualizar(carta);
+				
+				listaIds.add(carta.getId());
+			}
+			
+			ra.addFlashAttribute("listaIds", listaIds);
+			return "redirect:/cartaPorteEmitidaLista";
+			
+		}else{		
+			
+			if(request.getParameter("secRuta")!=null){
+				return "redirect:/cartaPortePendienteLista?secRuta="+request.getParameter("secRuta");
+			}else{						
+				return "redirect:/cartaPortePendienteLista";	
+			}
+			
+		}		
+		
+	}
 	
 }

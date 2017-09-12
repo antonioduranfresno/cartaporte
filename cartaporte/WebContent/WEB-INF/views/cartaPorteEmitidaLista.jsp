@@ -28,24 +28,17 @@
 		<jsp:include page="menu.jsp"/>
 
         <div id="page-wrapper">
-        
             <div class="row">
                 <div class="col-sm-12">
-                    <h2 class="page-header">Camiones</h2>
+                    <h2 class="page-header derecha">
+						Cartas de porte emitidas	
+					</h2>
                 </div>                                
            </div> 
            
-			<table id='tablaCamiones' class='table table-hover table-striped table-condensed table-bordered'>
-			
-				<thead>
-					<tr class="info">
-						<th class="col-sm-6">Compañía</th>
-						<th class="col-sm-2">Matrícula</th>
-						<th class="col-sm-2">Es tractora</th>
-						<th class="col-sm-1">Editar</th>
-						<th class="col-sm-1">Eliminar</th>
-					</tr>
-				</thead>
+           <input type="hidden" id="listaIds" name="listaIds" value="${listaIds}" />
+           
+		   <table id='tablaCartas' class='table table-hover table-striped table-condensed table-bordered'>
 
 				<c:choose>
 				    <c:when test="${param.success eq true}">
@@ -53,24 +46,39 @@
 				    </c:when>
 				</c:choose>	
 							
-				<c:forEach items="${listaCamiones}" var="c" varStatus="index">
-			
-					<tr>
-						<td>${c.companiaTransporte.toStringCodigoNombre()}</td>
-						<td>${c.cami_matricula}</td>
-						<td>${c.cami_tractora == true ? 'Sí' : 'No'}</td>
-						<td style="text-align: center;"><a href="camionForm?idCamion=${c.id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>
-						<td style="text-align: center;"><a href="#" onclick="eliminar(${c.id},'camion');" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a></td>
+				<thead>
+                    <tr class="info">  
+                          <th width="13%">Nº Carta</th>
+                          <th width="13%">Fecha Doc.</th>
+                          <th width="23%">Destino</th>
+                          <th width="23%">Proveedor</th>
+                          <th width="12%">T. Transporte</th>
+                          <th width="10%">Porte</th>
+                          <th width="6%">Ver</th>                                 
+                    </tr>
+				</thead>
+				
+				<c:forEach items="${listaCartasEmitidas}" var="c" varStatus="index">
+				
+					<tr>						
+						<td>${c.capo_numeroCarta}</td>
+						<td>${c.getCapo_fechaHoraDocumentacionFormateada()}</td>
+						<td>${c.capo_destinatario}</td>
+						<td>${c.capo_razonSocialCompania}</td>
+						<td>${c.tipoTransporte.titr_nombre}</td>
+						<td class="text-right">${c.capo_importe}</td>						
+						<td class="text-center">							
+							<a href="<c:url value="/cartaPorteForm&id=${c.id}/informe" />" class="btn btn-default">
+								<span class="glyphicon glyphicon-file"></span>
+							</a>
+						</td>												
 					</tr>
-			
+				
 				</c:forEach>
-			
-			</table>
-			
-			<br>
-			
-			<a href="camionForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
-			            
+
+		   </table>
+			    
+                        
         </div>
     </div>
 
@@ -87,6 +95,15 @@
     
 	$(document).ready(function() {
 		
+		if($("#listaIds").val()!=""){
+			
+			var array = $("#listaIds").val().split(",");
+			
+			for (var i = 0; i < array.length; i++) {				
+				window.open("cartaPorteForm&id="+array[i]+"/informe");				
+			}			
+		}
+		
 		cargaDatos();
 		
 	});	
@@ -95,7 +112,7 @@
 		
 		waitingDialog.show('Un momento, por favor...');
 		
-		$('#tablaCamiones').DataTable({ 										
+		$('#tablaCartas').DataTable({ 										
 	    	"language": {
 	    		"url": "res/json/es.json"
 	        },
