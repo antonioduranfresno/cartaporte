@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cartaPorte_mediosDurables" pageWidth="500" pageHeight="143" columnWidth="500" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="2734bda7-3457-4187-9632-00101687d57b">
+	<property name="ireport.zoom" value="2.5937424601000236"/>
+	<property name="ireport.x" value="356"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[".\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IdCartaPorte" class="java.lang.Integer"/>
+	<parameter name="DestinoMedios" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     mediodurable.`medu_cantidad` AS mediodurable_medu_cantidad,
+     mediodurable.`medu_observaciones` AS mediodurable_medu_observaciones,
+     tipomediodurable.`timd_codigo` AS tipomediodurable_timd_codigo,
+     tipomediodurable.`timd_descripcion` AS tipomediodurable_timd_descripcion
+FROM
+     `tipomediodurable` tipomediodurable INNER JOIN `mediodurable` mediodurable ON tipomediodurable.`id` = mediodurable.`tipoMedioDurable`
+WHERE
+     mediodurable.cartaporte = $P{IdCartaPorte}
+ORDER BY
+     mediodurable.id ASC]]>
+	</queryString>
+	<field name="mediodurable_medu_cantidad" class="java.lang.Long"/>
+	<field name="mediodurable_medu_observaciones" class="java.lang.String"/>
+	<field name="tipomediodurable_timd_codigo" class="java.lang.String"/>
+	<field name="tipomediodurable_timd_descripcion" class="java.lang.String"/>
+	<variable name="sumaCantidad" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{mediodurable_medu_cantidad}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="16" splitType="Stretch">
+			<elementGroup>
+				<elementGroup>
+					<elementGroup/>
+				</elementGroup>
+			</elementGroup>
+			<staticText>
+				<reportElement x="0" y="0" width="170" height="12" forecolor="#000000" uuid="14ddac1d-eb20-4ec5-b6c1-71e7813a065d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ENTREGA DIRECTA MEDIOS DURABLES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="0" width="99" height="12" forecolor="#000000" uuid="56555488-bbb7-4345-b76b-1bdb2e43114f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Observaciones]]></text>
+			</staticText>
+			<line>
+				<reportElement x="301" y="0" width="1" height="15" uuid="8d5ec6b0-b383-4b47-9916-b17c9fcafb6f"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="15" width="500" height="1" uuid="4b14adf0-632e-4fff-b082-c23e53832d8a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="203" y="2" width="97" height="12" uuid="6c886133-0509-44fb-b483-b0131c812e6f"/>
+				<textElement markup="none">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<text><![CDATA[Tipo MD]]></text>
+			</staticText>
+			<line>
+				<reportElement x="191" y="0" width="1" height="15" uuid="b584e356-f912-4ec2-8188-cf60d71db17d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="300" y="2" width="31" height="12" uuid="80713211-1dca-49f2-9df6-05e6bdca0abd"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<text><![CDATA[Cant.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="335" y="0" width="1" height="15" uuid="d7db1e43-3112-48dc-ad76-308f1aaa9cc4"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="15" uuid="f9402ddf-3784-4c5a-8973-aa0c2ccb1754"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="499" y="0" width="1" height="15" uuid="966e7dc6-a159-42b1-933e-d3258806fc1e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="500" height="1" uuid="f6b81c2c-c474-43ae-8be7-5220a719e9e8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<line>
+				<reportElement isPrintRepeatedValues="false" x="0" y="11" width="191" height="1" isPrintInFirstWholeBand="true" uuid="57b479d9-69c8-4210-9168-9345f5e3e223"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="191" y="11" width="309" height="1" uuid="fc9e0f0c-8ca7-43af-ac9c-f51f320cd4aa"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="203" y="1" width="97" height="10" uuid="093e98f6-c307-4751-bb66-3e282d3758ab"/>
+				<textElement>
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipomediodurable_timd_codigo}+ " - " + $F{tipomediodurable_timd_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="347" y="1" width="149" height="10" uuid="bf6c485b-803e-49e8-85c9-387b356d1072"/>
+				<textElement>
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mediodurable_medu_observaciones}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="301" y="0" width="1" height="12" uuid="0141b3bd-7433-4e75-8255-a50819237b2d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="335" y="0" width="1" height="12" uuid="149c4ccf-f6b0-4db9-b2d7-2325e49113e8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="191" y="0" width="1" height="12" uuid="95e57d1a-eba7-457c-aee5-d3ef75fb5d68"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement isPrintRepeatedValues="false" x="0" y="0" width="1" height="12" isPrintInFirstWholeBand="true" uuid="dfff8bdd-4b73-4971-817c-33546b600249"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true" pattern="#,##0">
+				<reportElement x="300" y="1" width="31" height="10" uuid="7b3ab681-29a5-4f8d-9323-f7be6a2738a6"/>
+				<textElement textAlignment="Right">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mediodurable_medu_cantidad}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="499" y="0" width="1" height="12" uuid="66f007bd-0a65-4a7b-8a4c-4422de4af504"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="34" y="1" width="157" height="11" uuid="6ddf10a8-0dc6-4135-bd34-5fc886c7480e"/>
+				<textElement>
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DestinoMedios}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="1" y="1" width="33" height="11" isPrintInFirstWholeBand="true" uuid="3b21d5fa-f3b8-42c7-a337-4cfceec1caae"/>
+				<box rightPadding="2"/>
+				<textElement textAlignment="Right" markup="none">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<text><![CDATA[DESTINO:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="19" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="#,##0">
+				<reportElement x="302" y="1" width="29" height="16" uuid="075aa35f-70c2-464d-8ee0-b6c7610688b4"/>
+				<textElement textAlignment="Right">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumaCantidad}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="301" y="0" width="1" height="16" uuid="38f0aed2-4f4a-4aba-a53c-a785b14ca86b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="335" y="0" width="1" height="16" uuid="d87d1e9c-8d7a-4edc-8df3-d2d85f0ba33e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="269" y="2" width="33" height="13" forecolor="#000000" uuid="31ba70d4-e4a8-4f97-9123-2302b39db576"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<line>
+				<reportElement x="302" y="15" width="34" height="1" uuid="ae1f9df1-c12b-418f-b621-961c5851fca0"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

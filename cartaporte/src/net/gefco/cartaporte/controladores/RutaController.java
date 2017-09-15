@@ -86,7 +86,6 @@ public class RutaController {
 		return "rutaLista";
 	}
 	
-	
 	//Tanto para crear nuevo Tipo como para visualizar existente; @RequestParam opcional 
 	@RequestMapping(value = "/rutaForm", method = RequestMethod.GET)
 	public String mostrarFormulario(Model model, @RequestParam(value="idRuta",required=false) Integer idRuta){
@@ -236,8 +235,9 @@ public class RutaController {
 							entrega.getDestino().getDest_destinatario(), entrega.getDestino().getDest_direccion(), 
 							entrega.getDestino().getDest_provincia(), entrega.getRuta().getTipoTransporte(),
 							entrega.getEntr_importe(), fechaLlegada, usuarioSesion.getAgencia().getAgen_contacto(), 
-							usuarioSesion.getAgencia().getAgen_telefonoContacto(), null, null, null, null, null, null, false, secuenciaRuta);
-					
+							usuarioSesion.getAgencia().getAgen_telefonoContacto(), null, null, null, null, false, secuenciaRuta, null, 
+							entrega.getDestino().getDest_destinatario());
+										
 					cartaPorteService.guardar(cartaPorte);
 					
 				}
