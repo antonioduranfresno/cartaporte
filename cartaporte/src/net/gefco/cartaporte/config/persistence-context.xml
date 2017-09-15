@@ -32,7 +32,7 @@
 			    <!-- configuration pool via c3p0-->
 			    <prop key="hibernate.c3p0.min_size">5</prop>
 			    <prop key="hibernate.c3p0.max_size">20</prop>
-			    <prop key="hibernate.c3p0.timeout">1800</prop>
+			    <prop key="hibernate.c3p0.timeout">7200</prop>
 			    <prop key="hibernate.c3p0.max_statements">50</prop>
 				<prop key="hibernate.c3p0.preferredTestQuery">select true</prop>
 				

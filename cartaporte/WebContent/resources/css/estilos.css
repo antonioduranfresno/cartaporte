@@ -251,3 +251,11 @@ input[readonly] {
 #tablaRutas td{
 	vertical-align: top;
 }
+
+#divCartaPorte label, #divMercancia label, #divMediosDurables label{
+	margin-top: 12px;
+}
+
+.disabledTab {
+	pointer-events: none;
+}

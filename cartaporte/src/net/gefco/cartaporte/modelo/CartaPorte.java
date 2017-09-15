@@ -83,16 +83,10 @@ public class CartaPorte implements Serializable{
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date   	capo_fechaLlegada								= null;
 	
-	@NotEmpty
 	private String 	capo_contactoAgencia							= null;
 	
-	@NotEmpty
 	private String 	capo_telefonoContacto							= null;
-	
-	private String 	capo_numeroAlbaran								= null;
-	
-	private Double 	capo_pesoMercancia								= null;
-	
+		
 	@ManyToOne
 	@JoinColumn(name="conductor")
 	private Conductor conductor										= null;
@@ -107,9 +101,16 @@ public class CartaPorte implements Serializable{
 	
 	private String	capo_secuenciaRuta								= null;
 
+	@ManyToOne
+	@JoinColumn(name="modelo")
+	private Modelo	modelo											= null;
+	
+	private String  capo_destinoMedioDurable						= null;
+	
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -117,6 +118,7 @@ public class CartaPorte implements Serializable{
 	public Agencia getAgencia() {
 		return agencia;
 	}
+
 	public void setAgencia(Agencia agencia) {
 		this.agencia = agencia;
 	}
@@ -124,6 +126,7 @@ public class CartaPorte implements Serializable{
 	public String getCapo_numeroCarta() {
 		return capo_numeroCarta;
 	}
+
 	public void setCapo_numeroCarta(String capo_numeroCarta) {
 		this.capo_numeroCarta = capo_numeroCarta;
 	}
@@ -131,6 +134,7 @@ public class CartaPorte implements Serializable{
 	public String getCapo_precinto() {
 		return capo_precinto;
 	}
+
 	public void setCapo_precinto(String capo_precinto) {
 		this.capo_precinto = capo_precinto;
 	}
@@ -138,6 +142,7 @@ public class CartaPorte implements Serializable{
 	public Date getCapo_fechaDocumentacion() {
 		return capo_fechaDocumentacion;
 	}
+
 	public void setCapo_fechaDocumentacion(Date capo_fechaDocumentacion) {
 		this.capo_fechaDocumentacion = capo_fechaDocumentacion;
 	}
@@ -145,13 +150,15 @@ public class CartaPorte implements Serializable{
 	public CompaniaTransporte getCompaniaTransporte() {
 		return companiaTransporte;
 	}
+
 	public void setCompaniaTransporte(CompaniaTransporte companiaTransporte) {
 		this.companiaTransporte = companiaTransporte;
 	}
-	
+
 	public String getCapo_codigoCompania() {
 		return capo_codigoCompania;
 	}
+
 	public void setCapo_codigoCompania(String capo_codigoCompania) {
 		this.capo_codigoCompania = capo_codigoCompania;
 	}
@@ -159,6 +166,7 @@ public class CartaPorte implements Serializable{
 	public String getCapo_razonSocialCompania() {
 		return capo_razonSocialCompania;
 	}
+
 	public void setCapo_razonSocialCompania(String capo_razonSocialCompania) {
 		this.capo_razonSocialCompania = capo_razonSocialCompania;
 	}
@@ -166,6 +174,7 @@ public class CartaPorte implements Serializable{
 	public String getCapo_domicilioCompania() {
 		return capo_domicilioCompania;
 	}
+
 	public void setCapo_domicilioCompania(String capo_domicilioCompania) {
 		this.capo_domicilioCompania = capo_domicilioCompania;
 	}
@@ -173,6 +182,7 @@ public class CartaPorte implements Serializable{
 	public String getCapo_cifCompania() {
 		return capo_cifCompania;
 	}
+
 	public void setCapo_cifCompania(String capo_cifCompania) {
 		this.capo_cifCompania = capo_cifCompania;
 	}
@@ -180,6 +190,7 @@ public class CartaPorte implements Serializable{
 	public String getCapo_codigoCompaniaEfectiva() {
 		return capo_codigoCompaniaEfectiva;
 	}
+
 	public void setCapo_codigoCompaniaEfectiva(String capo_codigoCompaniaEfectiva) {
 		this.capo_codigoCompaniaEfectiva = capo_codigoCompaniaEfectiva;
 	}
@@ -187,6 +198,7 @@ public class CartaPorte implements Serializable{
 	public String getCapo_razonSocialCompaniaEfectiva() {
 		return capo_razonSocialCompaniaEfectiva;
 	}
+
 	public void setCapo_razonSocialCompaniaEfectiva(
 			String capo_razonSocialCompaniaEfectiva) {
 		this.capo_razonSocialCompaniaEfectiva = capo_razonSocialCompaniaEfectiva;
@@ -195,6 +207,7 @@ public class CartaPorte implements Serializable{
 	public String getCapo_domicilioCompaniaEfectiva() {
 		return capo_domicilioCompaniaEfectiva;
 	}
+
 	public void setCapo_domicilioCompaniaEfectiva(
 			String capo_domicilioCompaniaEfectiva) {
 		this.capo_domicilioCompaniaEfectiva = capo_domicilioCompaniaEfectiva;
@@ -203,6 +216,7 @@ public class CartaPorte implements Serializable{
 	public String getCapo_cifCompaniaEfectiva() {
 		return capo_cifCompaniaEfectiva;
 	}
+
 	public void setCapo_cifCompaniaEfectiva(String capo_cifCompaniaEfectiva) {
 		this.capo_cifCompaniaEfectiva = capo_cifCompaniaEfectiva;
 	}
@@ -210,6 +224,7 @@ public class CartaPorte implements Serializable{
 	public Date getCapo_fechaSalida() {
 		return capo_fechaSalida;
 	}
+
 	public void setCapo_fechaSalida(Date capo_fechaSalida) {
 		this.capo_fechaSalida = capo_fechaSalida;
 	}
@@ -217,6 +232,7 @@ public class CartaPorte implements Serializable{
 	public String getCapo_destinatario() {
 		return capo_destinatario;
 	}
+
 	public void setCapo_destinatario(String capo_destinatario) {
 		this.capo_destinatario = capo_destinatario;
 	}
@@ -224,6 +240,7 @@ public class CartaPorte implements Serializable{
 	public String getCapo_direccion() {
 		return capo_direccion;
 	}
+
 	public void setCapo_direccion(String capo_direccion) {
 		this.capo_direccion = capo_direccion;
 	}
@@ -231,6 +248,7 @@ public class CartaPorte implements Serializable{
 	public String getCapo_provincia() {
 		return capo_provincia;
 	}
+
 	public void setCapo_provincia(String capo_provincia) {
 		this.capo_provincia = capo_provincia;
 	}
@@ -238,6 +256,7 @@ public class CartaPorte implements Serializable{
 	public TipoTransporte getTipoTransporte() {
 		return tipoTransporte;
 	}
+
 	public void setTipoTransporte(TipoTransporte tipoTransporte) {
 		this.tipoTransporte = tipoTransporte;
 	}
@@ -245,6 +264,7 @@ public class CartaPorte implements Serializable{
 	public Double getCapo_importe() {
 		return capo_importe;
 	}
+
 	public void setCapo_importe(Double capo_importe) {
 		this.capo_importe = capo_importe;
 	}
@@ -252,6 +272,7 @@ public class CartaPorte implements Serializable{
 	public Date getCapo_fechaLlegada() {
 		return capo_fechaLlegada;
 	}
+
 	public void setCapo_fechaLlegada(Date capo_fechaLlegada) {
 		this.capo_fechaLlegada = capo_fechaLlegada;
 	}
@@ -259,6 +280,7 @@ public class CartaPorte implements Serializable{
 	public String getCapo_contactoAgencia() {
 		return capo_contactoAgencia;
 	}
+
 	public void setCapo_contactoAgencia(String capo_contactoAgencia) {
 		this.capo_contactoAgencia = capo_contactoAgencia;
 	}
@@ -266,27 +288,15 @@ public class CartaPorte implements Serializable{
 	public String getCapo_telefonoContacto() {
 		return capo_telefonoContacto;
 	}
+
 	public void setCapo_telefonoContacto(String capo_telefonoContacto) {
 		this.capo_telefonoContacto = capo_telefonoContacto;
-	}
-
-	public String getCapo_numeroAlbaran() {
-		return capo_numeroAlbaran;
-	}
-	public void setCapo_numeroAlbaran(String capo_numeroAlbaran) {
-		this.capo_numeroAlbaran = capo_numeroAlbaran;
-	}
-
-	public Double getCapo_pesoMercancia() {
-		return capo_pesoMercancia;
-	}
-	public void setCapo_pesoMercancia(Double capo_pesoMercancia) {
-		this.capo_pesoMercancia = capo_pesoMercancia;
 	}
 
 	public Conductor getConductor() {
 		return conductor;
 	}
+
 	public void setConductor(Conductor conductor) {
 		this.conductor = conductor;
 	}
@@ -294,6 +304,7 @@ public class CartaPorte implements Serializable{
 	public String getCapo_telefonoConductor() {
 		return capo_telefonoConductor;
 	}
+
 	public void setCapo_telefonoConductor(String capo_telefonoConductor) {
 		this.capo_telefonoConductor = capo_telefonoConductor;
 	}
@@ -301,6 +312,7 @@ public class CartaPorte implements Serializable{
 	public String getCapo_matriculaTractora() {
 		return capo_matriculaTractora;
 	}
+
 	public void setCapo_matriculaTractora(String capo_matriculaTractora) {
 		this.capo_matriculaTractora = capo_matriculaTractora;
 	}
@@ -308,6 +320,7 @@ public class CartaPorte implements Serializable{
 	public String getCapo_matriculaRemolque() {
 		return capo_matriculaRemolque;
 	}
+
 	public void setCapo_matriculaRemolque(String capo_matriculaRemolque) {
 		this.capo_matriculaRemolque = capo_matriculaRemolque;
 	}
@@ -315,6 +328,7 @@ public class CartaPorte implements Serializable{
 	public Boolean getCapo_emitida() {
 		return capo_emitida;
 	}
+
 	public void setCapo_emitida(Boolean capo_emitida) {
 		this.capo_emitida = capo_emitida;
 	}
@@ -322,10 +336,27 @@ public class CartaPorte implements Serializable{
 	public String getCapo_secuenciaRuta() {
 		return capo_secuenciaRuta;
 	}
+
 	public void setCapo_secuenciaRuta(String capo_secuenciaRuta) {
 		this.capo_secuenciaRuta = capo_secuenciaRuta;
 	}
-	
+
+	public Modelo getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(Modelo modelo) {
+		this.modelo = modelo;
+	}
+
+	public String getCapo_destinoMedioDurable() {
+		return capo_destinoMedioDurable;
+	}
+
+	public void setCapo_destinoMedioDurable(String capo_destinoMedioDurable) {
+		this.capo_destinoMedioDurable = capo_destinoMedioDurable;
+	}
+
 	public String getCapo_fechaHoraDocumentacionFormateada() {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -350,7 +381,7 @@ public class CartaPorte implements Serializable{
 	public CartaPorte() {
 		super();
 	}
-	
+
 	public CartaPorte(Integer id, Agencia agencia, String capo_numeroCarta,
 			String capo_precinto, Date capo_fechaDocumentacion,
 			CompaniaTransporte companiaTransporte, String capo_codigoCompania,
@@ -363,10 +394,10 @@ public class CartaPorte implements Serializable{
 			String capo_provincia, TipoTransporte tipoTransporte,
 			Double capo_importe, Date capo_fechaLlegada,
 			String capo_contactoAgencia, String capo_telefonoContacto,
-			String capo_numeroAlbaran, Double capo_pesoMercancia,
 			Conductor conductor, String capo_telefonoConductor,
 			String capo_matriculaTractora, String capo_matriculaRemolque,
-			Boolean capo_emitida, String capo_secuenciaRuta) {
+			Boolean capo_emitida, String capo_secuenciaRuta, Modelo modelo,
+			String capo_destinoMedioDurable) {
 		super();
 		this.id = id;
 		this.agencia = agencia;
@@ -391,16 +422,16 @@ public class CartaPorte implements Serializable{
 		this.capo_fechaLlegada = capo_fechaLlegada;
 		this.capo_contactoAgencia = capo_contactoAgencia;
 		this.capo_telefonoContacto = capo_telefonoContacto;
-		this.capo_numeroAlbaran = capo_numeroAlbaran;
-		this.capo_pesoMercancia = capo_pesoMercancia;
 		this.conductor = conductor;
 		this.capo_telefonoConductor = capo_telefonoConductor;
 		this.capo_matriculaTractora = capo_matriculaTractora;
 		this.capo_matriculaRemolque = capo_matriculaRemolque;
 		this.capo_emitida = capo_emitida;
 		this.capo_secuenciaRuta = capo_secuenciaRuta;
+		this.modelo = modelo;
+		this.capo_destinoMedioDurable = capo_destinoMedioDurable;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "CartaPorte [id=" + id + ", agencia=" + agencia
@@ -425,14 +456,14 @@ public class CartaPorte implements Serializable{
 				+ ", capo_importe=" + capo_importe + ", capo_fechaLlegada="
 				+ capo_fechaLlegada + ", capo_contactoAgencia="
 				+ capo_contactoAgencia + ", capo_telefonoContacto="
-				+ capo_telefonoContacto + ", capo_numeroAlbaran="
-				+ capo_numeroAlbaran + ", capo_pesoMercancia="
-				+ capo_pesoMercancia + ", conductor=" + conductor
+				+ capo_telefonoContacto + ", conductor=" + conductor
 				+ ", capo_telefonoConductor=" + capo_telefonoConductor
 				+ ", capo_matriculaTractora=" + capo_matriculaTractora
 				+ ", capo_matriculaRemolque=" + capo_matriculaRemolque
 				+ ", capo_emitida=" + capo_emitida + ", capo_secuenciaRuta="
-				+ capo_secuenciaRuta + "]";
+				+ capo_secuenciaRuta + ", modelo=" + modelo
+				+ ", capo_destinoMedioDurable=" + capo_destinoMedioDurable
+				+ "]";
 	}
 
 }

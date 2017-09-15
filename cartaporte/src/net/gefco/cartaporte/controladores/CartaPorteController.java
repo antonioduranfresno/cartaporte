@@ -22,12 +22,18 @@ import net.gefco.cartaporte.modelo.Camion;
 import net.gefco.cartaporte.modelo.CartaPorte;
 import net.gefco.cartaporte.modelo.CompaniaTransporte;
 import net.gefco.cartaporte.modelo.Conductor;
+import net.gefco.cartaporte.modelo.MedioDurable;
+import net.gefco.cartaporte.modelo.Mercancia;
 import net.gefco.cartaporte.modelo.Usuario;
 import net.gefco.cartaporte.negocio.AgenciaService;
 import net.gefco.cartaporte.negocio.CamionService;
 import net.gefco.cartaporte.negocio.CartaPorteService;
 import net.gefco.cartaporte.negocio.CompaniaTransporteService;
 import net.gefco.cartaporte.negocio.ConductorService;
+import net.gefco.cartaporte.negocio.MedioDurableService;
+import net.gefco.cartaporte.negocio.MercanciaService;
+import net.gefco.cartaporte.negocio.ModeloService;
+import net.gefco.cartaporte.negocio.TipoMedioDurableService;
 import net.gefco.cartaporte.util.CfgUtil;
 import net.gefco.cartaporte.util.Form;
 import net.sf.jasperreports.engine.JRException;
@@ -50,6 +56,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
@@ -79,6 +86,18 @@ public class CartaPorteController {
 	@Autowired
 	private AgenciaService agenciaService;
 	
+	@Autowired
+	private ModeloService modeloService;
+	
+	@Autowired
+	private MercanciaService mercanciaService;
+	
+	@Autowired
+	private TipoMedioDurableService tipoMedioDurableService;
+	
+	@Autowired
+	private MedioDurableService medioDurableService;
+	
 	@RequestMapping(value = "/cartaPorteForm", method = RequestMethod.GET)
 	public String mostrarFormulario(Model model, @RequestParam(value="idCartaPorte") Integer idCartaPorte){
 		
@@ -89,12 +108,29 @@ public class CartaPorteController {
 		model.addAttribute("cartaPorte", cartaPorte);
 		
 		model.addAttribute("listaCompaniasTransporte", companiaTransporteService.listarCompaniasTransporte(usuarioSesion.getAgencia()));
+		model.addAttribute("listaModelos", modeloService.listarModelos());
 		
 		//OJO: Esto depende realmente de la companía de transporte seleccionada por el usuario; 
 		//Por defecto vienen los datos de la compania asociada a la ruta
 		model.addAttribute("listaConductores", conductorService.listarConductores(cartaPorte.getCompaniaTransporte()));
 		model.addAttribute("listaCamionesTractores", camionService.listarCamionesTractores(cartaPorte.getCompaniaTransporte()));
 		model.addAttribute("listaCamionesNoTractores", camionService.listarCamionesNoTractores(cartaPorte.getCompaniaTransporte()));
+		
+		//Añadir las mercancías asociadas a la carta de porte		
+		model.addAttribute("listaMercancias", mercanciaService.listarMercancias(cartaPorte));
+		
+		//Objeto mercancia vacío para el segundo form
+		Mercancia mercancia = new Mercancia(0, cartaPorte, "", "", 0.0, "");
+		model.addAttribute("mercancia", mercancia);
+		
+		//Añadir los medios durables asociados a la carta de porte		
+		model.addAttribute("listaMediosDurables", medioDurableService.listarMediosDurables(cartaPorte));
+		
+		model.addAttribute("listaTiposMediosDurables", tipoMedioDurableService.listarTiposMediosDurablesAgencia(cartaPorte.getAgencia()));
+				
+		//Objeto mercancia vacío para el segundo form
+		MedioDurable medioDurable = new MedioDurable(0, cartaPorte, null, 0, "");
+		model.addAttribute("medioDurable", medioDurable);
 		
 		return "cartaPorteForm";
 	}
@@ -163,11 +199,12 @@ public class CartaPorteController {
 		myObj.add("fechaExpedicion", jsFechaExpedicion); //La paso aparte porque desde JSON no puedo acceder a métodos, solo a propiedades
 		
 		return myObj.toString();
+		
 	}
 	
-	@RequestMapping(value = "/cartaPorteForm", method = RequestMethod.POST, params="action=Aceptar")
-	public String aceptar(Model model, @ModelAttribute("cartaPorte") @Valid CartaPorte cartaPorte, @ModelAttribute("reutilizar") String reutilizar,
-			BindingResult result){
+	@RequestMapping(value = "/cartaPorteForm", method = RequestMethod.POST, params="guardar")
+	public String aceptar(Model model, @ModelAttribute("cartaPorte") @Valid CartaPorte cartaPorte, 
+			BindingResult result, @ModelAttribute("reutilizar") String reutilizar){
 		
 		if(cartaPorte.getCompaniaTransporte().getId()==0){			
 			FieldError error = new FieldError("cartaPorte", "companiaTransporte.id", "!");			
@@ -193,6 +230,8 @@ public class CartaPorteController {
 			
 			try{
 				
+				cartaPorte.setCapo_emitida(false);
+				
 				if(reutilizar.equals("on")){
 					
 					for(CartaPorte carta : cartaPorteService.listarCartasPendientesRuta(cartaPorte.getCapo_secuenciaRuta())){
@@ -207,7 +246,9 @@ public class CartaPorteController {
 					}
 					
 				}
-				
+								
+				cartaPorteService.actualizar(cartaPorte);
+								
 				return "redirect:/cartaPortePendienteLista?secRuta="+cartaPorte.getCapo_secuenciaRuta()+"&success=true";
 				
 			} catch (Exception e) {
@@ -224,7 +265,24 @@ public class CartaPorteController {
 		model.addAttribute("listaConductores", conductorService.listarConductores(cartaPorte.getCompaniaTransporte()));
 		model.addAttribute("listaCamionesTractores", camionService.listarCamionesTractores(cartaPorte.getCompaniaTransporte()));
 		model.addAttribute("listaCamionesNoTractores", camionService.listarCamionesNoTractores(cartaPorte.getCompaniaTransporte()));
+		model.addAttribute("listaModelos", modeloService.listarModelos());
 		
+		//Añadir las mercancías asociadas a la carta de porte		
+		model.addAttribute("listaMercancias", mercanciaService.listarMercancias(cartaPorte));
+		
+		//Objeto mercancia vacío para el segundo form
+		Mercancia mercancia = new Mercancia(0, cartaPorte, "", "", 0.0, "");
+		model.addAttribute("mercancia", mercancia);
+		
+		//Añadir los medios durables asociados a la carta de porte		
+		model.addAttribute("listaMediosDurables", medioDurableService.listarMediosDurables(cartaPorte));
+		
+		model.addAttribute("listaTiposMediosDurables", tipoMedioDurableService.listarTiposMediosDurablesAgencia(cartaPorte.getAgencia()));
+		
+		//Objeto mercancia vacío para el segundo form
+		MedioDurable medioDurable = new MedioDurable(0, cartaPorte, null, 0, "");
+		model.addAttribute("medioDurable", medioDurable);
+				
 		return "cartaPorteForm";
 	}
 	
@@ -273,7 +331,20 @@ public class CartaPorteController {
 			Map parametros = new HashMap();
 			        	
         	parametros.put("rutaImagenes", servletContext.getRealPath("/resources/reports/imagenes/"));
+        	parametros.put("SUBREPORT_DIR", servletContext.getRealPath("/resources/reports/"));
 			parametros.put("IdCartaPorte", cartaPorte.getId());
+			
+			if(cartaPorte.getModelo().getId()!=1){
+				parametros.put("mostrarMercancia", true);	
+			}else{
+				parametros.put("mostrarMercancia", false);
+			}
+			
+			if(medioDurableService.listarMediosDurables(cartaPorte).size()>0){
+				parametros.put("mostrarMediosDurables", true);
+			}else{
+				parametros.put("mostrarMediosDurables", false);
+			}
 		    
 			String ruta 	= servletContext.getRealPath("/resources/reports/CartaPorte.jasper");
 			
@@ -405,6 +476,107 @@ public class CartaPorteController {
 			
 		}		
 		
+	}
+
+	@RequestMapping(value = "/cartaPorteForm/guardarMercancia")	
+	public ModelAndView aceptarMercancia(@ModelAttribute("mercancia") @Valid Mercancia mercancia, BindingResult result){
+			
+		ModelAndView modelo = new ModelAndView("mercancia");
+		
+		if(!result.hasErrors()){
+			
+			if(mercanciaService.listarMercancias(mercancia.getCartaPorte()).size()<6){
+				
+				mercanciaService.guardar(mercancia);
+				
+				Mercancia mercanciaVacia = new Mercancia(0, mercancia.getCartaPorte(), "", "", 0.0, "");
+				modelo.addObject("mercancia", mercanciaVacia);
+				
+			}else{
+				
+				FieldError error = new FieldError("mercancia", "merc_campo1", "No se pueden añadir más mercancías.");
+                
+                result.addError(error);                
+                
+			}
+			
+		}
+		
+		modelo.addObject("listaMercancias", mercanciaService.listarMercancias(mercancia.getCartaPorte()));
+				
+		return modelo;		
+	}
+	
+	
+	
+	@RequestMapping(value = "/cartaPorteForm/guardarMedioDurable")	
+	public ModelAndView aceptarMedioDurable(@ModelAttribute("medioDurable") @Valid MedioDurable medioDurable, BindingResult result){
+			
+		ModelAndView modelo = new ModelAndView("medioDurable");
+		
+		if(medioDurable.getTipoMedioDurable().getId()==0){			
+			FieldError error = new FieldError("medioDurable", "tipoMedioDurable.id", "!");			
+			result.addError(error);			
+		}
+		
+		if(!result.hasErrors()){
+			
+			if(medioDurableService.listarMediosDurables(medioDurable.getCartaPorte()).size()<9){
+				
+				medioDurableService.guardar(medioDurable);
+				
+				MedioDurable medioDurableVacio = new MedioDurable(0, medioDurable.getCartaPorte(), null, 0, "");
+				modelo.addObject("medioDurable", medioDurableVacio);
+				
+			}else{
+				
+				FieldError error = new FieldError("medioDurable", "tipoMedioDurable.id", "No se pueden añadir más medios durables.");
+                
+                result.addError(error);                
+                
+			}
+			
+		}
+		
+		modelo.addObject("listaMediosDurables", medioDurableService.listarMediosDurables(medioDurable.getCartaPorte()));		
+		modelo.addObject("listaTiposMediosDurables", tipoMedioDurableService.listarTiposMediosDurablesAgencia(medioDurable.getCartaPorte().getAgencia()));
+				
+		return modelo;		
+	}
+	
+	@RequestMapping(value = "/mercancia&id={idMercancia}/eliminar", method = RequestMethod.POST)	
+	public ModelAndView eliminarMercancia(@PathVariable("idMercancia") Integer idMercancia){
+		
+		ModelAndView modelo = new ModelAndView("mercancia");
+		
+		Mercancia mercancia = mercanciaService.buscarMercancia(idMercancia);
+		
+		mercanciaService.eliminar(mercancia);
+		
+		Mercancia mercanciaVacia = new Mercancia(0, mercancia.getCartaPorte(), "", "", 0.0, "");
+		modelo.addObject("mercancia", mercanciaVacia);
+		
+		modelo.addObject("listaMercancias", mercanciaService.listarMercancias(mercancia.getCartaPorte()));	
+				
+		return modelo;		
+	}
+	
+	@RequestMapping(value = "/medioDurable&id={idMedioDurable}/eliminar", method = RequestMethod.POST)	
+	public ModelAndView eliminarMedioDurable(@PathVariable("idMedioDurable") Integer idMedioDurable){
+		
+		ModelAndView modelo = new ModelAndView("medioDurable");
+		
+		MedioDurable medioDurable = medioDurableService.buscarMedioDurable(idMedioDurable);
+		
+		medioDurableService.eliminar(medioDurable);
+		
+		MedioDurable medioDurableVacio = new MedioDurable(0, medioDurable.getCartaPorte(), null, 0, "");
+		modelo.addObject("medioDurable", medioDurableVacio);
+		
+		modelo.addObject("listaMediosDurables", medioDurableService.listarMediosDurables(medioDurable.getCartaPorte()));		
+		modelo.addObject("listaTiposMediosDurables", tipoMedioDurableService.listarTiposMediosDurablesAgencia(medioDurable.getCartaPorte().getAgencia()));
+				
+		return modelo;		
 	}
 	
 }

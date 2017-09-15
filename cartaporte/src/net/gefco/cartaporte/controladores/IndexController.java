@@ -112,7 +112,6 @@ public class IndexController {
 				if(Encriptacion.encriptar(password).equalsIgnoreCase(usuarioAspirante.getUsua_password())){
 				
 					model.addAttribute("usuarioSesion", usuarioAspirante);
-					//Poner el maxinactiveinterval en XML
 					
 				}else{				
 					jsMensajeLogin = gson.toJsonTree("Error. Password incorrecto.");				

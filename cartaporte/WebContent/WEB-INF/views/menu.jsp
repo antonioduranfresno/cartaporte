@@ -8,7 +8,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="cartaPortePendienteLista">CARTAS DE PORTE</a>
+                <a class="navbar-brand" href="cartaPortePendienteLista">
+                	<img src="res/img/bg/gefco.png">
+                </a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right" >            		
@@ -65,6 +67,9 @@
                                 </li>
                                 <li>
                                     <a href="camionLista"><i class="fa fa-truck fa-fw"></i> Camiones</a>
+                                </li>
+                                <li>
+                                    <a href="tipoMedioDurableLista"><i class="fa fa-industry fa-fw"></i> Tipos MD</a>
                                 </li>
                             </ul>                          
                         </li>    

@@ -47,7 +47,6 @@ public class CartaPorteService {
 	public List<CartaPorte> listarCartasPendientesRuta(String secuenciaRuta){
 		return cartaPorteDao.listarCartasPendientesRuta(secuenciaRuta);
 	}
-	
 
 	public String calculaNumeroCarta(Agencia agencia, Integer anyo){
 				
