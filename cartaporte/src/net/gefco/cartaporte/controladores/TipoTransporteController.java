@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
@@ -97,25 +98,17 @@ public class TipoTransporteController {
 	}
 	
 	@RequestMapping(value = "/tipoTransporteLista&id={idTipo}/eliminar", method = RequestMethod.POST)
+	@ResponseBody
 	public String eliminarDeLista(@PathVariable("idTipo") Integer idTipo){
 		
 		TipoTransporte tipoTransporte = tipoTransporteService.buscarTipoTransporteId(idTipo);
 		
-		tipoTransporteService.eliminar(tipoTransporte);
-		
-		return "tipoTransporteLista";
+		try{			
+			tipoTransporteService.eliminar(tipoTransporte);			
+			return "ok";			
+		}catch(Exception e){			
+			return "error";			
+		}
 	}
-	
-	/*Ya no se usa
-	@RequestMapping(value = "/tipoTransporte", method = RequestMethod.POST, params="action=Eliminar")
-	public String eliminar(Model model, @ModelAttribute("tipoTransporte") TipoTransporte tipoTransporte ){
-		
-		//Faltaría ver en qué casos no se podría eliminar (relaciones)
-		tipoTransporteService.eliminar(tipoTransporte);
-		
-		return "redirect:/tiposTransporte?success=true";
-		
-	}
-	*/
 	
 }

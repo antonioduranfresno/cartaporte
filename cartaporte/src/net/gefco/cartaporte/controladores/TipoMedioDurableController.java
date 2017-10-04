@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
@@ -100,13 +101,17 @@ public class TipoMedioDurableController {
 	}
 	
 	@RequestMapping(value = "/tipoMedioDurableLista&id={id}/eliminar", method = RequestMethod.POST)
+	@ResponseBody
 	public String eliminarDeLista(@PathVariable("id") Integer id){
 		
 		TipoMedioDurable tipoMedioDurable = tipoMedioDurableService.buscarTipoMedioDurable(id);
 		
-		tipoMedioDurableService.eliminar(tipoMedioDurable);
-		
-		return "tipoMedioDurableLista";
+		try{
+			tipoMedioDurableService.eliminar(tipoMedioDurable);
+			return "ok";			
+		}catch(Exception e){			
+			return "error";			
+		}
 	}
 
 }

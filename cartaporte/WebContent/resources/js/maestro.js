@@ -1,5 +1,4 @@
-
-﻿function eliminar(id, objeto){
+function eliminar(id, objeto){
 		
 	if(id!=""){
 		if(confirm("¿Desea eliminar el registro?")){
@@ -8,10 +7,15 @@
 				type	 	: "post",
 				url      	: objeto+"Lista&id="+id+"/eliminar",
 				data 	 	: {}		
-			}).done(function (data) {				
-				$(location).attr('href',objeto+'Lista?success=true');
+			}).done(function (data) {
+				if(data=="ok"){
+					$(location).attr('href',objeto+'Lista?success=true');	
+				}else{
+					alert("No se puede eliminar");
+				}
+				
 			}).fail(function (jqXHR, textStatus) {
-			    console.log("Error: "+textStatus);
+			    console.log("Error: "+textStatus);				
 			});
 			
 		}			
@@ -20,4 +24,3 @@
 	}
 
 }
-
