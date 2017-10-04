@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cartaporte" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2734bda7-3457-4187-9632-00101687d57b">
-	<property name="ireport.zoom" value="0.9313819845887331"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="203"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="IdCartaPorte" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -131,15 +131,15 @@ WHERE
 				<imageExpression><![CDATA[$P{rutaImagenes}+"\\BV ISO_9001.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="14" y="52" width="63" height="18" forecolor="#000000" uuid="6ae0f0df-88b8-471f-9d3a-8da431cb6daa"/>
+				<reportElement x="14" y="52" width="45" height="18" forecolor="#000000" uuid="6ae0f0df-88b8-471f-9d3a-8da431cb6daa"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Precinto]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="77" y="52" width="155" height="18" uuid="a7a0412d-a5b7-4080-9b2d-1212443b1671"/>
-				<box leftPadding="7">
+				<reportElement x="59" y="52" width="151" height="18" uuid="a7a0412d-a5b7-4080-9b2d-1212443b1671"/>
+				<box leftPadding="2">
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement verticalAlignment="Bottom" markup="html">
@@ -155,8 +155,8 @@ WHERE
 				<text><![CDATA[CARTA DE PORTE]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="393" y="52" width="162" height="18" uuid="02b3a1d6-fe48-4f29-954c-407e1ab01f03"/>
-				<box leftPadding="7">
+				<reportElement x="399" y="52" width="156" height="18" uuid="02b3a1d6-fe48-4f29-954c-407e1ab01f03"/>
+				<box leftPadding="2">
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement verticalAlignment="Bottom" markup="html">
@@ -165,15 +165,15 @@ WHERE
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_numeroCarta}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="337" y="52" width="45" height="18" forecolor="#000000" uuid="160c28f5-16b7-4098-b9a1-cef17bd1d6e4"/>
+				<reportElement x="356" y="52" width="45" height="18" forecolor="#000000" uuid="160c28f5-16b7-4098-b9a1-cef17bd1d6e4"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Número]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="151" y="72" width="204" height="18" uuid="df834970-1a16-462f-8ba9-eab40247dd4d"/>
-				<box>
+				<reportElement x="110" y="72" width="245" height="18" uuid="df834970-1a16-462f-8ba9-eab40247dd4d"/>
+				<box leftPadding="2">
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement verticalAlignment="Bottom" markup="html">
@@ -182,22 +182,22 @@ WHERE
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_razonSocialCompania}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="14" y="72" width="137" height="18" forecolor="#000000" uuid="6472378e-d220-4d9f-810a-8fe7568feeba"/>
+				<reportElement x="14" y="72" width="96" height="18" forecolor="#000000" uuid="6472378e-d220-4d9f-810a-8fe7568feeba"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Compañía de transporte]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="14" y="92" width="137" height="18" forecolor="#000000" uuid="2d1e51a1-a5d1-4fde-bd88-5e40dbb216be"/>
+				<reportElement x="14" y="92" width="96" height="18" forecolor="#000000" uuid="2d1e51a1-a5d1-4fde-bd88-5e40dbb216be"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Domicilio social]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="151" y="92" width="404" height="18" uuid="67720bb6-9611-4cf2-b6ec-05da79f8db7f"/>
-				<box>
+				<reportElement x="110" y="92" width="445" height="18" uuid="67720bb6-9611-4cf2-b6ec-05da79f8db7f"/>
+				<box leftPadding="2">
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement verticalAlignment="Bottom" markup="html">
@@ -206,15 +206,15 @@ WHERE
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_domicilioCompania}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="14" y="112" width="137" height="18" forecolor="#000000" uuid="11512a14-a73b-4b74-8f10-bd6ce80340bb"/>
+				<reportElement x="14" y="112" width="96" height="18" forecolor="#000000" uuid="11512a14-a73b-4b74-8f10-bd6ce80340bb"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Transportista efectivo	]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="151" y="112" width="204" height="18" uuid="525bdb57-373d-406e-b0b3-81c8d592bd0d"/>
-				<box>
+				<reportElement x="110" y="112" width="245" height="18" uuid="525bdb57-373d-406e-b0b3-81c8d592bd0d"/>
+				<box leftPadding="2">
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement verticalAlignment="Bottom" markup="html">
@@ -223,15 +223,15 @@ WHERE
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_razonSocialCompaniaEfectiva}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="14" y="132" width="137" height="18" forecolor="#000000" uuid="0849f25d-f274-4452-801b-3148ee312ec4"/>
+				<reportElement x="14" y="132" width="96" height="18" forecolor="#000000" uuid="0849f25d-f274-4452-801b-3148ee312ec4"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Domicilio social]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="151" y="132" width="404" height="18" uuid="5ba2fed8-1a1a-4ff5-aa2b-f2b14362631e"/>
-				<box>
+				<reportElement x="110" y="132" width="445" height="18" uuid="5ba2fed8-1a1a-4ff5-aa2b-f2b14362631e"/>
+				<box leftPadding="2">
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement verticalAlignment="Bottom" markup="html">
@@ -240,8 +240,8 @@ WHERE
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_domicilioCompaniaEfectiva}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="77" y="179" width="74" height="18" uuid="2a679804-9f33-47eb-832a-5120aefd0f50"/>
-				<box>
+				<reportElement x="110" y="172" width="80" height="22" uuid="2a679804-9f33-47eb-832a-5120aefd0f50"/>
+				<box leftPadding="2">
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement verticalAlignment="Bottom" markup="html">
@@ -250,23 +250,22 @@ WHERE
 				<textFieldExpression><![CDATA[$F{conductor_cond_carne}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="14" y="172" width="63" height="25" forecolor="#000000" uuid="fc09ed22-a8f9-4a7d-8b81-3adb08c53e0d"/>
+				<reportElement x="14" y="172" width="96" height="22" forecolor="#000000" uuid="fc09ed22-a8f9-4a7d-8b81-3adb08c53e0d"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Carnet de
-conducir nº]]></text>
+				<text><![CDATA[Carnet de conducir nº]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="14" y="152" width="63" height="18" forecolor="#000000" uuid="f5cc6f43-e8db-4dee-8fdf-4fda2699b1c9"/>
+				<reportElement x="14" y="152" width="96" height="18" forecolor="#000000" uuid="f5cc6f43-e8db-4dee-8fdf-4fda2699b1c9"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Conductor]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="77" y="152" width="235" height="18" uuid="7b3ece01-27f6-42b4-a7f5-aff9075258bb"/>
-				<box>
+				<reportElement x="110" y="152" width="204" height="18" uuid="7b3ece01-27f6-42b4-a7f5-aff9075258bb"/>
+				<box leftPadding="2">
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement verticalAlignment="Bottom" markup="html">
@@ -275,25 +274,25 @@ conducir nº]]></text>
 				<textFieldExpression><![CDATA[$F{conductor_cond_nombre}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
-				<reportElement x="203" y="179" width="63" height="18" uuid="1a737885-76dc-4bdc-9891-3c1e8c87266d"/>
+				<reportElement x="254" y="172" width="60" height="22" uuid="1a737885-76dc-4bdc-9891-3c1e8c87266d"/>
 				<box>
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
-				<textElement verticalAlignment="Bottom" markup="html">
+				<textElement textAlignment="Center" verticalAlignment="Bottom" markup="html">
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{conductor_cond_fechaExpedicion}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="160" y="172" width="39" height="25" forecolor="#000000" uuid="9937f74e-95a2-4b48-86ae-8bce5d34fa80"/>
+				<reportElement x="194" y="172" width="60" height="22" forecolor="#000000" uuid="9937f74e-95a2-4b48-86ae-8bce5d34fa80"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Expedido]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="328" y="179" width="61" height="18" uuid="d7ec521b-f872-40ef-a263-82f6c551bed1"/>
-				<box>
+				<reportElement x="378" y="172" width="50" height="22" uuid="d7ec521b-f872-40ef-a263-82f6c551bed1"/>
+				<box leftPadding="2">
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement verticalAlignment="Bottom" markup="html">
@@ -302,15 +301,15 @@ conducir nº]]></text>
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_matriculaTractora}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="273" y="172" width="55" height="25" forecolor="#000000" uuid="3941ee5f-16bf-4e1e-8a2e-762913dadd19"/>
+				<reportElement x="322" y="172" width="53" height="22" forecolor="#000000" uuid="3941ee5f-16bf-4e1e-8a2e-762913dadd19"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Matrícula tractora]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="470" y="179" width="84" height="18" uuid="0f5f8d0b-9311-4cc1-8c0e-76cfdf6c350c"/>
-				<box>
+				<reportElement x="505" y="172" width="50" height="22" uuid="0f5f8d0b-9311-4cc1-8c0e-76cfdf6c350c"/>
+				<box leftPadding="2">
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement verticalAlignment="Bottom" markup="html">
@@ -319,22 +318,22 @@ conducir nº]]></text>
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_matriculaRemolque}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="399" y="172" width="67" height="25" forecolor="#000000" uuid="f4370e97-1dd9-427a-aa1d-e4746836323f"/>
+				<reportElement x="434" y="172" width="67" height="22" forecolor="#000000" uuid="f4370e97-1dd9-427a-aa1d-e4746836323f"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Remolque / Semiremolque]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="325" y="200" width="46" height="18" forecolor="#000000" uuid="25751e58-0d25-47d1-acb4-9e53d57da76d"/>
+				<reportElement x="194" y="196" width="60" height="18" forecolor="#000000" uuid="25751e58-0d25-47d1-acb4-9e53d57da76d"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Destino]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="371" y="200" width="184" height="18" uuid="9de8d14b-8dc6-4d84-891e-9daf18cb1603"/>
-				<box>
+				<reportElement x="254" y="196" width="301" height="18" uuid="9de8d14b-8dc6-4d84-891e-9daf18cb1603"/>
+				<box leftPadding="2">
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement verticalAlignment="Bottom" markup="html">
@@ -343,8 +342,8 @@ conducir nº]]></text>
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_provincia}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="77" y="200" width="235" height="18" uuid="666b71f5-a2d4-45b6-95f2-ff7c12be642a"/>
-				<box>
+				<reportElement x="110" y="196" width="80" height="18" uuid="666b71f5-a2d4-45b6-95f2-ff7c12be642a"/>
+				<box leftPadding="2">
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement verticalAlignment="Bottom" markup="html">
@@ -353,15 +352,15 @@ conducir nº]]></text>
 				<textFieldExpression><![CDATA[$F{agencia_agen_nombre}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="14" y="200" width="63" height="18" forecolor="#000000" uuid="919fc3d4-8fcb-4667-976f-bff93cc2915f"/>
+				<reportElement x="14" y="196" width="86" height="18" forecolor="#000000" uuid="919fc3d4-8fcb-4667-976f-bff93cc2915f"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Origen]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="110" y="220" width="445" height="18" uuid="8d1dfb40-579f-4ef9-8c5b-40c9a58ac902"/>
-				<box>
+				<reportElement x="110" y="216" width="80" height="18" uuid="8d1dfb40-579f-4ef9-8c5b-40c9a58ac902"/>
+				<box leftPadding="2">
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement verticalAlignment="Bottom" markup="html">
@@ -370,8 +369,8 @@ conducir nº]]></text>
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_destinatario}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="110" y="240" width="445" height="18" uuid="c20f88e1-7e8e-4149-83d9-0199440ca3bd"/>
-				<box>
+				<reportElement x="254" y="216" width="301" height="18" uuid="c20f88e1-7e8e-4149-83d9-0199440ca3bd"/>
+				<box leftPadding="2">
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement verticalAlignment="Bottom" markup="html">
@@ -380,21 +379,21 @@ conducir nº]]></text>
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_direccion}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="14" y="240" width="86" height="18" forecolor="#000000" uuid="43ed69a7-cd39-4c0b-8de2-e3fc1ec43810"/>
+				<reportElement x="194" y="216" width="60" height="18" forecolor="#000000" uuid="43ed69a7-cd39-4c0b-8de2-e3fc1ec43810"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Domicilio social]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="14" y="220" width="86" height="18" forecolor="#000000" uuid="a419a381-bc20-4859-8fac-fcd2842733b1"/>
+				<reportElement x="14" y="216" width="86" height="18" forecolor="#000000" uuid="a419a381-bc20-4859-8fac-fcd2842733b1"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Destinatario (1)]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="399" y="152" width="155" height="18" uuid="da7d386d-4f17-457c-8a7f-67a2a8d8539a"/>
+				<reportElement x="399" y="152" width="156" height="18" uuid="da7d386d-4f17-457c-8a7f-67a2a8d8539a"/>
 				<box>
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
@@ -411,92 +410,92 @@ conducir nº]]></text>
 				<text><![CDATA[Teléfono vehículo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="97" y="262" width="52" height="18" forecolor="#000000" uuid="eb27dbdb-2eba-4dc8-8a5d-c3535baa8efb"/>
+				<reportElement x="240" y="244" width="52" height="18" forecolor="#000000" uuid="eb27dbdb-2eba-4dc8-8a5d-c3535baa8efb"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Fecha salida]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
-				<reportElement x="153" y="262" width="54" height="18" uuid="40967093-6bd4-48d4-8434-1b963b41fb18"/>
+				<reportElement x="300" y="244" width="65" height="18" uuid="40967093-6bd4-48d4-8434-1b963b41fb18"/>
 				<box>
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Bottom" markup="html">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_fechaSalida}]]></textFieldExpression>
 			</textField>
 			<textField pattern="HH:mm" isBlankWhenNull="true">
-				<reportElement x="62" y="262" width="29" height="18" uuid="c7b1efda-fddb-4867-8dcb-f3bf80b0f1f2"/>
+				<reportElement x="133" y="245" width="44" height="18" uuid="c7b1efda-fddb-4867-8dcb-f3bf80b0f1f2"/>
 				<box>
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Bottom" markup="html">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_fechaSalida}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="14" y="262" width="46" height="18" forecolor="#000000" uuid="afa20a56-6542-463d-8aa8-a90cb18d0d78"/>
+				<reportElement x="70" y="244" width="62" height="18" forecolor="#000000" uuid="afa20a56-6542-463d-8aa8-a90cb18d0d78"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Hora salida]]></text>
 			</staticText>
 			<textField pattern="HH:mm" isBlankWhenNull="true">
-				<reportElement x="275" y="262" width="29" height="18" uuid="291ef1cf-8284-4bea-aef5-4fdc0ff17c18"/>
+				<reportElement x="133" y="266" width="44" height="18" uuid="291ef1cf-8284-4bea-aef5-4fdc0ff17c18"/>
 				<box>
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Bottom" markup="html">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_fechaLlegada}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
-				<reportElement x="369" y="262" width="54" height="18" uuid="a14a8194-d040-4131-8d8b-c43d6eceb5de"/>
+				<reportElement x="300" y="265" width="65" height="18" uuid="a14a8194-d040-4131-8d8b-c43d6eceb5de"/>
 				<box>
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Bottom" markup="html">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_fechaLlegada}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="310" y="262" width="53" height="18" forecolor="#000000" uuid="6a396e75-0782-4080-b8b1-b0392ab7b2e1"/>
+				<reportElement x="240" y="265" width="53" height="18" forecolor="#000000" uuid="6a396e75-0782-4080-b8b1-b0392ab7b2e1"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Fecha llegada]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="221" y="262" width="49" height="18" forecolor="#000000" uuid="652fc1f6-ce52-4d17-a9e1-9fb0b86e6422"/>
+				<reportElement x="70" y="266" width="62" height="18" forecolor="#000000" uuid="652fc1f6-ce52-4d17-a9e1-9fb0b86e6422"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Hora llegada]]></text>
 			</staticText>
 			<textField pattern="#,##0.00" isBlankWhenNull="true">
-				<reportElement x="494" y="262" width="60" height="18" uuid="fc8af0eb-c41b-4bc0-9300-43b3c524288c"/>
+				<reportElement x="492" y="266" width="60" height="18" uuid="fc8af0eb-c41b-4bc0-9300-43b3c524288c"/>
 				<box>
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Bottom" markup="html">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Calibri" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_importe}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="434" y="262" width="60" height="18" forecolor="#000000" uuid="17d3ce6e-b7b4-425f-abee-48a4f6833231"/>
+				<reportElement x="432" y="266" width="60" height="18" forecolor="#000000" uuid="17d3ce6e-b7b4-425f-abee-48a4f6833231"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ARRASTRE (€)]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="356" y="72" width="189" height="18" uuid="81b7edf5-9402-4895-b3d0-a1efce679c4f"/>
+				<reportElement x="356" y="72" width="199" height="18" uuid="81b7edf5-9402-4895-b3d0-a1efce679c4f"/>
 				<box>
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
@@ -506,7 +505,7 @@ conducir nº]]></text>
 				<textFieldExpression><![CDATA["CIF. " + $F{cartaporte_capo_cifCompania}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="356" y="112" width="189" height="18" uuid="6fc056d1-cbe3-414a-9a80-5f53f0dead34"/>
+				<reportElement x="356" y="112" width="199" height="18" uuid="6fc056d1-cbe3-414a-9a80-5f53f0dead34"/>
 				<box>
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
@@ -515,6 +514,12 @@ conducir nº]]></text>
 				</textElement>
 				<textFieldExpression><![CDATA["CIF." + $F{cartaporte_capo_cifCompaniaEfectiva}]]></textFieldExpression>
 			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="15" y="247" width="539" height="39" uuid="eec69695-34fd-4f68-b0b9-8583a3678c6a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+				</graphicElement>
+			</rectangle>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -523,7 +528,7 @@ conducir nº]]></text>
 	<detail>
 		<band height="287" splitType="Stretch">
 			<subreport>
-				<reportElement isPrintRepeatedValues="false" x="32" y="10" width="511" height="129" uuid="72f96887-7b77-4b9b-8d4a-0326ee83a5bf">
+				<reportElement isPrintRepeatedValues="false" x="14" y="10" width="540" height="129" uuid="72f96887-7b77-4b9b-8d4a-0326ee83a5bf">
 					<printWhenExpression><![CDATA[$P{mostrarMercancia}]]></printWhenExpression>
 				</reportElement>
 				<subreportParameter name="IdCartaPorte">
@@ -545,7 +550,7 @@ conducir nº]]></text>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "\\CartaPorte_mercancia.jasper"]]></subreportExpression>
 			</subreport>
 			<subreport>
-				<reportElement isPrintRepeatedValues="false" x="32" y="139" width="511" height="145" uuid="8a1b5772-fb1f-45fd-9c70-768ff784618c">
+				<reportElement isPrintRepeatedValues="false" x="14" y="139" width="540" height="145" uuid="8a1b5772-fb1f-45fd-9c70-768ff784618c">
 					<printWhenExpression><![CDATA[$P{mostrarMediosDurables}]]></printWhenExpression>
 				</reportElement>
 				<subreportParameter name="IdCartaPorte">

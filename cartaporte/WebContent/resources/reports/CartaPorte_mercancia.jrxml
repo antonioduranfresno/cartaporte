@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cartaPorte_mercancia" pageWidth="500" pageHeight="121" columnWidth="500" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="2734bda7-3457-4187-9632-00101687d57b">
-	<property name="ireport.zoom" value="2.3579476910000228"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cartaPorte_mercancia" pageWidth="540" pageHeight="121" columnWidth="540" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="2734bda7-3457-4187-9632-00101687d57b">
+	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
@@ -49,7 +49,7 @@ WHERE mercancia.cartaporte = $P{IdCartaPorte} ORDER BY mercancia.id;]]>
 				<text><![CDATA[ENTREGA DIRECTA DE MERCANCÍAS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="266" y="0" width="230" height="12" forecolor="#000000" uuid="56555488-bbb7-4345-b76b-1bdb2e43114f"/>
+				<reportElement x="266" y="0" width="270" height="12" forecolor="#000000" uuid="56555488-bbb7-4345-b76b-1bdb2e43114f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
@@ -62,20 +62,20 @@ WHERE mercancia.cartaporte = $P{IdCartaPorte} ORDER BY mercancia.id;]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="13" width="500" height="1" uuid="4b14adf0-632e-4fff-b082-c23e53832d8a"/>
+				<reportElement x="0" y="13" width="540" height="1" uuid="4b14adf0-632e-4fff-b082-c23e53832d8a"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="7" y="15" width="184" height="12" uuid="6ddf10a8-0dc6-4135-bd34-5fc886c7480e"/>
+				<reportElement x="1" y="15" width="190" height="12" uuid="6ddf10a8-0dc6-4135-bd34-5fc886c7480e"/>
 				<textElement textAlignment="Center">
 					<font fontName="Calibri" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{Cabecera1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="192" y="15" width="70" height="12" uuid="e78bb4f1-f95b-4301-bf20-c0bd747a0ef6"/>
+				<reportElement x="192" y="15" width="72" height="12" uuid="e78bb4f1-f95b-4301-bf20-c0bd747a0ef6"/>
 				<textElement textAlignment="Center">
 					<font fontName="Calibri" size="9"/>
 				</textElement>
@@ -88,14 +88,14 @@ WHERE mercancia.cartaporte = $P{IdCartaPorte} ORDER BY mercancia.id;]]>
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="266" y="15" width="70" height="12" uuid="386afbbe-751c-4d24-aa79-4d614cc85153"/>
+				<reportElement x="268" y="15" width="67" height="12" uuid="386afbbe-751c-4d24-aa79-4d614cc85153"/>
 				<textElement textAlignment="Center">
 					<font fontName="Calibri" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{Cabecera3}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="336" y="15" width="160" height="12" uuid="a3c5fd50-450a-4794-b21d-9097c0a2c09c"/>
+				<reportElement x="336" y="15" width="200" height="12" uuid="a3c5fd50-450a-4794-b21d-9097c0a2c09c"/>
 				<textElement textAlignment="Center">
 					<font fontName="Calibri" size="9"/>
 				</textElement>
@@ -108,7 +108,7 @@ WHERE mercancia.cartaporte = $P{IdCartaPorte} ORDER BY mercancia.id;]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="28" width="500" height="1" uuid="e1030f6e-346f-4db8-bf43-d16d8887a864"/>
+				<reportElement x="0" y="28" width="540" height="1" uuid="e1030f6e-346f-4db8-bf43-d16d8887a864"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -120,13 +120,13 @@ WHERE mercancia.cartaporte = $P{IdCartaPorte} ORDER BY mercancia.id;]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="499" y="0" width="1" height="28" uuid="966e7dc6-a159-42b1-933e-d3258806fc1e"/>
+				<reportElement x="539" y="0" width="1" height="28" uuid="966e7dc6-a159-42b1-933e-d3258806fc1e"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="0" width="500" height="1" uuid="f6b81c2c-c474-43ae-8be7-5220a719e9e8"/>
+				<reportElement x="0" y="0" width="540" height="1" uuid="f6b81c2c-c474-43ae-8be7-5220a719e9e8"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -139,30 +139,30 @@ WHERE mercancia.cartaporte = $P{IdCartaPorte} ORDER BY mercancia.id;]]>
 	<detail>
 		<band height="12" splitType="Stretch">
 			<line>
-				<reportElement x="0" y="11" width="500" height="1" uuid="fc9e0f0c-8ca7-43af-ac9c-f51f320cd4aa"/>
+				<reportElement x="0" y="11" width="540" height="1" uuid="fc9e0f0c-8ca7-43af-ac9c-f51f320cd4aa"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="7" y="0" width="184" height="10" uuid="f4786f38-d4cb-46a7-a7c3-ec474ed6aefb"/>
-				<box bottomPadding="1"/>
+				<reportElement x="1" y="0" width="190" height="10" uuid="f4786f38-d4cb-46a7-a7c3-ec474ed6aefb"/>
+				<box leftPadding="5" bottomPadding="1"/>
 				<textElement>
 					<font fontName="Calibri" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{mercancia_merc_campo1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="202" y="0" width="62" height="10" uuid="093e98f6-c307-4751-bb66-3e282d3758ab"/>
-				<box bottomPadding="1"/>
+				<reportElement x="192" y="0" width="72" height="10" uuid="093e98f6-c307-4751-bb66-3e282d3758ab"/>
+				<box leftPadding="5" bottomPadding="1"/>
 				<textElement>
 					<font fontName="Calibri" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{mercancia_merc_campo2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="346" y="0" width="150" height="10" uuid="bf6c485b-803e-49e8-85c9-387b356d1072"/>
-				<box bottomPadding="1"/>
+				<reportElement x="336" y="0" width="200" height="10" uuid="bf6c485b-803e-49e8-85c9-387b356d1072"/>
+				<box leftPadding="5" bottomPadding="1"/>
 				<textElement>
 					<font fontName="Calibri" size="8"/>
 				</textElement>
@@ -193,7 +193,7 @@ WHERE mercancia.cartaporte = $P{IdCartaPorte} ORDER BY mercancia.id;]]>
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true" pattern="#,##0.00">
-				<reportElement x="268" y="0" width="56" height="10" uuid="7b3ab681-29a5-4f8d-9323-f7be6a2738a6"/>
+				<reportElement x="268" y="0" width="59" height="10" uuid="7b3ab681-29a5-4f8d-9323-f7be6a2738a6"/>
 				<box bottomPadding="1"/>
 				<textElement textAlignment="Right">
 					<font fontName="Calibri" size="8"/>
@@ -201,7 +201,7 @@ WHERE mercancia.cartaporte = $P{IdCartaPorte} ORDER BY mercancia.id;]]>
 				<textFieldExpression><![CDATA[$F{mercancia_merc_campo3}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="499" y="0" width="1" height="12" uuid="66f007bd-0a65-4a7b-8a4c-4422de4af504"/>
+				<reportElement x="539" y="0" width="1" height="12" uuid="66f007bd-0a65-4a7b-8a4c-4422de4af504"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -211,33 +211,33 @@ WHERE mercancia.cartaporte = $P{IdCartaPorte} ORDER BY mercancia.id;]]>
 	<columnFooter>
 		<band height="19" splitType="Stretch">
 			<textField isStretchWithOverflow="true" pattern="#,##0.00">
-				<reportElement x="268" y="2" width="56" height="16" uuid="075aa35f-70c2-464d-8ee0-b6c7610688b4"/>
+				<reportElement x="271" y="1" width="56" height="13" uuid="075aa35f-70c2-464d-8ee0-b6c7610688b4"/>
 				<textElement textAlignment="Right">
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{sumaCampo3}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="266" y="0" width="1" height="18" uuid="38f0aed2-4f4a-4aba-a53c-a785b14ca86b"/>
+				<reportElement x="266" y="0" width="1" height="15" uuid="38f0aed2-4f4a-4aba-a53c-a785b14ca86b"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="335" y="0" width="1" height="18" uuid="d87d1e9c-8d7a-4edc-8df3-d2d85f0ba33e"/>
+				<reportElement x="335" y="0" width="1" height="15" uuid="d87d1e9c-8d7a-4edc-8df3-d2d85f0ba33e"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="228" y="2" width="33" height="16" forecolor="#000000" uuid="31ba70d4-e4a8-4f97-9123-2302b39db576"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="10" isBold="false"/>
+				<reportElement x="225" y="1" width="36" height="13" forecolor="#000000" uuid="31ba70d4-e4a8-4f97-9123-2302b39db576"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<line>
-				<reportElement x="266" y="17" width="70" height="1" uuid="ae1f9df1-c12b-418f-b621-961c5851fca0"/>
+				<reportElement x="266" y="14" width="70" height="1" uuid="ae1f9df1-c12b-418f-b621-961c5851fca0"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
