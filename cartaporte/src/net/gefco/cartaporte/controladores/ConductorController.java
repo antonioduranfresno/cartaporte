@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
@@ -118,25 +119,18 @@ public class ConductorController {
 	}
 	
 	@RequestMapping(value = "/conductorLista&id={id}/eliminar", method = RequestMethod.POST)
+	@ResponseBody
 	public String eliminarDeLista(@PathVariable("id") Integer id){
 		
 		Conductor conductor = conductorService.buscarConductor(id);
 		
-		conductorService.eliminar(conductor);
-		
-		return "conductorLista";
+		try{
+			conductorService.eliminar(conductor);
+			return "ok";			
+		}catch(Exception e){			
+			return "error";			
+		}
 	}
-	
-	/*Ya no se usa
-	@RequestMapping(value = "/conductor", method = RequestMethod.POST, params="action=Eliminar")
-	public String eliminar(Model model, @ModelAttribute("conductor") Conductor conductor ){
-		
-		//Faltaría ver en qué casos no se podría eliminar (relaciones)
-		conductorService.eliminar(conductor);
-		
-		return "redirect:/conductores?success=true";
-		
-	}
-	*/
+
 	
 }
