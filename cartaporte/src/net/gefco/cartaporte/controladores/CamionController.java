@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
@@ -109,13 +110,17 @@ public class CamionController {
 	}
 	
 	@RequestMapping(value = "/camionLista&id={idCamion}/eliminar", method = RequestMethod.POST)
+	@ResponseBody
 	public String eliminarDeLista(@PathVariable("idCamion") Integer idCamion){
 		
 		Camion camion = camionService.buscarCamion(idCamion);
 		
-		camionService.eliminar(camion);
-		
-		return "camionLista";
+		try{
+			camionService.eliminar(camion);	
+			return "ok";			
+		}catch(Exception e){			
+			return "error";			
+		}		
 	}
 	
 	

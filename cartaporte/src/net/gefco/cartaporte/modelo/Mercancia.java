@@ -34,7 +34,6 @@ public class Mercancia implements Serializable{
 	@NotEmpty
 	private String				merc_campo1		= null;
 	
-	@NotEmpty
 	private String				merc_campo2		= null;
 	
 	@NotNull	

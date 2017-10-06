@@ -108,7 +108,7 @@ public class CartaPorteDaoImpl implements CartaPorteDao{
 		query.setParameter("anyo", anyo);
 		
 		if(query.list().size()==0){
-			return 1;
+			return 0;
 		}else{			
 			return new Integer(query.list().get(0).toString());
 		}
