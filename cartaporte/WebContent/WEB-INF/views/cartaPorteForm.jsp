@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="net.gefco.cartaporte.modelo.Usuario"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
@@ -24,6 +25,8 @@
 
 <body>
 
+	<% Usuario usuario = (Usuario) session.getAttribute("usuarioSesion"); %>
+
     <div id="wrapper">
 
 		<jsp:include page="menu.jsp"/>
@@ -39,14 +42,16 @@
            <ul class="nav nav-tabs">
 			  <li class="active"><a data-toggle="tab" href="#divCartaPorte">Información</a></li>
 			  <li class="disabled disabledTab" id="tabMercancia"><a data-toggle="tab" href="#divMercancia">Mercancía</a></li>
+			  <% if (usuario.getAgencia().getAgen_mediosDurables()){ %>
 			  <li><a data-toggle="tab" href="#divMediosDurables" >Medios durables</a></li>
+			  <%} %>
 		   </ul>    
 		   
 		   <div class="tab-content">
            
 		   <div id="divCartaPorte" class="tab-pane fade in active">
 		   
-	           <sf:form method="post" modelAttribute="cartaPorte" >
+	           <sf:form method="post" modelAttribute="cartaPorte"  >
 						
 					<sf:input type="hidden" path="id" value="${cartaPorte.id}" />
 					<sf:input type="hidden" path="agencia.id" value="${cartaPorte.agencia.id}" />
@@ -56,7 +61,7 @@
 			        	<div class="col-sm-4">
 			        		<label>Precinto</label>
 			        		<sf:errors path="capo_precinto" class="label label-danger"></sf:errors>
-			        		<sf:input class="form-control" path="capo_precinto" value="${cartaPorte.capo_precinto}" maxlength="45" />		        		
+			        		<sf:input class="form-control" path="capo_precinto" id="precinto" value="${cartaPorte.capo_precinto}" maxlength="45" />		        		
 			        	</div>
 						<div class="col-sm-4">
 			        		<label>Nº Carta</label>		        		
@@ -240,7 +245,7 @@
 				    		<input type="button" class="btn btn-danger" value="Eliminar" onclick='eliminar($("#id").val(),"cartaPortePendiente");'>
 				      	</div>      	
 					 	<div class="col-sm-2 derecha">			      		
-				      		<input type="submit" class="btn btn-primary" id="guardar" name="guardar" value="Aceptar" >
+				      		<input type="button" class="btn btn-primary" id="guardar" name="guardar" value="Aceptar" >
 				      	</div>      	
 				      	
 				    </div>				

@@ -97,6 +97,8 @@ public class Usuario implements Serializable{
 				+ ", agencia=" + agencia + "]";
 	}
 	
-	
+	public String toStringUsuario(){
+		return usua_matricula + " / " + agencia.getAgen_codigo();
+	}
 	
 }
