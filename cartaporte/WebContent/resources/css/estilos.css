@@ -259,3 +259,7 @@ input[readonly] {
 .disabledTab {
 	pointer-events: none;
 }
+
+.navbar-brand{
+	padding: 10px 15px;
+}

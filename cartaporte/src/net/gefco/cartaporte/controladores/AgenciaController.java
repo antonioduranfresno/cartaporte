@@ -3,6 +3,7 @@ package net.gefco.cartaporte.controladores;
 import javax.validation.Valid;
 
 import net.gefco.cartaporte.modelo.Agencia;
+import net.gefco.cartaporte.modelo.Usuario;
 import net.gefco.cartaporte.negocio.AgenciaService;
 import net.gefco.cartaporte.negocio.UOService;
 
@@ -33,13 +34,14 @@ public class AgenciaController {
 	@RequestMapping(value = "/agenciaLista", method = RequestMethod.GET)
 	public String lista(Model model, @ModelAttribute("agencia") Agencia agencia){		
 		
+		Usuario usuarioSesion = (Usuario) model.asMap().get("usuarioSesion");
+		
+		model.addAttribute("usuario", usuarioSesion);
 		model.addAttribute("listaAgencias", agenciaService.listarAgencias());
 					
 		return "agenciaLista";
 	}
 	
-	
-	//Tanto para crear nuevo Tipo como para visualizar existente; @RequestParam opcional 
 	@RequestMapping(value = "/agenciaForm", method = RequestMethod.GET)
 	public String mostrarFormulario(Model model, @RequestParam(value="idAgencia",required=false) Integer idAgencia){
 		
@@ -55,13 +57,14 @@ public class AgenciaController {
 		return "agenciaForm";
 	}
 	
-	//Tanto para crear uno nuevo como para editar uno existente
 	@RequestMapping(value = "/agenciaForm", method = RequestMethod.POST, params="action=Aceptar")
 	public String aceptar(Model model,@ModelAttribute("agencia") @Valid Agencia agencia, BindingResult result){
+	
 		if (agencia.getUo().getId() == 0 ) {
 			FieldError error = new FieldError("agencia", "uo.id", "Debe seleccionar la UO");
 			result.addError(error);
 		}
+		
 		if(result.hasErrors()){			
 			model.addAttribute("listaUos", uoService.listarUnidadesOperacionales());
 			return "agenciaForm";			

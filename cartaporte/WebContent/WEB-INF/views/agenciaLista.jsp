@@ -41,10 +41,11 @@
 					<tr class="info">
 						<th width="8%">Código</th>
 						<th width="17%">Nombre</th>						
-						<th width="16%">Copia Origen</th>
-						<th width="16%">Copia Destino</th>
-						<th width="17%">Copia Transportista</th>
-						<th width="16%">Copia Factura</th>
+						<th width="12%">C/ Origen</th>
+						<th width="12%">C/ Destino</th>
+						<th width="16%">C/ Transportista</th>
+						<th width="14%">C/ Factura</th>
+						<th width="7%">M.D.</th>
 						<th width="7%">Editar</th>
 						<th width="7%">Borrar</th>
 					</tr>
@@ -55,21 +56,26 @@
 				        <div class="alert alert-success">Cambios realizados correctamente.</div>
 				    </c:when>
 				</c:choose>	
+				
+				<c:set var="agenciaUsuario" value="${usuario.getAgencia().getAgen_codigo()}"/>
 							
 				<c:forEach items="${listaAgencias}" var="t" varStatus="index">
 			
-					<tr>
-						<td>${t.agen_codigo}</td>
-						<td>${t.agen_nombre}</td>						
-						<td>${t.agen_copiaOrigen ? 'Sí' : 'No'}</td>
-						<td>${t.agen_copiaDestino ? 'Sí' : 'No'}</td>
-						<td>${t.agen_copiaTransportista ? 'Sí' : 'No'}</td>
-						<td>${t.agen_copiaFactura ? 'Sí' : 'No'}</td>
-						
-						<td style="text-align: center;"><a href="agenciaForm?idAgencia=${t.id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>
-						<td style="text-align: center;"><a href="#" onclick="eliminar(${t.id},'agencia');" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a></td>
-					</tr>
-			
+					<c:set var="agenciaLista" value="${t.agen_codigo}"/>
+					
+					<c:if test="${agenciaUsuario == agenciaLista}">		
+						<tr>
+							<td>${t.agen_codigo}</td>
+							<td>${t.agen_nombre}</td>						
+							<td>${t.agen_copiaOrigen ? 'Sí' : 'No'}</td>
+							<td>${t.agen_copiaDestino ? 'Sí' : 'No'}</td>
+							<td>${t.agen_copiaTransportista ? 'Sí' : 'No'}</td>
+							<td>${t.agen_copiaFactura ? 'Sí' : 'No'}</td>
+							<td>${t.agen_mediosDurables ? 'Sí' : 'No'}</td>
+							<td style="text-align: center;"><a href="agenciaForm?idAgencia=${t.id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>
+							<td style="text-align: center;"><a href="#" onclick="eliminar(${t.id},'agencia');" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a></td>
+						</tr>
+					</c:if>
 				</c:forEach>
 			
 			</table>

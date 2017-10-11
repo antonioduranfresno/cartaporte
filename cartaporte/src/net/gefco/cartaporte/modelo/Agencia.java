@@ -41,6 +41,8 @@ public class Agencia implements Serializable{
 	private Boolean 			agen_copiaDestino		= null;
 	private Boolean 			agen_copiaTransportista	= null;
 	private Boolean 			agen_copiaFactura		= null;
+	
+	private Boolean				agen_mediosDurables		= null;
 
 	public Integer getId() {
 		return id;
@@ -112,6 +114,13 @@ public class Agencia implements Serializable{
 		this.agen_copiaFactura = agen_copiaFactura;
 	}
 	
+	public Boolean getAgen_mediosDurables() {
+		return agen_mediosDurables;
+	}
+	public void setAgen_mediosDurables(Boolean agen_mediosDurables) {
+		this.agen_mediosDurables = agen_mediosDurables;
+	}
+	
 	public Agencia() {
 		super();
 	}
@@ -124,7 +133,7 @@ public class Agencia implements Serializable{
 	public Agencia(Integer id, String agen_codigo, String agen_nombre, UO uo,
 			String agen_contacto, String agen_telefonoContacto,
 			Boolean agen_copiaOrigen, Boolean agen_copiaDestino,
-			Boolean agen_copiaTransportista, Boolean agen_copiaFactura) {
+			Boolean agen_copiaTransportista, Boolean agen_copiaFactura, Boolean agen_mediosDurables) {
 		super();
 		this.id = id;
 		this.agen_codigo = agen_codigo;
@@ -136,6 +145,7 @@ public class Agencia implements Serializable{
 		this.agen_copiaDestino = agen_copiaDestino;
 		this.agen_copiaTransportista = agen_copiaTransportista;
 		this.agen_copiaFactura = agen_copiaFactura;
+		this.agen_mediosDurables = agen_mediosDurables;
 	}
 	@Override
 	public String toString() {
@@ -144,7 +154,7 @@ public class Agencia implements Serializable{
 				+ ", agen_contacto=" + agen_contacto + ", agen_telefonoContacto=" + agen_telefonoContacto
 				+ ", agen_copiaOrigen=" + agen_copiaOrigen + ", agen_copiaDestino=" + agen_copiaDestino
 				+ ", agen_copiaTransportista=" + agen_copiaTransportista + ", agen_copiaFactura=" + agen_copiaFactura
-				+ "]";
+				+ ", agen_mediosDurables=" + agen_mediosDurables + "]";
 	}
 	
 	public String toStringCodigo(){		

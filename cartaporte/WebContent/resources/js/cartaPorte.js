@@ -225,3 +225,18 @@ function eliminarMercancia(id){
 	}
 
 }
+
+$("#guardar").click(function(){
+	
+	if($("#precinto").val()==""){
+		
+		if(confirm("No ha introducido número de Precinto. ¿Desea continuar?")){
+			$("#guardar").prop("type", "submit");
+		}
+		
+	}else{
+		$("#guardar").prop("type", "submit");
+	}
+	
+	
+});

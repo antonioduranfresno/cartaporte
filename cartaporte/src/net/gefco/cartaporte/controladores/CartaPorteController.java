@@ -287,19 +287,20 @@ public class CartaPorteController {
 	}
 	
 	//CONTROLAR EL ARGUMENTO DE VUELTA
-	
 	@RequestMapping(value = "/cartaPortePendienteLista&id={idCartaPorte}/eliminar", method = RequestMethod.POST)
+	@ResponseBody
 	public String eliminarDeLista(@PathVariable("idCartaPorte") Integer idCartaPorte){
 		
 		CartaPorte cartaPorte = cartaPorteService.buscarCartaPorte(idCartaPorte);
 		
-		cartaPorteService.eliminar(cartaPorte);
-		
-		return "cartaPortePendienteLista";
+		try{
+			cartaPorteService.eliminar(cartaPorte);	
+			return "ok";			
+		}catch(Exception e){
+			return "error";			
+		}		
 	}
 
-	//CONTROLAR EL ARGUMENTO DE VUELTA
-	
     @RequestMapping("/cartaPorteEmitidaLista")
     public String mostrarSeleccionCartasEmitidas(Model model, @ModelAttribute("listaIds") ArrayList<Integer> listaIds){
           
@@ -314,7 +315,6 @@ public class CartaPorteController {
     	}
     	
     	return "cartaPorteEmitidaLista";
-    
     }
 	
 	@SuppressWarnings("unchecked")
@@ -346,7 +346,13 @@ public class CartaPorteController {
 				parametros.put("mostrarMediosDurables", false);
 			}
 		    
-			String ruta 	= servletContext.getRealPath("/resources/reports/CartaPorte.jasper");
+			String ruta 	= null;
+			
+			if(agencia.getAgen_mediosDurables()){
+				ruta 	= servletContext.getRealPath("/resources/reports/CartaPorte.jasper");
+			}else{
+				ruta 	= servletContext.getRealPath("/resources/reports/CartaPorteReducida.jasper");
+			}
 			
 			JasperReport reporte = (JasperReport) JRLoader.loadObjectFromFile(ruta);
 			

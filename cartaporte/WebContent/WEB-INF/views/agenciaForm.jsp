@@ -64,16 +64,23 @@
 				<br>
 				
 				<div class="row">
-		        	<div class="col-sm-9">
+		        	<div class="col-sm-6">
 		        		<label>Contacto</label>
 		        		<sf:errors path="agen_contacto" class="label label-danger"></sf:errors>
 		        		<sf:input  path="agen_contacto" class="form-control" value="${agencia.agen_contacto}" maxlength="255" />		        		
-		        	</div>
+		        	</div>	        	
 		        	<div class="col-sm-3">
 		        		<label>Teléfono</label>
 		        		<sf:errors path="agen_telefonoContacto" class="label label-danger"></sf:errors>
 		        		<sf:input  path="agen_telefonoContacto" class="form-control" value="${agencia.agen_telefonoContacto}" maxlength="15" />		        		
 		        	</div>
+		        	<div class="col-sm-3">
+		        		<label>Medios Durables</label>		        		
+		        		<sf:select class="form-control" path="agen_mediosDurables" value="${agencia.agen_mediosDurables}">
+		        			<sf:option value="false">No</sf:option>		        		
+		        			<sf:option value="true">Sí</sf:option>
+		        		</sf:select>
+		        	</div>				        	
 				</div>
 				
 				<br>
