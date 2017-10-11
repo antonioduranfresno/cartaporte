@@ -1,21 +1,26 @@
+<%@page import="net.gefco.cartaporte.modelo.Usuario"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
+<meta http-equiv="refresh" content="${pageContext.session.maxInactiveInterval};url='${pageContext.servletContext.contextPath}/salir'">
+
+<% Usuario usuario = (Usuario) session.getAttribute("usuarioSesion"); %>
+
         <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+            <div class="navbar-header">                
                 <a class="navbar-brand" href="cartaPortePendienteLista">
-                	<img src="res/img/bg/gefco.png">
+                	<img src="res/img/bg/gefco.png">                	
                 </a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right" >            		
 				<li><a href="salir" ><i class="fa fa-sign-out fa-lg"></i> SALIR</a></li>				
             </ul>
+            <ul class="nav navbar-top-links navbar-right" >
+				<li><a target="_blank" href="manual"><i class="fa fa-book fa-lg"></i> MANUAL</a></li>
+			</ul>    
+			<ul class="nav navbar-top-links navbar-right" >
+				<li><a href="#" ><i class="fa fa-user fa-lg"></i> <%=usuario.toStringUsuario()%></a></li>		
+			</ul>    
 
             <div class="navbar-default sidebar">
                 <div class="sidebar-nav navbar-collapse">
@@ -67,14 +72,15 @@
                                 </li>
                                 <li>
                                     <a href="camionLista"><i class="fa fa-truck fa-fw"></i> Camiones</a>
-                                </li>
+                                </li> 
+                                
+                                <% if (usuario.getAgencia().getAgen_mediosDurables()){ %>
                                 <li>
                                     <a href="tipoMedioDurableLista"><i class="fa fa-industry fa-fw"></i> Tipos MD</a>
                                 </li>
+                                <%} %>
                             </ul>                          
                         </li>    
-                        
-						                                             
                                    	                        
                     </ul>
                 </div>
