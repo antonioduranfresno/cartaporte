@@ -31,7 +31,9 @@
         
             <div class="row">
                 <div class="col-sm-12">
-                    <h2 class="page-header">Destinos</h2>
+                    <h2 class="page-header derecha">Destinos
+                    <a href="destinoForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
+                    </h2>
                 </div>                                
            </div> 
            
@@ -66,11 +68,7 @@
 				</c:forEach>
 			
 			</table>
-			
-			<br>
-			
-			<a href="destinoForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
-			            
+
         </div>
     </div>
 

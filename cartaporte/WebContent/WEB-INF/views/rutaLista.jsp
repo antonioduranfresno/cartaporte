@@ -29,20 +29,22 @@
 
         <div id="page-wrapper">
         
+           <sf:form method="post" modelAttribute="form">
+
             <div class="row">
                 <div class="col-sm-12">
-                    <h2 class="page-header">Rutas</h2>
+                    <h2 class="page-header derecha">Rutas
+                    <a href="rutaForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nueva</a>
+                    </h2>
                 </div>                                
            </div> 
-           
-           <sf:form method="post" modelAttribute="form">
            
 			<table id='tablaRutas' class='table table-hover table-striped table-condensed table-bordered'>
 
 				<c:choose>
 				    <c:when test="${param.success eq true}">
 				        <div class="alert alert-success">Cambios realizados correctamente.</div>
-				    </c:when>
+				    </c:when>			    
 				</c:choose>	
 							
 				<thead>
@@ -108,12 +110,9 @@
 			
 			</table>
 			
-			
-			<br>
-			
-			<a href="rutaForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
-			
 			<input type="submit" class="btn btn-primary" id="btnGenerarCartasPortePendientes" name="GenerarCartasPortePendientes" value="Generar cartas porte pendientes">
+			    
+			<br> 
 			            
 			</sf:form>
 			

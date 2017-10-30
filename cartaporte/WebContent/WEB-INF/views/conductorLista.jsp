@@ -31,7 +31,9 @@
         
             <div class="row">
                 <div class="col-sm-12">
-                    <h2 class="page-header">Conductores</h2>
+                    <h2 class="page-header derecha">Conductores
+                    <a href="conductorForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
+                    </h2>
                 </div>                                
            </div> 
            
@@ -39,13 +41,13 @@
 			
 				<thead>
 					<tr class="info">
-						<th class="col-sm-3">Compañía Transporte</th>
-						<th class="col-sm-2">Carné</th>
-						<th class="col-sm-2">F. Exp.</th>
-						<th class="col-sm-2">Nombre</th>
-						<th class="col-sm-1">Teléfono</th>
-						<th class="col-sm-1">Editar</th>
-						<th class="col-sm-1">Eliminar</th>
+						<th width="32%">Compañía Transporte</th>
+						<th width="11%">Carné</th>
+						<th width="9%;">F. Exp.</th>
+						<th width="23%;">Nombre</th>
+						<th width="9%;">Teléfono</th>
+						<th width="8%;">Editar</th>
+						<th width="8%;">Eliminar</th>
 					</tr>
 				</thead>
 
@@ -60,7 +62,7 @@
 					<tr>
 						<td>${t.companiaTransporte.cotr_razonSocial}</td>
 						<td>${t.cond_carne}</td>
-						<td>${t.getCond_fechaExpedicionFormateada()}</td>
+						<td data-order='${t.cond_fechaExpedicion}' >${t.getCond_fechaExpedicionFormateada()}</td>
 						<td>${t.cond_nombre}</td>
 						<td>${t.cond_telefono}</td>
 						<td style="text-align: center;"><a href="conductorForm?id=${t.id}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a></td>
@@ -71,9 +73,7 @@
 			
 			</table>
 			
-			<br>
 			
-			<a href="conductorForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
 			            
         </div>
     </div>

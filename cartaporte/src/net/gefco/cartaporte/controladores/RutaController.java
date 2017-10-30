@@ -193,6 +193,9 @@ public class RutaController {
 		
 		String   secuenciaRuta = "";
 		
+		Integer  numeroRutas   				= 0;	
+		Integer  numeroRutasConEntregas   	= 0;
+		
 		//Sustituir los valores nulos por falses
 		for (Entry<Integer, Boolean> e: form.getMapa().entrySet()) {
 			if (e.getValue() == null) {
@@ -208,45 +211,60 @@ public class RutaController {
 		        
 				secuenciaRuta							= calculaSecuenciaRuta(ruta.getId());
 				
-				for(Entrega entrega : entregaService.listarEntregas(ruta)){
+				if(entregaService.listarEntregas(ruta).size()>0){
+					
+					for(Entrega entrega : entregaService.listarEntregas(ruta)){
 
-					calendarioFechaDocumentacion.set(Calendar.HOUR_OF_DAY, entrega.getRuta().getRuta_soloHoraDocumentacionFormateada());
-					calendarioFechaDocumentacion.set(Calendar.MINUTE, entrega.getRuta().getRuta_soloMinutosDocumentacionFormateada());
+						calendarioFechaDocumentacion.set(Calendar.HOUR_OF_DAY, entrega.getRuta().getRuta_soloHoraDocumentacionFormateada());
+						calendarioFechaDocumentacion.set(Calendar.MINUTE, entrega.getRuta().getRuta_soloMinutosDocumentacionFormateada());
+						
+						Date fechaDocumentacion =  calendarioFechaDocumentacion.getTime();
+						
+						calendarioFechaSalida.set(Calendar.HOUR_OF_DAY, entrega.getRuta().getRuta_soloHoraSalidaFormateada());
+						calendarioFechaSalida.set(Calendar.MINUTE, entrega.getRuta().getRuta_soloMinutosSalidaFormateada());
+						
+						Date fechaSalida 	=  calendarioFechaSalida.getTime();
+						
+						calendarioFechaLlegada.set(Calendar.HOUR_OF_DAY, entrega.getEntr_soloHoraLlegadaFormateada());
+						calendarioFechaLlegada.set(Calendar.MINUTE, entrega.getEntr_soloMinutosLlegadaFormateada());
+						
+						Date fechaLlegada 	=  calendarioFechaLlegada.getTime();
+						
+						//Generamos una carta de porte por cada entrega de cada ruta
+						CartaPorte cartaPorte = new CartaPorte(0, usuarioSesion.getAgencia(), null, null, fechaDocumentacion,
+								entrega.getRuta().getCompaniaTransporte(), null, 
+								entrega.getRuta().getCompaniaTransporte().getCotr_razonSocial(), entrega.getRuta().getCompaniaTransporte().getCotr_domicilio(),
+								entrega.getRuta().getCompaniaTransporte().getCotr_cif(), null, 
+								entrega.getRuta().getCompaniaTransporte().getCotr_razonSocial(), entrega.getRuta().getCompaniaTransporte().getCotr_domicilio(),
+								entrega.getRuta().getCompaniaTransporte().getCotr_cif(), fechaSalida, 
+								entrega.getDestino().getDest_destinatario(), entrega.getDestino().getDest_direccion(), 
+								entrega.getDestino().getDest_provincia(), entrega.getRuta().getTipoTransporte(),
+								entrega.getEntr_importe(), fechaLlegada, usuarioSesion.getAgencia().getAgen_contacto(), 
+								usuarioSesion.getAgencia().getAgen_telefonoContacto(), null, null, null, null, false, secuenciaRuta, null, 
+								entrega.getDestino().getDest_destinatario());
+											
+						cartaPorteService.guardar(cartaPorte);
+						
+					}
 					
-					Date fechaDocumentacion =  calendarioFechaDocumentacion.getTime();
-					
-					calendarioFechaSalida.set(Calendar.HOUR_OF_DAY, entrega.getRuta().getRuta_soloHoraSalidaFormateada());
-					calendarioFechaSalida.set(Calendar.MINUTE, entrega.getRuta().getRuta_soloMinutosSalidaFormateada());
-					
-					Date fechaSalida 	=  calendarioFechaSalida.getTime();
-					
-					calendarioFechaLlegada.set(Calendar.HOUR_OF_DAY, entrega.getEntr_soloHoraLlegadaFormateada());
-					calendarioFechaLlegada.set(Calendar.MINUTE, entrega.getEntr_soloMinutosLlegadaFormateada());
-					
-					Date fechaLlegada 	=  calendarioFechaLlegada.getTime();
-					
-					//Generamos una carta de porte por cada entrega de cada ruta
-					CartaPorte cartaPorte = new CartaPorte(0, usuarioSesion.getAgencia(), null, null, fechaDocumentacion,
-							entrega.getRuta().getCompaniaTransporte(), null, 
-							entrega.getRuta().getCompaniaTransporte().getCotr_razonSocial(), entrega.getRuta().getCompaniaTransporte().getCotr_domicilio(),
-							entrega.getRuta().getCompaniaTransporte().getCotr_cif(), null, 
-							entrega.getRuta().getCompaniaTransporte().getCotr_razonSocial(), entrega.getRuta().getCompaniaTransporte().getCotr_domicilio(),
-							entrega.getRuta().getCompaniaTransporte().getCotr_cif(), fechaSalida, 
-							entrega.getDestino().getDest_destinatario(), entrega.getDestino().getDest_direccion(), 
-							entrega.getDestino().getDest_provincia(), entrega.getRuta().getTipoTransporte(),
-							entrega.getEntr_importe(), fechaLlegada, usuarioSesion.getAgencia().getAgen_contacto(), 
-							usuarioSesion.getAgencia().getAgen_telefonoContacto(), null, null, null, null, false, secuenciaRuta, null, 
-							entrega.getDestino().getDest_destinatario());
-										
-					cartaPorteService.guardar(cartaPorte);
+					numeroRutasConEntregas = numeroRutasConEntregas + 1;
 					
 				}
+			
+				numeroRutas = numeroRutas + 1;
 				
 			}
-						
+			
 		}
 		
-		return "redirect:/cartaPortePendienteLista?secRuta="+secuenciaRuta;
+		//30/10/2017: Verificación de que las rutas creadas contienen Entregas.
+		
+		if(numeroRutas == numeroRutasConEntregas){
+			return "redirect:/cartaPortePendienteLista?secRuta="+secuenciaRuta+"&success=true";	
+		}else{
+			return "redirect:/cartaPortePendienteLista?secRuta="+secuenciaRuta+"&success=false";
+		}
+		
 	}
 
 	

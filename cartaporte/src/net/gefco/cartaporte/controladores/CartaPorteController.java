@@ -286,7 +286,6 @@ public class CartaPorteController {
 		return "cartaPorteForm";
 	}
 	
-	//CONTROLAR EL ARGUMENTO DE VUELTA
 	@RequestMapping(value = "/cartaPortePendienteLista&id={idCartaPorte}/eliminar", method = RequestMethod.POST)
 	@ResponseBody
 	public String eliminarDeLista(@PathVariable("idCartaPorte") Integer idCartaPorte){

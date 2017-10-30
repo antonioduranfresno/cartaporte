@@ -31,7 +31,10 @@
         
             <div class="row">
                 <div class="col-sm-12">
-                    <h2 class="page-header">Tipos Medios Durables</h2>
+                    <h2 class="page-header derecha">
+                    Tipos Medios Durables                    
+                    <a href="tipoMedioDurableForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
+                    </h2>
                 </div>                                
            </div> 
            
@@ -65,10 +68,6 @@
 			
 			</table>
 			
-			<br>
-			
-			<a href="tipoMedioDurableForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
-			            
         </div>
     </div>
 

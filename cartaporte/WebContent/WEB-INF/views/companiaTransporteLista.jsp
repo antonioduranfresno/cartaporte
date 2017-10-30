@@ -33,7 +33,9 @@
         
             <div class="row">
                 <div class="col-sm-12">
-                    <h2 class="page-header">Compañías Transporte</h2>
+                    <h2 class="page-header derecha">Compañías Transporte
+                    <a href="companiaTransporteForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nueva</a>
+                    </h2>
                 </div>                                
            </div> 
            
@@ -70,10 +72,6 @@
 				</c:forEach>
 			
 			</table>
-			
-			<br>
-			
-			<a href="companiaTransporteForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
 			            
         </div>
     </div>

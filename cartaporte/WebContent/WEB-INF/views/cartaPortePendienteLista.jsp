@@ -50,7 +50,7 @@
 				    <c:when test="${param.success eq true}">
 				        <div class="alert alert-success">Cambios realizados correctamente.</div>
 				    </c:when>
-				     <c:when test="${param.success eq false}">
+				    <c:when test="${param.success eq false}">
 				        <div class="alert alert-danger">No se puede emitir la carta de porte. No ha completado la información.</div>
 				    </c:when>
 				</c:choose>	
@@ -86,8 +86,6 @@
 				</c:forEach>
 
 			</table>
-			
-			<br>
 			
 			<input type="submit" class="btn btn-primary" id="btnGenerarCartasPorte" name="GenerarCartasPorte" value="Generar cartas de porte">
 			            
