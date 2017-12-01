@@ -49,11 +49,10 @@
 							
 				<thead>
 					<tr class="info">	
-						<th width="8%">Check</th>					
 						<th width="45%">Compañía / Entregas</th>
 						<th width="15%">Tipo transporte</th>
-						<th width="8%">Docum.</th>
-						<th width="8%">Salida</th>
+						<th width="12%">Docum.</th>
+						<th width="12%">Salida</th>
 						<th width="8%">Editar</th>
 						<th width="8%">Eliminar</th>
 					</tr>
@@ -63,7 +62,6 @@
 			
 					<tr>
 						
-						<td><sf:checkbox path="mapa[${c.id}]"  value="mapa[${c.id}]"/></td>
 						<td><a class="accordion-toggle" data-toggle="collapse" data-target='#${c.id}'>${c.companiaTransporte.toStringCodigoNombre()}</a>
 						
 							<div class="accordion-body collapse" id="${c.id}">
@@ -73,8 +71,9 @@
 								<table class='table table-striped table-condensed table-bordered' style="width: 98%; margin: 1%;">
 						
 									<tr>
+										<th class="col-sm-1 success"></th>
 										<th class="col-sm-3 success">Llegada</th>
-										<th class="col-sm-6 success">Destino</th>
+										<th class="col-sm-5 success">Destino</th>
 										<th class="col-sm-3 success">Importe</th>													
 									</tr>
 									
@@ -83,6 +82,7 @@
 										<c:if test="${e.ruta.id eq c.id}">
 											
 											<tr>
+												<td><sf:checkbox path="checksEntregas[${c.id}_${e.id}]"  value="checksEntregas[${c.id}_${e.id}]"/></td>
 												<td>${e.getEntr_horaLlegadaFormateada()}</td>
 												<td>${e.destino.dest_destinatario}</td>
 												<td class="text-right">${e.entr_importe}</td>							

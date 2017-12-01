@@ -44,7 +44,7 @@ public class CompaniaTransporteDaoImpl implements CompaniaTransporteDao{
 	@SuppressWarnings("unchecked")
 	public List<CompaniaTransporte> listarCompaniasTransporte(Agencia agencia) {		
 		
-		Query query = getSession().createQuery("from CompaniaTransporte where agencia = :agencia");
+		Query query = getSession().createQuery("from CompaniaTransporte where agencia = :agencia order by cotr_razonSocial");
 		
 		query.setParameter("agencia", agencia);
 		

@@ -73,12 +73,16 @@ public class RutaController {
 
 		List<Ruta> listaRutas = rutaService.listarRutas(usuarioSesion.getAgencia());
 
+		List<Entrega> listaEntregas = entregaService.listarEntregasAgencia(usuarioSesion.getAgencia());
+		
         Form f = new Form();
         
-        for (Ruta r :  listaRutas) {
-               f.getMapa().put(r.getId(), false);
-        }
-        
+        for (Entrega e :  listaEntregas) {
+            
+            f.getChecksEntregas().put(e.getRuta().getId() + "_" + e.getId(), false);
+            
+       }
+
         model.addAttribute("form", f);
         model.addAttribute("listaRutas", listaRutas);		
 		model.addAttribute("listaEntregas", entregaService.listarEntregasAgencia(usuarioSesion.getAgencia()));
@@ -195,66 +199,82 @@ public class RutaController {
 		
 		Integer  numeroRutas   				= 0;	
 		Integer  numeroRutasConEntregas   	= 0;
-		
-		//Sustituir los valores nulos por falses
-		for (Entry<Integer, Boolean> e: form.getMapa().entrySet()) {
-			if (e.getValue() == null) {
-				e.setValue(false);
-			}else{
-			
-				//Inserción de valores en tabla Cartas de Porte
-				Ruta ruta = rutaService.buscarRuta(e.getKey());
-				
-				Calendar calendarioFechaDocumentacion 	= Calendar.getInstance();
-				Calendar calendarioFechaSalida 			= Calendar.getInstance();
-				Calendar calendarioFechaLlegada 		= Calendar.getInstance();
-		        
-				secuenciaRuta							= calculaSecuenciaRuta(ruta.getId());
-				
-				if(entregaService.listarEntregas(ruta).size()>0){
-					
-					for(Entrega entrega : entregaService.listarEntregas(ruta)){
 
-						calendarioFechaDocumentacion.set(Calendar.HOUR_OF_DAY, entrega.getRuta().getRuta_soloHoraDocumentacionFormateada());
-						calendarioFechaDocumentacion.set(Calendar.MINUTE, entrega.getRuta().getRuta_soloMinutosDocumentacionFormateada());
-						
-						Date fechaDocumentacion =  calendarioFechaDocumentacion.getTime();
-						
-						calendarioFechaSalida.set(Calendar.HOUR_OF_DAY, entrega.getRuta().getRuta_soloHoraSalidaFormateada());
-						calendarioFechaSalida.set(Calendar.MINUTE, entrega.getRuta().getRuta_soloMinutosSalidaFormateada());
-						
-						Date fechaSalida 	=  calendarioFechaSalida.getTime();
-						
-						calendarioFechaLlegada.set(Calendar.HOUR_OF_DAY, entrega.getEntr_soloHoraLlegadaFormateada());
-						calendarioFechaLlegada.set(Calendar.MINUTE, entrega.getEntr_soloMinutosLlegadaFormateada());
-						
-						Date fechaLlegada 	=  calendarioFechaLlegada.getTime();
-						
-						//Generamos una carta de porte por cada entrega de cada ruta
-						CartaPorte cartaPorte = new CartaPorte(0, usuarioSesion.getAgencia(), null, null, fechaDocumentacion,
-								entrega.getRuta().getCompaniaTransporte(), null, 
-								entrega.getRuta().getCompaniaTransporte().getCotr_razonSocial(), entrega.getRuta().getCompaniaTransporte().getCotr_domicilio(),
-								entrega.getRuta().getCompaniaTransporte().getCotr_cif(), null, 
-								entrega.getRuta().getCompaniaTransporte().getCotr_razonSocial(), entrega.getRuta().getCompaniaTransporte().getCotr_domicilio(),
-								entrega.getRuta().getCompaniaTransporte().getCotr_cif(), fechaSalida, 
-								entrega.getDestino().getDest_destinatario(), entrega.getDestino().getDest_direccion(), 
-								entrega.getDestino().getDest_provincia(), entrega.getRuta().getTipoTransporte(),
-								entrega.getEntr_importe(), fechaLlegada, usuarioSesion.getAgencia().getAgen_contacto(), 
-								usuarioSesion.getAgencia().getAgen_telefonoContacto(), null, null, null, null, false, secuenciaRuta, null, 
-								entrega.getDestino().getDest_destinatario());
-											
-						cartaPorteService.guardar(cartaPorte);
-						
-					}
+        //Sustituir los valores nulos por falses
+        for (Entry<String, Boolean> e: form.getChecksEntregas().entrySet()) {
+               if (e.getValue() == null) {
+                      e.setValue(false);
+               }
+        }
+
+		for (Entry<String, Boolean> e: form.getChecksEntregas().entrySet()) {
+			
+            if (e.getValue() == false) {
+                continue;
+            }
+			
+            Integer idRuta                   = Integer.parseInt( e.getKey().split("_")[0] );
+            
+			//Inserción de valores en tabla Cartas de Porte
+			Ruta ruta = rutaService.buscarRuta(idRuta);
+			
+			Calendar calendarioFechaDocumentacion 	= Calendar.getInstance();
+			Calendar calendarioFechaSalida 			= Calendar.getInstance();
+			Calendar calendarioFechaLlegada 		= Calendar.getInstance();
+	        
+			secuenciaRuta							= calculaSecuenciaRuta(ruta.getId());
+			
+			if(entregaService.listarEntregas(ruta).size()>0){
+				
+				for(Entrega entrega : entregaService.listarEntregas(ruta)){
 					
-					numeroRutasConEntregas = numeroRutasConEntregas + 1;
+                    if (! form.getChecksEntregas().containsKey(idRuta + "_"+ entrega.getId()) 
+                            || form.getChecksEntregas().get(idRuta + "_"+ entrega.getId()) == false) {
+                            
+                            continue;
+                            
+                    }
+                    
+                    form.getChecksEntregas().put(idRuta + "_"+ entrega.getId(), false); //Para no crear rutas repetidas
+	
+					calendarioFechaDocumentacion.set(Calendar.HOUR_OF_DAY, entrega.getRuta().getRuta_soloHoraDocumentacionFormateada());
+					calendarioFechaDocumentacion.set(Calendar.MINUTE, entrega.getRuta().getRuta_soloMinutosDocumentacionFormateada());
+					
+					Date fechaDocumentacion =  calendarioFechaDocumentacion.getTime();
+					
+					calendarioFechaSalida.set(Calendar.HOUR_OF_DAY, entrega.getRuta().getRuta_soloHoraSalidaFormateada());
+					calendarioFechaSalida.set(Calendar.MINUTE, entrega.getRuta().getRuta_soloMinutosSalidaFormateada());
+					
+					Date fechaSalida 	=  calendarioFechaSalida.getTime();
+					
+					calendarioFechaLlegada.set(Calendar.HOUR_OF_DAY, entrega.getEntr_soloHoraLlegadaFormateada());
+					calendarioFechaLlegada.set(Calendar.MINUTE, entrega.getEntr_soloMinutosLlegadaFormateada());
+					
+					Date fechaLlegada 	=  calendarioFechaLlegada.getTime();
+					
+					//Generamos una carta de porte por cada entrega de cada ruta
+					CartaPorte cartaPorte = new CartaPorte(0, usuarioSesion.getAgencia(), null, null, fechaDocumentacion,
+							entrega.getRuta().getCompaniaTransporte(), null, 
+							entrega.getRuta().getCompaniaTransporte().getCotr_razonSocial(), entrega.getRuta().getCompaniaTransporte().getCotr_domicilio(),
+							entrega.getRuta().getCompaniaTransporte().getCotr_cif(), null, 
+							entrega.getRuta().getCompaniaTransporte().getCotr_razonSocial(), entrega.getRuta().getCompaniaTransporte().getCotr_domicilio(),
+							entrega.getRuta().getCompaniaTransporte().getCotr_cif(), fechaSalida, 
+							entrega.getDestino().getDest_destinatario(), entrega.getDestino().getDest_direccion(), 
+							entrega.getDestino().getDest_provincia(), entrega.getRuta().getTipoTransporte(),
+							entrega.getEntr_importe(), fechaLlegada, usuarioSesion.getAgencia().getAgen_contacto(), 
+							usuarioSesion.getAgencia().getAgen_telefonoContacto(), null, null, null, null, false, secuenciaRuta, null, 
+							entrega.getDestino().getDest_destinatario());
+										
+					cartaPorteService.guardar(cartaPorte);
 					
 				}
-			
-				numeroRutas = numeroRutas + 1;
+				
+				numeroRutasConEntregas = numeroRutasConEntregas + 1;
 				
 			}
-			
+		
+			numeroRutas = numeroRutas + 1;
+		
 		}
 		
 		//30/10/2017: Verificación de que las rutas creadas contienen Entregas.
