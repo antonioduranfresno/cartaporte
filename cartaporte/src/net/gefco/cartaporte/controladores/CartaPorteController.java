@@ -286,7 +286,6 @@ public class CartaPorteController {
 		return "cartaPorteForm";
 	}
 	
-	//CONTROLAR EL ARGUMENTO DE VUELTA
 	@RequestMapping(value = "/cartaPortePendienteLista&id={idCartaPorte}/eliminar", method = RequestMethod.POST)
 	@ResponseBody
 	public String eliminarDeLista(@PathVariable("idCartaPorte") Integer idCartaPorte){
@@ -367,7 +366,7 @@ public class CartaPorteController {
 			
 			if (agencia.getAgen_copiaDestino()){
 				
-				parametros.put("destinatario", "EJEMPLAR PARA AGENCIA DESTINATARIA");				
+				parametros.put("destinatario", "EJEMPLAR PARA AGENCIA DESTINATARIA");
 				
 				if(jasperBase==null){				
 					jasperBase = JasperFillManager.fillReport(reporte,parametros, DriverManager.getConnection(CfgUtil.URL_BBDD,CfgUtil.USR_BBDD,CfgUtil.PW_BBDD));					

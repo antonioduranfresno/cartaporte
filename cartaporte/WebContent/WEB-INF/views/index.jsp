@@ -30,7 +30,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">CARTAS DE PORTE <small>v17.10.10</small></a>
+          <a class="navbar-brand" href="#">CARTAS DE PORTE <small>v17.12.01</small></a>
           
         </div>
         

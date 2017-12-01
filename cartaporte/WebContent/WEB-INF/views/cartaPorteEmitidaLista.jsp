@@ -116,6 +116,7 @@
 	    	"language": {
 	    		"url": "res/json/es.json"
 	        },
+	        "order": [[ 0, "desc" ]],
 	    	"pageLength": 20,
 	    	"initComplete": waitingDialog.hide()			 		    	
 	    });		

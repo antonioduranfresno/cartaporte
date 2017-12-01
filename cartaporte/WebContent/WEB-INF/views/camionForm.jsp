@@ -37,7 +37,7 @@
            <sf:form method="post" modelAttribute="camion" >
 					
 				<sf:input type="hidden" path="id" value="${camion.id}" />
-							
+			
 				<div class="row">
 					<div class="col-sm-8">
 						<label>Compañía Transporte</label>
@@ -45,11 +45,11 @@
 						<sf:select class="form-control" id="selCompania" path="companiaTransporte.id" value="${camion.companiaTransporte.id}">
 							<option value="0">Selección</option>
 							<c:forEach items="${listaCompaniasTransporte}" var="c" varStatus="index">
-			        			<option value="${c.id}" ${c.id == camion.companiaTransporte.id ? 'selected' : '' }>${c.toStringCodigoNombre()}</option>
+			        			<option value="${c.id}" ${c.id == camion.companiaTransporte.id ? 'selected' : '' }>${c.cotr_razonSocial}</option>
 			        		</c:forEach>
 						</sf:select>
 					</div>				
-				</div>
+				</div>		
 				
 				<br>
 			

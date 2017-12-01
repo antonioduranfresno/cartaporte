@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cartaporte" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2734bda7-3457-4187-9632-00101687d57b">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="143"/>
-	<property name="ireport.y" value="226"/>
+	<property name="ireport.y" value="432"/>
 	<parameter name="IdCartaPorte" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -114,7 +114,7 @@ WHERE
 		<band splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="286" splitType="Stretch">
+		<band height="313" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="555" height="33" forecolor="#000000" uuid="ae43a9af-8dc7-49e1-929a-f2fd1750a511"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
@@ -325,14 +325,14 @@ WHERE
 				<text><![CDATA[Remolque / Semiremolque]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="21" y="266" width="50" height="18" forecolor="#000000" uuid="25751e58-0d25-47d1-acb4-9e53d57da76d"/>
+				<reportElement x="21" y="284" width="50" height="18" forecolor="#000000" uuid="25751e58-0d25-47d1-acb4-9e53d57da76d"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Destino]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="75" y="266" width="93" height="18" uuid="9de8d14b-8dc6-4d84-891e-9daf18cb1603"/>
+				<reportElement x="75" y="284" width="93" height="18" uuid="9de8d14b-8dc6-4d84-891e-9daf18cb1603"/>
 				<box leftPadding="2">
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
@@ -342,7 +342,7 @@ WHERE
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_provincia}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="75" y="244" width="93" height="18" uuid="666b71f5-a2d4-45b6-95f2-ff7c12be642a"/>
+				<reportElement x="75" y="262" width="93" height="18" uuid="666b71f5-a2d4-45b6-95f2-ff7c12be642a"/>
 				<box leftPadding="2">
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
@@ -352,7 +352,7 @@ WHERE
 				<textFieldExpression><![CDATA[$F{agencia_agen_nombre}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="21" y="244" width="50" height="18" forecolor="#000000" uuid="919fc3d4-8fcb-4667-976f-bff93cc2915f"/>
+				<reportElement x="21" y="262" width="50" height="18" forecolor="#000000" uuid="919fc3d4-8fcb-4667-976f-bff93cc2915f"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
@@ -410,14 +410,14 @@ WHERE
 				<text><![CDATA[Teléfono vehículo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="301" y="244" width="52" height="18" forecolor="#000000" uuid="eb27dbdb-2eba-4dc8-8a5d-c3535baa8efb"/>
+				<reportElement x="301" y="262" width="52" height="18" forecolor="#000000" uuid="eb27dbdb-2eba-4dc8-8a5d-c3535baa8efb"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Fecha salida]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
-				<reportElement x="358" y="244" width="65" height="18" uuid="40967093-6bd4-48d4-8434-1b963b41fb18"/>
+				<reportElement x="358" y="262" width="65" height="18" uuid="40967093-6bd4-48d4-8434-1b963b41fb18"/>
 				<box>
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
@@ -427,7 +427,7 @@ WHERE
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_fechaSalida}]]></textFieldExpression>
 			</textField>
 			<textField pattern="HH:mm" isBlankWhenNull="true">
-				<reportElement x="236" y="244" width="44" height="18" uuid="c7b1efda-fddb-4867-8dcb-f3bf80b0f1f2"/>
+				<reportElement x="236" y="262" width="44" height="18" uuid="c7b1efda-fddb-4867-8dcb-f3bf80b0f1f2"/>
 				<box>
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
@@ -437,14 +437,14 @@ WHERE
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_fechaSalida}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="178" y="244" width="59" height="18" forecolor="#000000" uuid="afa20a56-6542-463d-8aa8-a90cb18d0d78"/>
+				<reportElement x="178" y="262" width="59" height="18" forecolor="#000000" uuid="afa20a56-6542-463d-8aa8-a90cb18d0d78"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Hora salida]]></text>
 			</staticText>
 			<textField pattern="HH:mm" isBlankWhenNull="true">
-				<reportElement x="236" y="266" width="44" height="18" uuid="291ef1cf-8284-4bea-aef5-4fdc0ff17c18"/>
+				<reportElement x="236" y="284" width="44" height="18" uuid="291ef1cf-8284-4bea-aef5-4fdc0ff17c18"/>
 				<box>
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
@@ -454,7 +454,7 @@ WHERE
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_fechaLlegada}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
-				<reportElement x="358" y="265" width="65" height="18" uuid="a14a8194-d040-4131-8d8b-c43d6eceb5de"/>
+				<reportElement x="358" y="283" width="65" height="18" uuid="a14a8194-d040-4131-8d8b-c43d6eceb5de"/>
 				<box>
 					<bottomPen lineWidth="0.75" lineColor="#CCCCCC"/>
 				</box>
@@ -464,21 +464,21 @@ WHERE
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_fechaLlegada}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="301" y="265" width="53" height="18" forecolor="#000000" uuid="6a396e75-0782-4080-b8b1-b0392ab7b2e1"/>
+				<reportElement x="301" y="283" width="53" height="18" forecolor="#000000" uuid="6a396e75-0782-4080-b8b1-b0392ab7b2e1"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Fecha llegada]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="178" y="266" width="59" height="18" forecolor="#000000" uuid="652fc1f6-ce52-4d17-a9e1-9fb0b86e6422"/>
+				<reportElement x="178" y="284" width="59" height="18" forecolor="#000000" uuid="652fc1f6-ce52-4d17-a9e1-9fb0b86e6422"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Calibri" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Hora llegada]]></text>
 			</staticText>
 			<textField pattern="#,##0.00" isBlankWhenNull="true">
-				<reportElement x="502" y="266" width="51" height="18" uuid="fc8af0eb-c41b-4bc0-9300-43b3c524288c">
+				<reportElement x="502" y="284" width="51" height="18" uuid="fc8af0eb-c41b-4bc0-9300-43b3c524288c">
 					<printWhenExpression><![CDATA[$P{destinatario}.equals( "EJEMPLAR PARA CENTRO ORIGEN" )]]></printWhenExpression>
 				</reportElement>
 				<box>
@@ -490,7 +490,7 @@ WHERE
 				<textFieldExpression><![CDATA[$F{cartaporte_capo_importe}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="442" y="266" width="60" height="18" forecolor="#000000" uuid="17d3ce6e-b7b4-425f-abee-48a4f6833231">
+				<reportElement x="442" y="284" width="60" height="18" forecolor="#000000" uuid="17d3ce6e-b7b4-425f-abee-48a4f6833231">
 					<printWhenExpression><![CDATA[$P{destinatario}.equals( "EJEMPLAR PARA CENTRO ORIGEN" )]]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Bottom">
@@ -519,7 +519,7 @@ WHERE
 				<textFieldExpression><![CDATA["CIF." + $F{cartaporte_capo_cifCompaniaEfectiva}]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement mode="Transparent" x="15" y="247" width="539" height="39" uuid="eec69695-34fd-4f68-b0b9-8583a3678c6a"/>
+				<reportElement mode="Transparent" x="15" y="261" width="539" height="50" uuid="eec69695-34fd-4f68-b0b9-8583a3678c6a"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#000000"/>
 				</graphicElement>
@@ -530,9 +530,9 @@ WHERE
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="287" splitType="Stretch">
+		<band height="260" splitType="Stretch">
 			<subreport>
-				<reportElement isPrintRepeatedValues="false" x="14" y="10" width="540" height="129" uuid="72f96887-7b77-4b9b-8d4a-0326ee83a5bf">
+				<reportElement isPrintRepeatedValues="false" x="14" y="50" width="540" height="180" uuid="72f96887-7b77-4b9b-8d4a-0326ee83a5bf">
 					<printWhenExpression><![CDATA[$P{mostrarMercancia}]]></printWhenExpression>
 				</reportElement>
 				<subreportParameter name="IdCartaPorte">
@@ -551,20 +551,7 @@ WHERE
 					<subreportParameterExpression><![CDATA[$F{modelo_mode_campo2}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "\\CartaPorte_mercancia.jasper"]]></subreportExpression>
-			</subreport>
-			<subreport>
-				<reportElement isPrintRepeatedValues="false" x="14" y="139" width="540" height="145" uuid="8a1b5772-fb1f-45fd-9c70-768ff784618c">
-					<printWhenExpression><![CDATA[$P{mostrarMediosDurables}]]></printWhenExpression>
-				</reportElement>
-				<subreportParameter name="IdCartaPorte">
-					<subreportParameterExpression><![CDATA[$P{IdCartaPorte}]]></subreportParameterExpression>
-				</subreportParameter>
-				<subreportParameter name="DestinoMedios">
-					<subreportParameterExpression><![CDATA[$F{cartaporte_capo_destinoMedioDurable}]]></subreportParameterExpression>
-				</subreportParameter>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "\\CartaPorte_mediosDurables.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "\\CartaPorte_mercanciaReducida.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
