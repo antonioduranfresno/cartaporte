@@ -55,7 +55,7 @@
 						<sf:select class="form-control" id="selCompania" path="companiaTransporte.id" value="${ruta.companiaTransporte.id}">
 							<option value="0">Selección</option>
 							<c:forEach items="${listaCompaniasTransporte}" var="c" varStatus="index">
-			        			<option value="${c.id}" ${c.id == ruta.companiaTransporte.id ? 'selected' : '' }>${c.toStringCodigoNombre()}</option>
+			        			<option value="${c.id}" ${c.id == ruta.companiaTransporte.id ? 'selected' : '' }>${c.cotr_razonSocial}</option>
 			        		</c:forEach>
 						</sf:select>
 					</div>				

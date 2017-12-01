@@ -31,7 +31,9 @@
         
             <div class="row">
                 <div class="col-sm-12">
-                    <h2 class="page-header">Agencias</h2>
+                    <h2 class="page-header derecha">Agencias                    
+                    <a href="agenciaForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nueva</a>
+                    </h2>
                 </div>                                
            </div> 
            
@@ -79,11 +81,7 @@
 				</c:forEach>
 			
 			</table>
-			
-			<br>
-			
-			<a href="agenciaForm" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nueva</a>
-			            
+			        
         </div>
     </div>
 

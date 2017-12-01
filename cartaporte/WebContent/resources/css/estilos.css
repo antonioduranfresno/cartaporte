@@ -233,6 +233,10 @@ input[readonly] {
 	font-size: 24px;
 }
 
+.derecha a{
+	float: right;	
+}
+
 .derecha input[type="submit"], .derecha input[type="button"]{
 	margin: 10px -15px 0 0;
 	float: right;

@@ -59,5 +59,5 @@ public class Encriptacion {
         }
         return base64EncryptedString;
 	}
-	
+		
 }

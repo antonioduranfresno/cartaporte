@@ -9,7 +9,6 @@ function eliminar(id, objeto){
 				data 	 	: {}		
 			}).done(function (data) {
 				if(data=="ok"){
-					alert(objeto+'Lista?success=true');
 					$(location).attr('href',objeto+'Lista?success=true');	
 				}else{
 					alert("No se puede eliminar");
